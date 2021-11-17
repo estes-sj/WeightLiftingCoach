@@ -149,6 +149,9 @@ def squat_detection(pose, display):
         display.SetStatus(f"GOOD SQUAT :)")
     return;
 
+def squat_hip_angle():
+    return
+
 def getTime():
 	# Get current date and time
 	dt = datetime.datetime.now()
