@@ -8,6 +8,7 @@ import datetime
 import argparse
 import sys
 import cv2
+import math
 
 import numpy as np
 
@@ -149,8 +150,59 @@ def squat_detection(pose, display):
         display.SetStatus(f"GOOD SQUAT :)")
     return;
 
-def squat_hip_angle():
-    return
+def squat_knee_angle(pose, display):
+    print("---------------------") 
+
+    # Distance formula = abs sqrt((x2-x1)^2 + (y2-y1)^2)
+    
+    # Left upper leg distance
+    left_knee_idx = pose.FindKeypoint(13)
+    left_hip_idx = pose.FindKeypoint(11)
+
+    left_knee = pose.Keypoints[left_knee_idx]
+    left_hip = pose.Keypoints[left_hip_idx]
+
+    left_upper_leg_distance = abs(math.sqrt((left_hip.x - left_knee.x)^2 + (left_hip.y - left_knee.y)^2))
+    left_upper_leg_slope = abs((left_hip.y - left_knee.y)/(left_hip.x - left_knee.x))
+
+    # Left lower leg distance
+    left_ankle_idx = pose.FindKeypoint(15)
+
+    left_ankle = pose.Keypoints[left_ankle_idx]
+
+    left_lower_leg_distance = abs(math.sqrt((left_ankle.x - left_knee.x)^2 + (left_ankle.y - left_knee.y)^2))
+    left_lower_leg_slope = abs((left_ankle.y - left_knee.y)/(left_ankle.x - left_knee.x))
+
+    # Right upper leg distance
+    right_knee_idx = pose.FindKeypoint(14)
+    right_hip_idx = pose.FindKeypoint(12)
+    
+    right_knee = pose.Keypoints[right_knee_idx]
+    right_hip = pose.Keypoints[right_hip_idx]
+
+    right_upper_leg_distance = abs(math.sqrt((right_hip.x - right_knee.x)^2 + (right_hip.y - right_knee.y)^2))
+    right_upper_leg_slope = abs((right_hip.y - right_knee.y)/(right_hip.x - right_knee.x))
+
+    # Right lower leg distance
+    right_ankle_idx = pose.FindKeypoint(16)
+
+    right_ankle = pose.Keypoints[right_ankle_idx]
+
+    right_lower_leg_distance = abs(math.sqrt((right_ankle.x - right_knee.x)^2 + (right_ankle.y - right_knee.y)^2))
+    right_lower_leg_slope = abs((right_ankle.y - right_knee.y)/(right_ankle.x - right_knee.x))
+   
+    # Calculate knee angle of left knee 
+    left_knee_angle = math.degrees(math.atan((left_upper_leg_slope - left_lower_leg_slope) / (1 + left_upper_leg_slope * left_lower_leg_slope)))
+    if left_knee_angle < 0:
+        left_knee_angle += 360
+
+    # Calculate knee angle of right knee 
+    right_knee_angle = math.degrees(math.atan((right_upper_leg_slope - right_lower_leg_slope) / (1 + right_upper_leg_slope * right_lower_leg_slope)))
+    if right_knee_angle < 0:
+        right_knee_angle += 360
+
+    print("Left knee angle = " + left_knee_angle)
+    print("Right knee angle = " + right_knee_angle)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
 def getTime():
 	# Get current date and time
