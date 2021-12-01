@@ -162,7 +162,7 @@ def squat_knee_angle(pose, display):
     left_knee = pose.Keypoints[left_knee_idx]
     left_hip = pose.Keypoints[left_hip_idx]
 
-    left_upper_leg_distance = abs(math.sqrt((left_hip.x - left_knee.x)^2 + (left_hip.y - left_knee.y)^2))
+    # left_upper_leg_distance = abs(math.sqrt((left_hip.x - left_knee.x)^2 + (left_hip.y - left_knee.y)^2))
     left_upper_leg_slope = abs((left_hip.y - left_knee.y)/(left_hip.x - left_knee.x))
 
     # Left lower leg distance
@@ -170,7 +170,7 @@ def squat_knee_angle(pose, display):
 
     left_ankle = pose.Keypoints[left_ankle_idx]
 
-    left_lower_leg_distance = abs(math.sqrt((left_ankle.x - left_knee.x)^2 + (left_ankle.y - left_knee.y)^2))
+    # left_lower_leg_distance = abs(math.sqrt((left_ankle.x - left_knee.x)^2 + (left_ankle.y - left_knee.y)^2))
     left_lower_leg_slope = abs((left_ankle.y - left_knee.y)/(left_ankle.x - left_knee.x))
 
     # Right upper leg distance
@@ -180,7 +180,7 @@ def squat_knee_angle(pose, display):
     right_knee = pose.Keypoints[right_knee_idx]
     right_hip = pose.Keypoints[right_hip_idx]
 
-    right_upper_leg_distance = abs(math.sqrt((right_hip.x - right_knee.x)^2 + (right_hip.y - right_knee.y)^2))
+    # right_upper_leg_distance = abs(math.sqrt((right_hip.x - right_knee.x)^2 + (right_hip.y - right_knee.y)^2))
     right_upper_leg_slope = abs((right_hip.y - right_knee.y)/(right_hip.x - right_knee.x))
 
     # Right lower leg distance
@@ -188,7 +188,7 @@ def squat_knee_angle(pose, display):
 
     right_ankle = pose.Keypoints[right_ankle_idx]
 
-    right_lower_leg_distance = abs(math.sqrt((right_ankle.x - right_knee.x)^2 + (right_ankle.y - right_knee.y)^2))
+    # right_lower_leg_distance = abs(math.sqrt((right_ankle.x - right_knee.x)^2 + (right_ankle.y - right_knee.y)^2))
     right_lower_leg_slope = abs((right_ankle.y - right_knee.y)/(right_ankle.x - right_knee.x))
    
     # Calculate knee angle of left knee 
