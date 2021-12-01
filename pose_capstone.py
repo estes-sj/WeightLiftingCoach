@@ -202,7 +202,9 @@ def squat_knee_angle(pose, display):
         right_knee_angle += 360
 
     print("Left knee angle = " + left_knee_angle)
-    print("Right knee angle = " + right_knee_angle)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+    print("     Off by " + left_knee_angle - 125 + " degrees")
+    print("Right knee angle = " + right_knee_angle)
+    print("     Off by " + right_knee_angle - 125 + " degrees")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 
 def getTime():
 	# Get current date and time
