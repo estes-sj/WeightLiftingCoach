@@ -204,7 +204,20 @@ def squat_knee_angle(pose, display):
     print("Left knee angle = " + left_knee_angle)
     print("     Off by " + left_knee_angle - 125 + " degrees")
     print("Right knee angle = " + right_knee_angle)
-    print("     Off by " + right_knee_angle - 125 + " degrees")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+    print("     Off by " + right_knee_angle - 125 + " degrees")
+
+# Calculates the slope of a line based on 2 points
+def calcSlope(point1, point2):  # point1 and point2 refers to 2 points in the resnet model                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    return (point2.y-point1.y)/(point2.x-point1.x)
+
+# Calculate the distance of a line based on 2 points
+def calcDistance(point1, point2):
+    return abs(math.sqrt((point1.x-point2.x)^2 + (point1.y-point2.y)^2))
+
+# Calculates the angle in degress of two intersecting lines given the slope
+def calcAngle(slope1, slope2): 
+    angle = (math.degrees(math.atan((slope1-slope2)/(1 + slope1*slope2))))
+    return angle if angle < 0 else angle+360
 
 def getTime():
 	# Get current date and time
