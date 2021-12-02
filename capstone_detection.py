@@ -10,15 +10,21 @@ import argparse
 import sys
 
 import numpy as np
+import RPi.GPIO as GPIO
 
 sudoPassword = 'Rah2022'
 command = 'sudo systemctl restart nvargus-daemon'
 p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
 
+# Pin Definitions
+PIN_LEFT = 25
+PIN_RIGHT = 9
+
 #
 # object detection setup
+#IDs(Cup = 1, Net = 2, Beads = 3, Pole = 4, Marshmallow = 5)
 #
-detectNet = jetson.inference.detectNet(argv=['--model=/home/ece/jetson-inference/python/training/detection/ssd/models/capstone/ssd-mobilenet.onnx', 
+net = jetson.inference.detectNet(argv=['--model=/home/ece/jetson-inference/python/training/detection/ssd/models/capstone/ssd-mobilenet.onnx', 
 '--labels=/home/ece/jetson-inference/python/training/detection/ssd/models/capstone/labels.txt', '--input-blob=input_0', '--output-cvg=scores', 
 '--output-bbox=boxes']) # custom training model
 
@@ -31,6 +37,11 @@ ALLIGNMENT = 0x0
 
 #main
 def main():
+
+	# Pin Setups
+	GPIO.setmode(GPIO.BCM)
+	GPIO.setup(PIN_LEFT, GPIO.OUT, initial=GPIO.LOW)
+	GPIO.setup(PIN_RIGHT, GPIO.OUT, initial=GPIO.LOW)
 
 	while True:
 		try:
@@ -59,9 +70,9 @@ def main():
 
 	while display_0.IsStreaming(): #and display_1.IsStreaming():
 		img_0 = camera_0.Capture()
-		detections_0 = detectNet.Detect(img_0)
+		detections_0 = net.Detect(img_0)
 		display_0.Render(img_0)
-		display_0.SetStatus("Object Detection | Network {:.0f} FPS".format(detectNet.GetNetworkFPS()))
+		display_0.SetStatus("Object Detection | Network {:.0f} FPS".format(net.GetNetworkFPS()))
 
 		# print the detections
 		print(getTime() + "----------CAMERA 0------------")
@@ -70,7 +81,7 @@ def main():
 		# interact with detections on cam 0
 		for detection in detections_0:
 			# print(detection)
-			class_name = detectNet.GetClassDesc(detection.ClassID)
+			class_name = net.GetClassDesc(detection.ClassID)
 			print(class_name + " Detected!")
 			#getWidth(detection)
 			#getHeight(detection)
@@ -81,17 +92,23 @@ def main():
 			# Right of Center
 			if (coord_x > imgCenter[0] + 10):
 				ALLIGNMENT = 0x1
+				GPIO.output(PIN_LEFT, GPIO.HIGH)
+				GPIO.output(PIN_RIGHT, GPIO.LOW)
 				print("Right of Center")
 			# Left of Center
 			elif (coord_x < imgCenter[0] - 10):
 				ALLIGNMENT = 0x2
+				GPIO.output(PIN_LEFT, GPIO.LOW)
+				GPIO.output(PIN_RIGHT, GPIO.HIGH)
 				print("Left of Center")
 			#Other
 			else:
 				ALLIGNMENT = 0x0
+				GPIO.output(PIN_LEFT, GPIO.LOW)
+				GPIO.output(PIN_RIGHT, GPIO.LOW)
 			
 			print("-----------------------------------------")
-			#detectNet.Allignment(ALLIGNMENT)
+			net.Allignment(ALLIGNMENT)
 			
 		#print out performance info
 		#detectNet.PrintProfilerTimes()
