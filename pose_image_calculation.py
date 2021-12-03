@@ -163,6 +163,7 @@ def squat_knee_angle(pose):
 
     # right_upper_leg_distance = abs(math.sqrt((right_hip.x - right_knee.x)^2 + (right_hip.y - right_knee.y)^2))
     right_upper_leg_slope = abs((right_hip.y - right_knee.y)/(right_hip.x - right_knee.x))
+    print("Right Upper Leg Slope: " + str(right_upper_leg_slope))
 
     # Right lower leg distance
     right_ankle_idx = pose.FindKeypoint(16)
@@ -174,14 +175,17 @@ def squat_knee_angle(pose):
 
     # right_lower_leg_distance = abs(math.sqrt((right_ankle.x - right_knee.x)^2 + (right_ankle.y - right_knee.y)^2))
     right_lower_leg_slope = abs((right_ankle.y - right_knee.y)/(right_ankle.x - right_knee.x))
+    print("Right Lower Leg Slope: " + str(right_lower_leg_slope))
    
     # Calculate knee angle of right knee 
-    right_knee_angle = math.degrees(math.atan((right_upper_leg_slope - right_lower_leg_slope) / (1 + right_upper_leg_slope * right_lower_leg_slope)))
+    right_knee_angle = math.degrees(abs(math.atan((right_upper_leg_slope - right_lower_leg_slope) / (1 + right_upper_leg_slope * right_lower_leg_slope))))
     #if right_knee_angle < 0:
     #    right_knee_angle += 180
 
     print("Right knee angle = " + str(right_knee_angle))
-    print("     Off by " + str(right_knee_angle - 125) + " degrees")
+
+    # Desired angle is 180-125 = 55 degrees
+    print("     Off by " + str(right_knee_angle - (180-125)) + " degrees")
 
 # Calculates the slope of a line based on 2 points
 def calcSlope(point1, point2):  # point1 and point2 refers to 2 points in the resnet model                                                                                                                                                                                                                                                                                                                                                                                                                                                                                

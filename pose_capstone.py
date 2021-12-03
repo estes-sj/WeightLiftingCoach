@@ -9,7 +9,7 @@ import argparse
 import sys
 import cv2
 import math
-
+import angle_calculations
 import numpy as np
 
 sudoPassword = 'scalp431!'
@@ -62,7 +62,7 @@ def main():
     while display.IsStreaming(): #and display_1.IsStreaming():
         # capture the next image
         img = camera.Capture()
-
+  
         # perform pose estimation (with overlay)
         poses = net.Process(img, overlay=opt.overlay)
 
@@ -110,7 +110,7 @@ def pointing(pose, display):
 
     point_x = left_shoulder.x - left_wrist.x
     point_y = left_shoulder.y - left_wrist.y
-
+  #  test = angle_calculations.test()
     print(f"person {pose.ID} is pointing towards ({point_x}, {point_y})")
     display.SetStatus(f"person {pose.ID} is pointing towards ({point_x}, {point_y})")
 
