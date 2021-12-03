@@ -13,7 +13,8 @@ import math
 import numpy as np
 
 sudoPassword = 'scalp431!'
-command = 'xrandr --output HDMI-0 --mode 1280x720'
+command = 'xrandr --output HDMI-0 --mode 1920x1080'
+#command = 'xrandr --output HDMI-0 --mode 1280x720'
 p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
 command = 'sudo systemctl restart nvargus-daemon'
 p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
@@ -69,12 +70,12 @@ def main():
         print("detected {:d} objects in image".format(len(poses)))
 
         for pose in poses:
-            print(pose)
-            print(pose.Keypoints)
-            print('Links', pose.Links)
+ #           print(pose)
+ #           print(pose.Keypoints)
+ #           print('Links', pose.Links)
             
             #pointing(pose, display)
-            squat_detection(pose, display)
+            squat_knee_angle(pose, display)
 
         # render the image
         display.Render(img)
@@ -159,6 +160,9 @@ def squat_knee_angle(pose, display):
     left_knee_idx = pose.FindKeypoint(13)
     left_hip_idx = pose.FindKeypoint(11)
 
+    if (left_knee_idx < 0 or left_hip_idx < 0):
+        return
+
     left_knee = pose.Keypoints[left_knee_idx]
     left_hip = pose.Keypoints[left_hip_idx]
 
@@ -168,6 +172,9 @@ def squat_knee_angle(pose, display):
     # Left lower leg distance
     left_ankle_idx = pose.FindKeypoint(15)
 
+    if (left_ankle_idx < 0):
+        return
+
     left_ankle = pose.Keypoints[left_ankle_idx]
 
     # left_lower_leg_distance = abs(math.sqrt((left_ankle.x - left_knee.x)^2 + (left_ankle.y - left_knee.y)^2))
@@ -176,6 +183,9 @@ def squat_knee_angle(pose, display):
     # Right upper leg distance
     right_knee_idx = pose.FindKeypoint(14)
     right_hip_idx = pose.FindKeypoint(12)
+
+    if (right_knee_idx < 0 or right_hip_idx < 0):
+        return
     
     right_knee = pose.Keypoints[right_knee_idx]
     right_hip = pose.Keypoints[right_hip_idx]
@@ -185,6 +195,9 @@ def squat_knee_angle(pose, display):
 
     # Right lower leg distance
     right_ankle_idx = pose.FindKeypoint(16)
+
+    if (right_ankle_idx < 0):
+        return
 
     right_ankle = pose.Keypoints[right_ankle_idx]
 
