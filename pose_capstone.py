@@ -207,17 +207,17 @@ def squat_knee_angle(pose, display):
     # Calculate knee angle of left knee 
     left_knee_angle = math.degrees(math.atan((left_upper_leg_slope - left_lower_leg_slope) / (1 + left_upper_leg_slope * left_lower_leg_slope)))
     if left_knee_angle < 0:
-        left_knee_angle += 360
+        left_knee_angle += 180  
 
     # Calculate knee angle of right knee 
     right_knee_angle = math.degrees(math.atan((right_upper_leg_slope - right_lower_leg_slope) / (1 + right_upper_leg_slope * right_lower_leg_slope)))
     if right_knee_angle < 0:
-        right_knee_angle += 360
+        right_knee_angle += 180
 
-    print("Left knee angle = " + left_knee_angle)
-    print("     Off by " + left_knee_angle - 125 + " degrees")
-    print("Right knee angle = " + right_knee_angle)
-    print("     Off by " + right_knee_angle - 125 + " degrees")
+    print("Left knee angle = " + str(left_knee_angle))
+    print("     Off by " + str(left_knee_angle - 125) + " degrees")
+    print("Right knee angle = " + str(right_knee_angle))
+    print("     Off by " + str(right_knee_angle - 125) + " degrees")
 
 # Calculates the slope of a line based on 2 points
 def calcSlope(point1, point2):  # point1 and point2 refers to 2 points in the resnet model                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
@@ -230,7 +230,7 @@ def calcDistance(point1, point2):
 # Calculates the angle in degress of two intersecting lines given the slope
 def calcAngle(slope1, slope2): 
     angle = (math.degrees(math.atan((slope1-slope2)/(1 + slope1*slope2))))
-    return angle if angle < 0 else angle+360
+    return angle if angle < 0 else angle+180
 
 def getTime():
 	# Get current date and time
