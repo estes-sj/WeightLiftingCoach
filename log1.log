@@ -1,0 +1,1308 @@
+
+poseNet -- loading pose estimation model from:
+        -- model        networks/Pose-ResNet18-Body/pose_resnet18_body.onnx
+        -- topology     networks/Pose-ResNet18-Body/human_pose.json
+        -- colors       networks/Pose-ResNet18-Body/colors.txt
+        -- input_blob   'input'
+        -- output_cmap  'cmap'
+        -- output_paf   'paf'
+        -- threshold    0.150000
+        -- batch_size   1
+
+[TRT]    topology -- keypoint 0  nose
+[TRT]    topology -- keypoint 1  left_eye
+[TRT]    topology -- keypoint 2  right_eye
+[TRT]    topology -- keypoint 3  left_ear
+[TRT]    topology -- keypoint 4  right_ear
+[TRT]    topology -- keypoint 5  left_shoulder
+[TRT]    topology -- keypoint 6  right_shoulder
+[TRT]    topology -- keypoint 7  left_elbow
+[TRT]    topology -- keypoint 8  right_elbow
+[TRT]    topology -- keypoint 9  left_wrist
+[TRT]    topology -- keypoint 10  right_wrist
+[TRT]    topology -- keypoint 11  left_hip
+[TRT]    topology -- keypoint 12  right_hip
+[TRT]    topology -- keypoint 13  left_knee
+[TRT]    topology -- keypoint 14  right_knee
+[TRT]    topology -- keypoint 15  left_ankle
+[TRT]    topology -- keypoint 16  right_ankle
+[TRT]    topology -- keypoint 17  neck
+[TRT]    topology -- skeleton link 0  16 14
+[TRT]    topology -- skeleton link 1  14 12
+[TRT]    topology -- skeleton link 2  17 15
+[TRT]    topology -- skeleton link 3  15 13
+[TRT]    topology -- skeleton link 4  12 13
+[TRT]    topology -- skeleton link 5  6 8
+[TRT]    topology -- skeleton link 6  7 9
+[TRT]    topology -- skeleton link 7  8 10
+[TRT]    topology -- skeleton link 8  9 11
+[TRT]    topology -- skeleton link 9  2 3
+[TRT]    topology -- skeleton link 10  1 2
+[TRT]    topology -- skeleton link 11  1 3
+[TRT]    topology -- skeleton link 12  2 4
+[TRT]    topology -- skeleton link 13  3 5
+[TRT]    topology -- skeleton link 14  4 6
+[TRT]    topology -- skeleton link 15  5 7
+[TRT]    topology -- skeleton link 16  18 1
+[TRT]    topology -- skeleton link 17  18 6
+[TRT]    topology -- skeleton link 18  18 7
+[TRT]    topology -- skeleton link 19  18 12
+[TRT]    topology -- skeleton link 20  18 13
+[TRT]    poseNet -- keypoint 00 'nose'  color 255 0 85 255
+[TRT]    poseNet -- keypoint 01 'left_eye'  color 255 0 0 255
+[TRT]    poseNet -- keypoint 02 'right_eye'  color 255 85 0 255
+[TRT]    poseNet -- keypoint 03 'left_ear'  color 255 170 0 255
+[TRT]    poseNet -- keypoint 04 'right_ear'  color 255 255 0 255
+[TRT]    poseNet -- keypoint 05 'left_shoulder'  color 170 255 0 255
+[TRT]    poseNet -- keypoint 06 'right_shoulder'  color 85 255 0 255
+[TRT]    poseNet -- keypoint 07 'left_elbow'  color 0 255 0 255
+[TRT]    poseNet -- keypoint 08 'right_elbow'  color 0 255 85 255
+[TRT]    poseNet -- keypoint 09 'left_wrist'  color 0 255 170 255
+[TRT]    poseNet -- keypoint 10 'right_wrist'  color 0 255 255 255
+[TRT]    poseNet -- keypoint 11 'left_hip'  color 0 170 255 255
+[TRT]    poseNet -- keypoint 12 'right_hip'  color 0 85 255 255
+[TRT]    poseNet -- keypoint 13 'left_knee'  color 0 0 255 255
+[TRT]    poseNet -- keypoint 14 'right_knee'  color 255 0 170 255
+[TRT]    poseNet -- keypoint 15 'left_ankle'  color 170 0 255 255
+[TRT]    poseNet -- keypoint 16 'right_ankle'  color 255 0 255 255
+[TRT]    poseNet -- keypoint 17 'neck'  color 85 0 255 255
+[TRT]    poseNet -- loaded 18 class colors
+[TRT]    TensorRT version 8.0.1
+[TRT]    loading NVIDIA plugins...
+[TRT]    Registered plugin creator - ::GridAnchor_TRT version 1
+[TRT]    Registered plugin creator - ::GridAnchorRect_TRT version 1
+[TRT]    Registered plugin creator - ::NMS_TRT version 1
+[TRT]    Registered plugin creator - ::Reorg_TRT version 1
+[TRT]    Registered plugin creator - ::Region_TRT version 1
+[TRT]    Registered plugin creator - ::Clip_TRT version 1
+[TRT]    Registered plugin creator - ::LReLU_TRT version 1
+[TRT]    Registered plugin creator - ::PriorBox_TRT version 1
+[TRT]    Registered plugin creator - ::Normalize_TRT version 1
+[TRT]    Registered plugin creator - ::ScatterND version 1
+[TRT]    Registered plugin creator - ::RPROI_TRT version 1
+[TRT]    Registered plugin creator - ::BatchedNMS_TRT version 1
+[TRT]    Registered plugin creator - ::BatchedNMSDynamic_TRT version 1
+[0;31m[TRT]    Could not register plugin creator -  ::FlattenConcat_TRT version 1
+[0m[TRT]    Registered plugin creator - ::CropAndResize version 1
+[TRT]    Registered plugin creator - ::DetectionLayer_TRT version 1
+[TRT]    Registered plugin creator - ::EfficientNMS_ONNX_TRT version 1
+[TRT]    Registered plugin creator - ::EfficientNMS_TRT version 1
+[TRT]    Registered plugin creator - ::Proposal version 1
+[TRT]    Registered plugin creator - ::ProposalLayer_TRT version 1
+[TRT]    Registered plugin creator - ::PyramidROIAlign_TRT version 1
+[TRT]    Registered plugin creator - ::ResizeNearest_TRT version 1
+[TRT]    Registered plugin creator - ::Split version 1
+[TRT]    Registered plugin creator - ::SpecialSlice_TRT version 1
+[TRT]    Registered plugin creator - ::InstanceNormalization_TRT version 1
+[TRT]    detected model format - ONNX  (extension '.onnx')
+[TRT]    desired precision specified for GPU: FASTEST
+[0;33m[TRT]    requested fasted precision for device GPU without providing valid calibrator, disabling INT8
+[0m[TRT]    [MemUsageChange] Init CUDA: CPU +197, GPU +0, now: CPU 228, GPU 1751 (MiB)
+[TRT]    native precisions detected for GPU:  FP32, FP16
+[TRT]    selecting fastest native precision for GPU:  FP16
+[TRT]    attempting to open engine cache file /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx.1.1.8001.GPU.FP16.engine
+[TRT]    loading network plan from engine cache... /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx.1.1.8001.GPU.FP16.engine
+[0;32m[TRT]    device GPU, loaded /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx
+[0m[TRT]    [MemUsageChange] Init CUDA: CPU +0, GPU +0, now: CPU 308, GPU 1913 (MiB)
+[TRT]    Loaded engine size: 79 MB
+[TRT]    [MemUsageSnapshot] deserializeCudaEngine begin: CPU 308 MiB, GPU 1913 MiB
+[0;33m[TRT]    Using an engine plan file across different models of devices is not recommended and is likely to affect performance or even cause errors.
+[0m[TRT]    Using cublas a tactic source
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +158, GPU +2, now: CPU 466, GPU 1945 (MiB)
+[TRT]    Using cuDNN as a tactic source
+[TRT]    [MemUsageChange] Init cuDNN: CPU +241, GPU -23, now: CPU 707, GPU 1922 (MiB)
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU +0, now: CPU 707, GPU 1916 (MiB)
+[TRT]    Deserialization required 6445819 microseconds.
+[TRT]    [MemUsageSnapshot] deserializeCudaEngine end: CPU 707 MiB, GPU 1916 MiB
+[TRT]    [MemUsageSnapshot] ExecutionContext creation begin: CPU 707 MiB, GPU 1918 MiB
+[TRT]    Using cublas a tactic source
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU +3, now: CPU 707, GPU 1921 (MiB)
+[TRT]    Using cuDNN as a tactic source
+[TRT]    [MemUsageChange] Init cuDNN: CPU +0, GPU +0, now: CPU 707, GPU 1921 (MiB)
+[TRT]    Total per-runner device memory is 49521152
+[TRT]    Total per-runner host memory is 30160
+[TRT]    Allocated activation device memory of size 18128896
+[TRT]    [MemUsageSnapshot] ExecutionContext creation end: CPU 707 MiB, GPU 1922 MiB
+[TRT]    
+[TRT]    CUDA engine context initialized on device GPU:
+[TRT]       -- layers       43
+[TRT]       -- maxBatchSize 1
+[TRT]       -- deviceMemory 18128896
+[TRT]       -- bindings     3
+[TRT]       binding 0
+                -- index   0
+                -- name    'input'
+                -- type    FP32
+                -- in/out  INPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  3
+                -- dim #2  224
+                -- dim #3  224
+[TRT]       binding 1
+                -- index   1
+                -- name    'cmap'
+                -- type    FP32
+                -- in/out  OUTPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  18
+                -- dim #2  56
+                -- dim #3  56
+[TRT]       binding 2
+                -- index   2
+                -- name    'paf'
+                -- type    FP32
+                -- in/out  OUTPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  42
+                -- dim #2  56
+                -- dim #3  56
+[TRT]    
+[TRT]    binding to input 0 input  binding index:  0
+[TRT]    binding to input 0 input  dims (b=1 c=3 h=224 w=224) size=602112
+[TRT]    binding to output 0 cmap  binding index:  1
+[TRT]    binding to output 0 cmap  dims (b=1 c=18 h=56 w=56) size=225792
+[TRT]    binding to output 1 paf  binding index:  2
+[TRT]    binding to output 1 paf  dims (b=1 c=42 h=56 w=56) size=526848
+[TRT]    
+[0;32m[TRT]    device GPU, /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx initialized.
+[0m[0;32m[video]  created imageWriter from file:///home/samjet/2.png
+[0m------------------------------------------------
+imageWriter video options:
+------------------------------------------------
+  -- URI: file:///home/samjet/2.png
+     - protocol:  file
+     - location:  2.png
+     - extension: png
+  -- deviceType: file
+  -- ioType:     output
+  -- codec:      unknown
+  -- width:      0
+  -- height:     0
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[OpenGL] glDisplay -- X screen 0 resolution:  1920x1080
+[OpenGL] glDisplay -- X window resolution:    1920x1080
+[OpenGL] glDisplay -- display device initialized (1920x1080)
+[0;32m[video]  created glDisplay from display://0
+[0m------------------------------------------------
+glDisplay video options:
+------------------------------------------------
+  -- URI: display://0
+     - protocol:  display
+     - location:  0
+  -- deviceType: display
+  -- ioType:     output
+  -- codec:      raw
+  -- width:      1920
+  -- height:     1080
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+
+poseNet -- loading pose estimation model from:
+        -- model        networks/Pose-ResNet18-Body/pose_resnet18_body.onnx
+        -- topology     networks/Pose-ResNet18-Body/human_pose.json
+        -- colors       networks/Pose-ResNet18-Body/colors.txt
+        -- input_blob   'input'
+        -- output_cmap  'cmap'
+        -- output_paf   'paf'
+        -- threshold    0.150000
+        -- batch_size   1
+
+[TRT]    topology -- keypoint 0  nose
+[TRT]    topology -- keypoint 1  left_eye
+[TRT]    topology -- keypoint 2  right_eye
+[TRT]    topology -- keypoint 3  left_ear
+[TRT]    topology -- keypoint 4  right_ear
+[TRT]    topology -- keypoint 5  left_shoulder
+[TRT]    topology -- keypoint 6  right_shoulder
+[TRT]    topology -- keypoint 7  left_elbow
+[TRT]    topology -- keypoint 8  right_elbow
+[TRT]    topology -- keypoint 9  left_wrist
+[TRT]    topology -- keypoint 10  right_wrist
+[TRT]    topology -- keypoint 11  left_hip
+[TRT]    topology -- keypoint 12  right_hip
+[TRT]    topology -- keypoint 13  left_knee
+[TRT]    topology -- keypoint 14  right_knee
+[TRT]    topology -- keypoint 15  left_ankle
+[TRT]    topology -- keypoint 16  right_ankle
+[TRT]    topology -- keypoint 17  neck
+[TRT]    topology -- skeleton link 0  16 14
+[TRT]    topology -- skeleton link 1  14 12
+[TRT]    topology -- skeleton link 2  17 15
+[TRT]    topology -- skeleton link 3  15 13
+[TRT]    topology -- skeleton link 4  12 13
+[TRT]    topology -- skeleton link 5  6 8
+[TRT]    topology -- skeleton link 6  7 9
+[TRT]    topology -- skeleton link 7  8 10
+[TRT]    topology -- skeleton link 8  9 11
+[TRT]    topology -- skeleton link 9  2 3
+[TRT]    topology -- skeleton link 10  1 2
+[TRT]    topology -- skeleton link 11  1 3
+[TRT]    topology -- skeleton link 12  2 4
+[TRT]    topology -- skeleton link 13  3 5
+[TRT]    topology -- skeleton link 14  4 6
+[TRT]    topology -- skeleton link 15  5 7
+[TRT]    topology -- skeleton link 16  18 1
+[TRT]    topology -- skeleton link 17  18 6
+[TRT]    topology -- skeleton link 18  18 7
+[TRT]    topology -- skeleton link 19  18 12
+[TRT]    topology -- skeleton link 20  18 13
+[TRT]    poseNet -- keypoint 00 'nose'  color 255 0 85 255
+[TRT]    poseNet -- keypoint 01 'left_eye'  color 255 0 0 255
+[TRT]    poseNet -- keypoint 02 'right_eye'  color 255 85 0 255
+[TRT]    poseNet -- keypoint 03 'left_ear'  color 255 170 0 255
+[TRT]    poseNet -- keypoint 04 'right_ear'  color 255 255 0 255
+[TRT]    poseNet -- keypoint 05 'left_shoulder'  color 170 255 0 255
+[TRT]    poseNet -- keypoint 06 'right_shoulder'  color 85 255 0 255
+[TRT]    poseNet -- keypoint 07 'left_elbow'  color 0 255 0 255
+[TRT]    poseNet -- keypoint 08 'right_elbow'  color 0 255 85 255
+[TRT]    poseNet -- keypoint 09 'left_wrist'  color 0 255 170 255
+[TRT]    poseNet -- keypoint 10 'right_wrist'  color 0 255 255 255
+[TRT]    poseNet -- keypoint 11 'left_hip'  color 0 170 255 255
+[TRT]    poseNet -- keypoint 12 'right_hip'  color 0 85 255 255
+[TRT]    poseNet -- keypoint 13 'left_knee'  color 0 0 255 255
+[TRT]    poseNet -- keypoint 14 'right_knee'  color 255 0 170 255
+[TRT]    poseNet -- keypoint 15 'left_ankle'  color 170 0 255 255
+[TRT]    poseNet -- keypoint 16 'right_ankle'  color 255 0 255 255
+[TRT]    poseNet -- keypoint 17 'neck'  color 85 0 255 255
+[TRT]    poseNet -- loaded 18 class colors
+[TRT]    TensorRT version 8.0.1
+[TRT]    detected model format - ONNX  (extension '.onnx')
+[TRT]    desired precision specified for GPU: FASTEST
+[0;33m[TRT]    requested fasted precision for device GPU without providing valid calibrator, disabling INT8
+[0m[0;33m[TRT]    The logger passed into createInferBuilder differs from one already provided for an existing builder, runtime, or refitter. TensorRT maintains only a single logger pointer at any given time, so the existing value, which can be retrieved with getLogger(), will be used instead. In order to use a new logger, first destroy all existing builder, runner or refitter objects.
+
+[0m[TRT]    [MemUsageChange] Init CUDA: CPU +0, GPU +0, now: CPU 633, GPU 1904 (MiB)
+[TRT]    native precisions detected for GPU:  FP32, FP16
+[TRT]    selecting fastest native precision for GPU:  FP16
+[TRT]    attempting to open engine cache file /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx.1.1.8001.GPU.FP16.engine
+[TRT]    loading network plan from engine cache... /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx.1.1.8001.GPU.FP16.engine
+[0;32m[TRT]    device GPU, loaded /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx
+[0m[TRT]    [MemUsageChange] Init CUDA: CPU +0, GPU +0, now: CPU 713, GPU 1896 (MiB)
+[TRT]    Loaded engine size: 79 MB
+[TRT]    [MemUsageSnapshot] deserializeCudaEngine begin: CPU 713 MiB, GPU 1896 MiB
+[0;33m[TRT]    Using an engine plan file across different models of devices is not recommended and is likely to affect performance or even cause errors.
+[0m[TRT]    Using cublas a tactic source
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU +7, now: CPU 713, GPU 1908 (MiB)
+[TRT]    Using cuDNN as a tactic source
+[TRT]    [MemUsageChange] Init cuDNN: CPU +0, GPU -4, now: CPU 713, GPU 1904 (MiB)
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU +0, now: CPU 713, GPU 1907 (MiB)
+[TRT]    Deserialization required 2787579 microseconds.
+[TRT]    [MemUsageSnapshot] deserializeCudaEngine end: CPU 713 MiB, GPU 1907 MiB
+[TRT]    [MemUsageSnapshot] ExecutionContext creation begin: CPU 713 MiB, GPU 1908 MiB
+[TRT]    Using cublas a tactic source
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU -1, now: CPU 713, GPU 1907 (MiB)
+[TRT]    Using cuDNN as a tactic source
+[TRT]    [MemUsageChange] Init cuDNN: CPU +0, GPU +0, now: CPU 713, GPU 1907 (MiB)
+[TRT]    Total per-runner device memory is 49521152
+[TRT]    Total per-runner host memory is 30160
+[TRT]    Allocated activation device memory of size 18128896
+[TRT]    [MemUsageSnapshot] ExecutionContext creation end: CPU 713 MiB, GPU 1905 MiB
+[TRT]    
+[TRT]    CUDA engine context initialized on device GPU:
+[TRT]       -- layers       43
+[TRT]       -- maxBatchSize 1
+[TRT]       -- deviceMemory 18128896
+[TRT]       -- bindings     3
+[TRT]       binding 0
+         detected 2 objects in image
+---------------------
+---------------------
+       -- index   0
+                -- name    'input'
+                -- type    FP32
+                -- in/out  INPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  3
+                -- dim #2  224
+                -- dim #3  224
+[TRT]       binding 1
+                -- index   1
+                -- name    'cmap'
+                -- type    FP32
+                -- in/out  OUTPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  18
+                -- dim #2  56
+                -- dim #3  56
+[TRT]       binding 2
+                -- index   2
+                -- name    'paf'
+                -- type    FP32
+                -- in/out  OUTPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  42
+                -- dim #2  56
+                -- dim #3  56
+[TRT]    
+[TRT]    binding to input 0 input  binding index:  0
+[TRT]    binding to input 0 input  dims (b=1 c=3 h=224 w=224) size=602112
+[TRT]    binding to output 0 cmap  binding index:  1
+[TRT]    binding to output 0 cmap  dims (b=1 c=18 h=56 w=56) size=225792
+[TRT]    binding to output 1 paf  binding index:  2
+[TRT]    binding to output 1 paf  dims (b=1 c=42 h=56 w=56) size=526848
+[TRT]    
+[0;32m[TRT]    device GPU, /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx initialized.
+[0m[0;32m[video]  created imageLoader from file:///home/samjet/2.png
+[0m------------------------------------------------
+imageLoader video options:
+------------------------------------------------
+  -- URI: file:///home/samjet/2.png
+     - protocol:  file
+     - location:  2.png
+     - extension: png
+  -- deviceType: file
+  -- ioType:     input
+  -- codec:      unknown
+  -- width:      0
+  -- height:     0
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[0;32m[video]  created imageWriter from file:///home/samjet/2.png
+[0m------------------------------------------------
+imageWriter video options:
+------------------------------------------------
+  -- URI: file:///home/samjet/2.png
+     - protocol:  file
+     - location:  2.png
+     - extension: png
+  -- deviceType: file
+  -- ioType:     output
+  -- codec:      unknown
+  -- width:      0
+  -- height:     0
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[OpenGL] glDisplay -- X screen 0 resolution:  1920x1080
+[OpenGL] glDisplay -- X window resolution:    1920x1080
+[OpenGL] glDisplay -- display device initialized (1920x1080)
+[0;32m[video]  created glDisplay from display://0
+[0m------------------------------------------------
+glDisplay video options:
+------------------------------------------------
+  -- URI: display://0
+     - protocol:  display
+     - location:  0
+  -- deviceType: display
+  -- ioType:     output
+  -- codec:      raw
+  -- width:      1920
+  -- height:     1080
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[image]  loaded '2.png'  (700x366, 3 channels)
+[OpenGL] glDisplay -- set the window size to 700x366
+[OpenGL] creating 700x366 texture (GL_RGB8 format, 768600 bytes)
+[cuda]   registered openGL texture for interop access (700x366, GL_RGB8, 768600 bytes)
+[image]  saved '2.png'  (700x366, 3 channels)
+
+poseNet -- loading pose estimation model from:
+        -- model        networks/Pose-ResNet18-Body/pose_resnet18_body.onnx
+        -- topology     networks/Pose-ResNet18-Body/human_pose.json
+        -- colors       networks/Pose-ResNet18-Body/colors.txt
+        -- input_blob   'input'
+        -- output_cmap  'cmap'
+        -- output_paf   'paf'
+        -- threshold    0.150000
+        -- batch_size   1
+
+[TRT]    topology -- keypoint 0  nose
+[TRT]    topology -- keypoint 1  left_eye
+[TRT]    topology -- keypoint 2  right_eye
+[TRT]    topology -- keypoint 3  left_ear
+[TRT]    topology -- keypoint 4  right_ear
+[TRT]    topology -- keypoint 5  left_shoulder
+[TRT]    topology -- keypoint 6  right_shoulder
+[TRT]    topology -- keypoint 7  left_elbow
+[TRT]    topology -- keypoint 8  right_elbow
+[TRT]    topology -- keypoint 9  left_wrist
+[TRT]    topology -- keypoint 10  right_wrist
+[TRT]    topology -- keypoint 11  left_hip
+[TRT]    topology -- keypoint 12  right_hip
+[TRT]    topology -- keypoint 13  left_knee
+[TRT]    topology -- keypoint 14  right_knee
+[TRT]    topology -- keypoint 15  left_ankle
+[TRT]    topology -- keypoint 16  right_ankle
+[TRT]    topology -- keypoint 17  neck
+[TRT]    topology -- skeleton link 0  16 14
+[TRT]    topology -- skeleton link 1  14 12
+[TRT]    topology -- skeleton link 2  17 15
+[TRT]    topology -- skeleton link 3  15 13
+[TRT]    topology -- skeleton link 4  12 13
+[TRT]    topology -- skeleton link 5  6 8
+[TRT]    topology -- skeleton link 6  7 9
+[TRT]    topology -- skeleton link 7  8 10
+[TRT]    topology -- skeleton link 8  9 11
+[TRT]    topology -- skeleton link 9  2 3
+[TRT]    topology -- skeleton link 10  1 2
+[TRT]    topology -- skeleton link 11  1 3
+[TRT]    topology -- skeleton link 12  2 4
+[TRT]    topology -- skeleton link 13  3 5
+[TRT]    topology -- skeleton link 14  4 6
+[TRT]    topology -- skeleton link 15  5 7
+[TRT]    topology -- skeleton link 16  18 1
+[TRT]    topology -- skeleton link 17  18 6
+[TRT]    topology -- skeleton link 18  18 7
+[TRT]    topology -- skeleton link 19  18 12
+[TRT]    topology -- skeleton link 20  18 13
+[TRT]    poseNet -- keypoint 00 'nose'  color 255 0 85 255
+[TRT]    poseNet -- keypoint 01 'left_eye'  color 255 0 0 255
+[TRT]    poseNet -- keypoint 02 'right_eye'  color 255 85 0 255
+[TRT]    poseNet -- keypoint 03 'left_ear'  color 255 170 0 255
+[TRT]    poseNet -- keypoint 04 'right_ear'  color 255 255 0 255
+[TRT]    poseNet -- keypoint 05 'left_shoulder'  color 170 255 0 255
+[TRT]    poseNet -- keypoint 06 'right_shoulder'  color 85 255 0 255
+[TRT]    poseNet -- keypoint 07 'left_elbow'  color 0 255 0 255
+[TRT]    poseNet -- keypoint 08 'right_elbow'  color 0 255 85 255
+[TRT]    poseNet -- keypoint 09 'left_wrist'  color 0 255 170 255
+[TRT]    poseNet -- keypoint 10 'right_wrist'  color 0 255 255 255
+[TRT]    poseNet -- keypoint 11 'left_hip'  color 0 170 255 255
+[TRT]    poseNet -- keypoint 12 'right_hip'  color 0 85 255 255
+[TRT]    poseNet -- keypoint 13 'left_knee'  color 0 0 255 255
+[TRT]    poseNet -- keypoint 14 'right_knee'  color 255 0 170 255
+[TRT]    poseNet -- keypoint 15 'left_ankle'  color 170 0 255 255
+[TRT]    poseNet -- keypoint 16 'right_ankle'  color 255 0 255 255
+[TRT]    poseNet -- keypoint 17 'neck'  color 85 0 255 255
+[TRT]    poseNet -- loaded 18 class colors
+[TRT]    TensorRT version 8.0.1
+[TRT]    loading NVIDIA plugins...
+[TRT]    Registered plugin creator - ::GridAnchor_TRT version 1
+[TRT]    Registered plugin creator - ::GridAnchorRect_TRT version 1
+[TRT]    Registered plugin creator - ::NMS_TRT version 1
+[TRT]    Registered plugin creator - ::Reorg_TRT version 1
+[TRT]    Registered plugin creator - ::Region_TRT version 1
+[TRT]    Registered plugin creator - ::Clip_TRT version 1
+[TRT]    Registered plugin creator - ::LReLU_TRT version 1
+[TRT]    Registered plugin creator - ::PriorBox_TRT version 1
+[TRT]    Registered plugin creator - ::Normalize_TRT version 1
+[TRT]    Registered plugin creator - ::ScatterND version 1
+[TRT]    Registered plugin creator - ::RPROI_TRT version 1
+[TRT]    Registered plugin creator - ::BatchedNMS_TRT version 1
+[TRT]    Registered plugin creator - ::BatchedNMSDynamic_TRT version 1
+[0;31m[TRT]    Could not register plugin creator -  ::FlattenConcat_TRT version 1
+[0m[TRT]    Registered plugin creator - ::CropAndResize version 1
+[TRT]    Registered plugin creator - ::DetectionLayer_TRT version 1
+[TRT]    Registered plugin creator - ::EfficientNMS_ONNX_TRT version 1
+[TRT]    Registered plugin creator - ::EfficientNMS_TRT version 1
+[TRT]    Registered plugin creator - ::Proposal version 1
+[TRT]    Registered plugin creator - ::ProposalLayer_TRT version 1
+[TRT]    Registered plugin creator - ::PyramidROIAlign_TRT version 1
+[TRT]    Registered plugin creator - ::ResizeNearest_TRT version 1
+[TRT]    Registered plugin creator - ::Split version 1
+[TRT]    Registered plugin creator - ::SpecialSlice_TRT version 1
+[TRT]    Registered plugin creator - ::InstanceNormalization_TRT version 1
+[TRT]    detected model format - ONNX  (extension '.onnx')
+[TRT]    desired precision specified for GPU: FASTEST
+[0;33m[TRT]    requested fasted precision for device GPU without providing valid calibrator, disabling INT8
+[0m[TRT]    [MemUsageChange] Init CUDA: CPU +198, GPU +0, now: CPU 228, GPU 1817 (MiB)
+[TRT]    native precisions detected for GPU:  FP32, FP16
+[TRT]    selecting fastest native precision for GPU:  FP16
+[TRT]    attempting to open engine cache file /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx.1.1.8001.GPU.FP16.engine
+[TRT]    loading network plan from engine cache... /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx.1.1.8001.GPU.FP16.engine
+[0;32m[TRT]    device GPU, loaded /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx
+[0m[TRT]    [MemUsageChange] Init CUDA: CPU +0, GPU +0, now: CPU 308, GPU 1934 (MiB)
+[TRT]    Loaded engine size: 79 MB
+[TRT]    [MemUsageSnapshot] deserializeCudaEngine begin: CPU 308 MiB, GPU 1934 MiB
+[0;33m[TRT]    Using an engine plan file across different models of devices is not recommended and is likely to affect performance or even cause errors.
+[0m[TRT]    Using cublas a tactic source
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +158, GPU +29, now: CPU 466, GPU 1951 (MiB)
+[TRT]    Using cuDNN as a tactic source
+[TRT]    [MemUsageChange] Init cuDNN: CPU +241, GPU -29, now: CPU 707, GPU 1922 (MiB)
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU +0, now: CPU 707, GPU 1925 (MiB)
+[TRT]    Deserialization required 6420522 microseconds.
+[TRT]    [MemUsageSnapshot] deserializeCudaEngine end: CPU 707 MiB, GPU 1925 MiB
+[TRT]    [MemUsageSnapshot] ExecutionContext creation begin: CPU 707 MiB, GPU 1925 MiB
+[TRT]    Using cublas a tactic source
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU -4, now: CPU 707, GPU 1921 (MiB)
+[TRT]    Using cuDNN as a tactic source
+[TRT]    [MemUsageChange] Init cuDNN: CPU +0, GPU +1, now: CPU 707, GPU 1922 (MiB)
+[TRT]    Total per-runner device memory is 49521152
+[TRT]    Total per-runner host memory is 30160
+[TRT]    Allocated activation device memory of size 18128896
+[TRT]    [MemUsageSnapshot] ExecutionContext creation end: CPU 707 MiB, GPU 1922 MiB
+[TRT]    
+[TRT]    CUDA engine context initialized on device GPU:
+[TRT]       -- layers       43
+[TRT]       -- maxBatchSize 1
+[TRT]       -- deviceMemory 18128896
+[TRT]       -- bindings     3
+[TRT]       binding 0
+                -- index   0
+                -- name    'input'
+                -- type    FP32
+                -- in/out  INPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  3
+                -- dim #2  224
+                -- dim #3  224
+[TRT]       binding 1
+                -- index   1
+                -- name    'cmap'
+                -- type    FP32
+                -- in/out  OUTPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  18
+                -- dim #2  56
+                -- dim #3  56
+[TRT]       binding 2
+                -- index   2
+                -- name    'paf'
+                -- type    FP32
+                -- in/out  OUTPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  42
+                -- dim #2  56
+                -- dim #3  56
+[TRT]    
+[TRT]    binding to input 0 input  binding index:  0
+[TRT]    binding to input 0 input  dims (b=1 c=3 h=224 w=224) size=602112
+[TRT]    binding to output 0 cmap  binding index:  1
+[TRT]    binding to output 0 cmap  dims (b=1 c=18 h=56 w=56) size=225792
+[TRT]    binding to output 1 paf  binding index:  2
+[TRT]    binding to output 1 paf  dims (b=1 c=42 h=56 w=56) size=526848
+[TRT]    
+[0;32m[TRT]    device GPU, /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx initialized.
+[0m[0;32m[video]  created imageWriter from file:///home/samjet/2.png
+[0m------------------------------------------------
+imageWriter video options:
+------------------------------------------------
+  -- URI: file:///home/samjet/2.png
+     - protocol:  file
+     - location:  2.png
+     - extension: png
+  -- deviceType: file
+  -- ioType:     output
+  -- codec:      unknown
+  -- width:      0
+  -- height:     0
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[OpenGL] glDisplay -- X screen 0 resolution:  1920x1080
+[OpenGL] glDisplay -- X window resolution:    1920x1080
+[OpenGL] glDisplay -- display device initialized (1920x1080)
+[0;32m[video]  created glDisplay from display://0
+[0m------------------------------------------------
+glDisplay video options:
+------------------------------------------------
+  -- URI: display://0
+     - protocol:  display
+     - location:  0
+  -- deviceType: display
+  -- ioType:     output
+  -- codec:      raw
+  -- width:      1920
+  -- height:     1080
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+
+poseNet -- loading pose estimation model from:
+        -- model        networks/Pose-ResNet18-Body/pose_resnet18_body.onnx
+        -- topology     networks/Pose-ResNet18-Body/human_pose.json
+        -- colors       networks/Pose-ResNet18-Body/colors.txt
+        -- input_blob   'input'
+        -- output_cmap  'cmap'
+        -- output_paf   'paf'
+        -- threshold    0.150000
+        -- batch_size   1
+
+[TRT]    topology -- keypoint 0  nose
+[TRT]    topology -- keypoint 1  left_eye
+[TRT]    topology -- keypoint 2  right_eye
+[TRT]    topology -- keypoint 3  left_ear
+[TRT]    topology -- keypoint 4  right_ear
+[TRT]    topology -- keypoint 5  left_shoulder
+[TRT]    topology -- keypoint 6  right_shoulder
+[TRT]    topology -- keypoint 7  left_elbow
+[TRT]    topology -- keypoint 8  right_elbow
+[TRT]    topology -- keypoint 9  left_wrist
+[TRT]    topology -- keypoint 10  right_wrist
+[TRT]    topology -- keypoint 11  left_hip
+[TRT]    topology -- keypoint 12  right_hip
+[TRT]    topology -- keypoint 13  left_knee
+[TRT]    topology -- keypoint 14  right_knee
+[TRT]    topology -- keypoint 15  left_ankle
+[TRT]    topology -- keypoint 16  right_ankle
+[TRT]    topology -- keypoint 17  neck
+[TRT]    topology -- skeleton link 0  16 14
+[TRT]    topology -- skeleton link 1  14 12
+[TRT]    topology -- skeleton link 2  17 15
+[TRT]    topology -- skeleton link 3  15 13
+[TRT]    topology -- skeleton link 4  12 13
+[TRT]    topology -- skeleton link 5  6 8
+[TRT]    topology -- skeleton link 6  7 9
+[TRT]    topology -- skeleton link 7  8 10
+[TRT]    topology -- skeleton link 8  9 11
+[TRT]    topology -- skeleton link 9  2 3
+[TRT]    topology -- skeleton link 10  1 2
+[TRT]    topology -- skeleton link 11  1 3
+[TRT]    topology -- skeleton link 12  2 4
+[TRT]    topology -- skeleton link 13  3 5
+[TRT]    topology -- skeleton link 14  4 6
+[TRT]    topology -- skeleton link 15  5 7
+[TRT]    topology -- skeleton link 16  18 1
+[TRT]    topology -- skeleton link 17  18 6
+[TRT]    topology -- skeleton link 18  18 7
+[TRT]    topology -- skeleton link 19  18 12
+[TRT]    topology -- skeleton link 20  18 13
+[TRT]    poseNet -- keypoint 00 'nose'  color 255 0 85 255
+[TRT]    poseNet -- keypoint 01 'left_eye'  color 255 0 0 255
+[TRT]    poseNet -- keypoint 02 'right_eye'  color 255 85 0 255
+[TRT]    poseNet -- keypoint 03 'left_ear'  color 255 170 0 255
+[TRT]    poseNet -- keypoint 04 'right_ear'  color 255 255 0 255
+[TRT]    poseNet -- keypoint 05 'left_shoulder'  color 170 255 0 255
+[TRT]    poseNet -- keypoint 06 'right_shoulder'  color 85 255 0 255
+[TRT]    poseNet -- keypoint 07 'left_elbow'  color 0 255 0 255
+[TRT]    poseNet -- keypoint 08 'right_elbow'  color 0 255 85 255
+[TRT]    poseNet -- keypoint 09 'left_wrist'  color 0 255 170 255
+[TRT]    poseNet -- keypoint 10 'right_wrist'  color 0 255 255 255
+[TRT]    poseNet -- keypoint 11 'left_hip'  color 0 170 255 255
+[TRT]    poseNet -- keypoint 12 'right_hip'  color 0 85 255 255
+[TRT]    poseNet -- keypoint 13 'left_knee'  color 0 0 255 255
+[TRT]    poseNet -- keypoint 14 'right_knee'  color 255 0 170 255
+[TRT]    poseNet -- keypoint 15 'left_ankle'  color 170 0 255 255
+[TRT]    poseNet -- keypoint 16 'right_ankle'  color 255 0 255 255
+[TRT]    poseNet -- keypoint 17 'neck'  color 85 0 255 255
+[TRT]    poseNet -- loaded 18 class colors
+[TRT]    TensorRT version 8.0.1
+[TRT]    detected model format - ONNX  (extension '.onnx')
+[TRT]    desired precision specified for GPU: FASTEST
+[0;33m[TRT]    requested fasted precision for device GPU without providing valid calibrator, disabling INT8
+[0m[0;33m[TRT]    The logger passed into createInferBuilder differs from one already provided for an existing builder, runtime, or refitter. TensorRT maintains only a single logger pointer at any given time, so the existing value, which can be retrieved with getLogger(), will be used instead. In order to use a new logger, first destroy all existing builder, runner or refitter objects.
+
+[0m[TRT]    [MemUsageChange] Init CUDA: CPU +0, GPU +0, now: CPU 633, GPU 1900 (MiB)
+[TRT]    native precisions detected for GPU:  FP32, FP16
+[TRT]    selecting fastest native precision for GPU:  FP16
+[TRT]    attempting to open engine cache file /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx.1.1.8001.GPU.FP16.engine
+[TRT]    loading network plan from engine cache... /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx.1.1.8001.GPU.FP16.engine
+[0;32m[TRT]    device GPU, loaded /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx
+[0m[TRT]    [MemUsageChange] Init CUDA: CPU +0, GPU +0, now: CPU 713, GPU 1908 (MiB)
+[TRT]    Loaded engine size: 79 MB
+[TRT]    [MemUsageSnapshot] deserializeCudaEngine begin: CPU 713 MiB, GPU 1908 MiB
+[0;33m[TRT]    Using an engine plan file across different models of devices is not recommended and is likely to affect performance or even cause errors.
+[0m[TRT]    Using cublas a tactic source
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU +4, now: CPU 713, GPU 1900 (MiB)
+[TRT]    Using cuDNN as a tactic source
+[TRT]    [MemUsageChange] Init cuDNN: CPU +0, GPU +4, now: CPU 713, GPU 1904 (MiB)
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU +0, now: CPU 713, GPU 1899 (MiB)
+[TRT]    Deserialization required 3402226 microseconds.
+[TRT]    [MemUsageSnapshot] deserializeCudaEngine end: CPU 713 MiB, GPU 1899 MiB
+[TRT]    [MemUsageSnapshot] ExecutionContext creation begin: CPU 713 MiB, GPU 1899 MiB
+[TRT]    Using cublas a tactic source
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU +0, now: CPU 713, GPU 1899 (MiB)
+[TRT]    Using cuDNN as a tactic source
+[TRT]    [MemUsageChange] Init cuDNN: CPU +0, GPU +0, now: CPU 713, GPU 1899 (MiB)
+[TRT]    Total per-runner device memory is 49521152
+[TRT]    Total per-runner host memory is 30160
+[TRT]    Allocated activation device memory of size 18128896
+[TRT]    [MemUsageSnapshot] ExecutionContext creation end: CPU 713 MiB, GPU 1896 MiB
+[TRT]    
+[TRT]    CUDA engine context initialized on device GPU:
+[TRT]       -- layers       43
+[TRT]       -- maxBatchSize 1
+[TRT]       -- deviceMemory 18128896
+[TRT]       -- bindings     3
+[TRT]       binding 0
+        detected 2 objects in image
+---------------------
+Right knee angle = 135.45128033630908
+     Off by 10.451280336309082 degrees
+---------------------
+Right knee angle = 150.39147600715697
+     Off by 25.391476007156967 degrees
+        -- index   0
+                -- name    'input'
+                -- type    FP32
+                -- in/out  INPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  3
+                -- dim #2  224
+                -- dim #3  224
+[TRT]       binding 1
+                -- index   1
+                -- name    'cmap'
+                -- type    FP32
+                -- in/out  OUTPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  18
+                -- dim #2  56
+                -- dim #3  56
+[TRT]       binding 2
+                -- index   2
+                -- name    'paf'
+                -- type    FP32
+                -- in/out  OUTPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  42
+                -- dim #2  56
+                -- dim #3  56
+[TRT]    
+[TRT]    binding to input 0 input  binding index:  0
+[TRT]    binding to input 0 input  dims (b=1 c=3 h=224 w=224) size=602112
+[TRT]    binding to output 0 cmap  binding index:  1
+[TRT]    binding to output 0 cmap  dims (b=1 c=18 h=56 w=56) size=225792
+[TRT]    binding to output 1 paf  binding index:  2
+[TRT]    binding to output 1 paf  dims (b=1 c=42 h=56 w=56) size=526848
+[TRT]    
+[0;32m[TRT]    device GPU, /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx initialized.
+[0m[0;32m[video]  created imageLoader from file:///home/samjet/2.png
+[0m------------------------------------------------
+imageLoader video options:
+------------------------------------------------
+  -- URI: file:///home/samjet/2.png
+     - protocol:  file
+     - location:  2.png
+     - extension: png
+  -- deviceType: file
+  -- ioType:     input
+  -- codec:      unknown
+  -- width:      0
+  -- height:     0
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[0;32m[video]  created imageWriter from file:///home/samjet/2.png
+[0m------------------------------------------------
+imageWriter video options:
+------------------------------------------------
+  -- URI: file:///home/samjet/2.png
+     - protocol:  file
+     - location:  2.png
+     - extension: png
+  -- deviceType: file
+  -- ioType:     output
+  -- codec:      unknown
+  -- width:      0
+  -- height:     0
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[OpenGL] glDisplay -- X screen 0 resolution:  1920x1080
+[OpenGL] glDisplay -- X window resolution:    1920x1080
+[OpenGL] glDisplay -- display device initialized (1920x1080)
+[0;32m[video]  created glDisplay from display://0
+[0m------------------------------------------------
+glDisplay video options:
+------------------------------------------------
+  -- URI: display://0
+     - protocol:  display
+     - location:  0
+  -- deviceType: display
+  -- ioType:     output
+  -- codec:      raw
+  -- width:      1920
+  -- height:     1080
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[image]  loaded '2.png'  (700x366, 3 channels)
+[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[OpenGL] glDisplay -- set the window size to 700x366
+[OpenGL] creating 700x366 texture (GL_RGB8 format, 768600 bytes)
+[cuda]   registered openGL texture for interop access (700x366, GL_RGB8, 768600 bytes)
+[image]  saved '2.png'  (700x366, 3 channels)
+
+poseNet -- loading pose estimation model from:
+        -- model        networks/Pose-ResNet18-Body/pose_resnet18_body.onnx
+        -- topology     networks/Pose-ResNet18-Body/human_pose.json
+        -- colors       networks/Pose-ResNet18-Body/colors.txt
+        -- input_blob   'input'
+        -- output_cmap  'cmap'
+        -- output_paf   'paf'
+        -- threshold    0.150000
+        -- batch_size   1
+
+[TRT]    topology -- keypoint 0  nose
+[TRT]    topology -- keypoint 1  left_eye
+[TRT]    topology -- keypoint 2  right_eye
+[TRT]    topology -- keypoint 3  left_ear
+[TRT]    topology -- keypoint 4  right_ear
+[TRT]    topology -- keypoint 5  left_shoulder
+[TRT]    topology -- keypoint 6  right_shoulder
+[TRT]    topology -- keypoint 7  left_elbow
+[TRT]    topology -- keypoint 8  right_elbow
+[TRT]    topology -- keypoint 9  left_wrist
+[TRT]    topology -- keypoint 10  right_wrist
+[TRT]    topology -- keypoint 11  left_hip
+[TRT]    topology -- keypoint 12  right_hip
+[TRT]    topology -- keypoint 13  left_knee
+[TRT]    topology -- keypoint 14  right_knee
+[TRT]    topology -- keypoint 15  left_ankle
+[TRT]    topology -- keypoint 16  right_ankle
+[TRT]    topology -- keypoint 17  neck
+[TRT]    topology -- skeleton link 0  16 14
+[TRT]    topology -- skeleton link 1  14 12
+[TRT]    topology -- skeleton link 2  17 15
+[TRT]    topology -- skeleton link 3  15 13
+[TRT]    topology -- skeleton link 4  12 13
+[TRT]    topology -- skeleton link 5  6 8
+[TRT]    topology -- skeleton link 6  7 9
+[TRT]    topology -- skeleton link 7  8 10
+[TRT]    topology -- skeleton link 8  9 11
+[TRT]    topology -- skeleton link 9  2 3
+[TRT]    topology -- skeleton link 10  1 2
+[TRT]    topology -- skeleton link 11  1 3
+[TRT]    topology -- skeleton link 12  2 4
+[TRT]    topology -- skeleton link 13  3 5
+[TRT]    topology -- skeleton link 14  4 6
+[TRT]    topology -- skeleton link 15  5 7
+[TRT]    topology -- skeleton link 16  18 1
+[TRT]    topology -- skeleton link 17  18 6
+[TRT]    topology -- skeleton link 18  18 7
+[TRT]    topology -- skeleton link 19  18 12
+[TRT]    topology -- skeleton link 20  18 13
+[TRT]    poseNet -- keypoint 00 'nose'  color 255 0 85 255
+[TRT]    poseNet -- keypoint 01 'left_eye'  color 255 0 0 255
+[TRT]    poseNet -- keypoint 02 'right_eye'  color 255 85 0 255
+[TRT]    poseNet -- keypoint 03 'left_ear'  color 255 170 0 255
+[TRT]    poseNet -- keypoint 04 'right_ear'  color 255 255 0 255
+[TRT]    poseNet -- keypoint 05 'left_shoulder'  color 170 255 0 255
+[TRT]    poseNet -- keypoint 06 'right_shoulder'  color 85 255 0 255
+[TRT]    poseNet -- keypoint 07 'left_elbow'  color 0 255 0 255
+[TRT]    poseNet -- keypoint 08 'right_elbow'  color 0 255 85 255
+[TRT]    poseNet -- keypoint 09 'left_wrist'  color 0 255 170 255
+[TRT]    poseNet -- keypoint 10 'right_wrist'  color 0 255 255 255
+[TRT]    poseNet -- keypoint 11 'left_hip'  color 0 170 255 255
+[TRT]    poseNet -- keypoint 12 'right_hip'  color 0 85 255 255
+[TRT]    poseNet -- keypoint 13 'left_knee'  color 0 0 255 255
+[TRT]    poseNet -- keypoint 14 'right_knee'  color 255 0 170 255
+[TRT]    poseNet -- keypoint 15 'left_ankle'  color 170 0 255 255
+[TRT]    poseNet -- keypoint 16 'right_ankle'  color 255 0 255 255
+[TRT]    poseNet -- keypoint 17 'neck'  color 85 0 255 255
+[TRT]    poseNet -- loaded 18 class colors
+[TRT]    TensorRT version 8.0.1
+[TRT]    loading NVIDIA plugins...
+[TRT]    Registered plugin creator - ::GridAnchor_TRT version 1
+[TRT]    Registered plugin creator - ::GridAnchorRect_TRT version 1
+[TRT]    Registered plugin creator - ::NMS_TRT version 1
+[TRT]    Registered plugin creator - ::Reorg_TRT version 1
+[TRT]    Registered plugin creator - ::Region_TRT version 1
+[TRT]    Registered plugin creator - ::Clip_TRT version 1
+[TRT]    Registered plugin creator - ::LReLU_TRT version 1
+[TRT]    Registered plugin creator - ::PriorBox_TRT version 1
+[TRT]    Registered plugin creator - ::Normalize_TRT version 1
+[TRT]    Registered plugin creator - ::ScatterND version 1
+[TRT]    Registered plugin creator - ::RPROI_TRT version 1
+[TRT]    Registered plugin creator - ::BatchedNMS_TRT version 1
+[TRT]    Registered plugin creator - ::BatchedNMSDynamic_TRT version 1
+[0;31m[TRT]    Could not register plugin creator -  ::FlattenConcat_TRT version 1
+[0m[TRT]    Registered plugin creator - ::CropAndResize version 1
+[TRT]    Registered plugin creator - ::DetectionLayer_TRT version 1
+[TRT]    Registered plugin creator - ::EfficientNMS_ONNX_TRT version 1
+[TRT]    Registered plugin creator - ::EfficientNMS_TRT version 1
+[TRT]    Registered plugin creator - ::Proposal version 1
+[TRT]    Registered plugin creator - ::ProposalLayer_TRT version 1
+[TRT]    Registered plugin creator - ::PyramidROIAlign_TRT version 1
+[TRT]    Registered plugin creator - ::ResizeNearest_TRT version 1
+[TRT]    Registered plugin creator - ::Split version 1
+[TRT]    Registered plugin creator - ::SpecialSlice_TRT version 1
+[TRT]    Registered plugin creator - ::InstanceNormalization_TRT version 1
+[TRT]    detected model format - ONNX  (extension '.onnx')
+[TRT]    desired precision specified for GPU: FASTEST
+[0;33m[TRT]    requested fasted precision for device GPU without providing valid calibrator, disabling INT8
+[0m[TRT]    [MemUsageChange] Init CUDA: CPU +198, GPU +0, now: CPU 228, GPU 1759 (MiB)
+[TRT]    native precisions detected for GPU:  FP32, FP16
+[TRT]    selecting fastest native precision for GPU:  FP16
+[TRT]    attempting to open engine cache file /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx.1.1.8001.GPU.FP16.engine
+[TRT]    loading network plan from engine cache... /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx.1.1.8001.GPU.FP16.engine
+[0;32m[TRT]    device GPU, loaded /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx
+[0m[TRT]    [MemUsageChange] Init CUDA: CPU +0, GPU +0, now: CPU 308, GPU 1913 (MiB)
+[TRT]    Loaded engine size: 79 MB
+[TRT]    [MemUsageSnapshot] deserializeCudaEngine begin: CPU 308 MiB, GPU 1913 MiB
+[0;33m[TRT]    Using an engine plan file across different models of devices is not recommended and is likely to affect performance or even cause errors.
+[0m[TRT]    Using cublas a tactic source
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +158, GPU -11, now: CPU 467, GPU 1925 (MiB)
+[TRT]    Using cuDNN as a tactic source
+[TRT]    [MemUsageChange] Init cuDNN: CPU +240, GPU -7, now: CPU 707, GPU 1918 (MiB)
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU +0, now: CPU 707, GPU 1923 (MiB)
+[TRT]    Deserialization required 7051850 microseconds.
+[TRT]    [MemUsageSnapshot] deserializeCudaEngine end: CPU 707 MiB, GPU 1925 MiB
+[TRT]    [MemUsageSnapshot] ExecutionContext creation begin: CPU 707 MiB, GPU 1925 MiB
+[TRT]    Using cublas a tactic source
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU -3, now: CPU 707, GPU 1922 (MiB)
+[TRT]    Using cuDNN as a tactic source
+[TRT]    [MemUsageChange] Init cuDNN: CPU +0, GPU +0, now: CPU 707, GPU 1922 (MiB)
+[TRT]    Total per-runner device memory is 49521152
+[TRT]    Total per-runner host memory is 30160
+[TRT]    Allocated activation device memory of size 18128896
+[TRT]    [MemUsageSnapshot] ExecutionContext creation end: CPU 707 MiB, GPU 1922 MiB
+[TRT]    
+[TRT]    CUDA engine context initialized on device GPU:
+[TRT]       -- layers       43
+[TRT]       -- maxBatchSize 1
+[TRT]       -- deviceMemory 18128896
+[TRT]       -- bindings     3
+[TRT]       binding 0
+                -- index   0
+                -- name    'input'
+                -- type    FP32
+                -- in/out  INPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  3
+                -- dim #2  224
+                -- dim #3  224
+[TRT]       binding 1
+                -- index   1
+                -- name    'cmap'
+                -- type    FP32
+                -- in/out  OUTPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  18
+                -- dim #2  56
+                -- dim #3  56
+[TRT]       binding 2
+                -- index   2
+                -- name    'paf'
+                -- type    FP32
+                -- in/out  OUTPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  42
+                -- dim #2  56
+                -- dim #3  56
+[TRT]    
+[TRT]    binding to input 0 input  binding index:  0
+[TRT]    binding to input 0 input  dims (b=1 c=3 h=224 w=224) size=602112
+[TRT]    binding to output 0 cmap  binding index:  1
+[TRT]    binding to output 0 cmap  dims (b=1 c=18 h=56 w=56) size=225792
+[TRT]    binding to output 1 paf  binding index:  2
+[TRT]    binding to output 1 paf  dims (b=1 c=42 h=56 w=56) size=526848
+[TRT]    
+[0;32m[TRT]    device GPU, /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx initialized.
+[0m[0;32m[video]  created imageWriter from file:///home/samjet/2.png
+[0m------------------------------------------------
+imageWriter video options:
+------------------------------------------------
+  -- URI: file:///home/samjet/2.png
+     - protocol:  file
+     - location:  2.png
+     - extension: png
+  -- deviceType: file
+  -- ioType:     output
+  -- codec:      unknown
+  -- width:      0
+  -- height:     0
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[OpenGL] glDisplay -- X screen 0 resolution:  1920x1080
+[OpenGL] glDisplay -- X window resolution:    1920x1080
+[OpenGL] glDisplay -- display device initialized (1920x1080)
+[0;32m[video]  created glDisplay from display://0
+[0m------------------------------------------------
+glDisplay video options:
+------------------------------------------------
+  -- URI: display://0
+     - protocol:  display
+     - location:  0
+  -- deviceType: display
+  -- ioType:     output
+  -- codec:      raw
+  -- width:      1920
+  -- height:     1080
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+
+poseNet -- loading pose estimation model from:
+        -- model        networks/Pose-ResNet18-Body/pose_resnet18_body.onnx
+        -- topology     networks/Pose-ResNet18-Body/human_pose.json
+        -- colors       networks/Pose-ResNet18-Body/colors.txt
+        -- input_blob   'input'
+        -- output_cmap  'cmap'
+        -- output_paf   'paf'
+        -- threshold    0.150000
+        -- batch_size   1
+
+[TRT]    topology -- keypoint 0  nose
+[TRT]    topology -- keypoint 1  left_eye
+[TRT]    topology -- keypoint 2  right_eye
+[TRT]    topology -- keypoint 3  left_ear
+[TRT]    topology -- keypoint 4  right_ear
+[TRT]    topology -- keypoint 5  left_shoulder
+[TRT]    topology -- keypoint 6  right_shoulder
+[TRT]    topology -- keypoint 7  left_elbow
+[TRT]    topology -- keypoint 8  right_elbow
+[TRT]    topology -- keypoint 9  left_wrist
+[TRT]    topology -- keypoint 10  right_wrist
+[TRT]    topology -- keypoint 11  left_hip
+[TRT]    topology -- keypoint 12  right_hip
+[TRT]    topology -- keypoint 13  left_knee
+[TRT]    topology -- keypoint 14  right_knee
+[TRT]    topology -- keypoint 15  left_ankle
+[TRT]    topology -- keypoint 16  right_ankle
+[TRT]    topology -- keypoint 17  neck
+[TRT]    topology -- skeleton link 0  16 14
+[TRT]    topology -- skeleton link 1  14 12
+[TRT]    topology -- skeleton link 2  17 15
+[TRT]    topology -- skeleton link 3  15 13
+[TRT]    topology -- skeleton link 4  12 13
+[TRT]    topology -- skeleton link 5  6 8
+[TRT]    topology -- skeleton link 6  7 9
+[TRT]    topology -- skeleton link 7  8 10
+[TRT]    topology -- skeleton link 8  9 11
+[TRT]    topology -- skeleton link 9  2 3
+[TRT]    topology -- skeleton link 10  1 2
+[TRT]    topology -- skeleton link 11  1 3
+[TRT]    topology -- skeleton link 12  2 4
+[TRT]    topology -- skeleton link 13  3 5
+[TRT]    topology -- skeleton link 14  4 6
+[TRT]    topology -- skeleton link 15  5 7
+[TRT]    topology -- skeleton link 16  18 1
+[TRT]    topology -- skeleton link 17  18 6
+[TRT]    topology -- skeleton link 18  18 7
+[TRT]    topology -- skeleton link 19  18 12
+[TRT]    topology -- skeleton link 20  18 13
+[TRT]    poseNet -- keypoint 00 'nose'  color 255 0 85 255
+[TRT]    poseNet -- keypoint 01 'left_eye'  color 255 0 0 255
+[TRT]    poseNet -- keypoint 02 'right_eye'  color 255 85 0 255
+[TRT]    poseNet -- keypoint 03 'left_ear'  color 255 170 0 255
+[TRT]    poseNet -- keypoint 04 'right_ear'  color 255 255 0 255
+[TRT]    poseNet -- keypoint 05 'left_shoulder'  color 170 255 0 255
+[TRT]    poseNet -- keypoint 06 'right_shoulder'  color 85 255 0 255
+[TRT]    poseNet -- keypoint 07 'left_elbow'  color 0 255 0 255
+[TRT]    poseNet -- keypoint 08 'right_elbow'  color 0 255 85 255
+[TRT]    poseNet -- keypoint 09 'left_wrist'  color 0 255 170 255
+[TRT]    poseNet -- keypoint 10 'right_wrist'  color 0 255 255 255
+[TRT]    poseNet -- keypoint 11 'left_hip'  color 0 170 255 255
+[TRT]    poseNet -- keypoint 12 'right_hip'  color 0 85 255 255
+[TRT]    poseNet -- keypoint 13 'left_knee'  color 0 0 255 255
+[TRT]    poseNet -- keypoint 14 'right_knee'  color 255 0 170 255
+[TRT]    poseNet -- keypoint 15 'left_ankle'  color 170 0 255 255
+[TRT]    poseNet -- keypoint 16 'right_ankle'  color 255 0 255 255
+[TRT]    poseNet -- keypoint 17 'neck'  color 85 0 255 255
+[TRT]    poseNet -- loaded 18 class colors
+[TRT]    TensorRT version 8.0.1
+[TRT]    detected model format - ONNX  (extension '.onnx')
+[TRT]    desired precision specified for GPU: FASTEST
+[0;33m[TRT]    requested fasted precision for device GPU without providing valid calibrator, disabling INT8
+[0m[0;33m[TRT]    The logger passed into createInferBuilder differs from one already provided for an existing builder, runtime, or refitter. TensorRT maintains only a single logger pointer at any given time, so the existing value, which can be retrieved with getLogger(), will be used instead. In order to use a new logger, first destroy all existing builder, runner or refitter objects.
+
+[0m[TRT]    [MemUsageChange] Init CUDA: CPU +0, GPU +0, now: CPU 634, GPU 1906 (MiB)
+[TRT]    native precisions detected for GPU:  FP32, FP16
+[TRT]    selecting fastest native precision for GPU:  FP16
+[TRT]    attempting to open engine cache file /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx.1.1.8001.GPU.FP16.engine
+[TRT]    loading network plan from engine cache... /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx.1.1.8001.GPU.FP16.engine
+[0;32m[TRT]    device GPU, loaded /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx
+[0m[TRT]    [MemUsageChange] Init CUDA: CPU +0, GPU +0, now: CPU 714, GPU 1909 (MiB)
+[TRT]    Loaded engine size: 79 MB
+[TRT]    [MemUsageSnapshot] deserializeCudaEngine begin: CPU 714 MiB, GPU 1909 MiB
+[0;33m[TRT]    Using an engine plan file across different models of devices is not recommended and is likely to affect performance or even cause errors.
+[0m[TRT]    Using cublas a tactic source
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU +4, now: CPU 714, GPU 1909 (MiB)
+[TRT]    Using cuDNN as a tactic source
+[TRT]    [MemUsageChange] Init cuDNN: CPU +0, GPU +3, now: CPU 714, GPU 1912 (MiB)
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU +0, now: CPU 714, GPU 1904 (MiB)
+[TRT]    Deserialization required 3059603 microseconds.
+[TRT]    [MemUsageSnapshot] deserializeCudaEngine end: CPU 714 MiB, GPU 1904 MiB
+[TRT]    [MemUsageSnapshot] ExecutionContext creation begin: CPU 714 MiB, GPU 1904 MiB
+[TRT]    Using cublas a tactic source
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU +0, now: CPU 714, GPU 1904 (MiB)
+[TRT]    Using cuDNN as a tactic source
+[TRT]    [MemUsageChange] Init cuDNN: CPU +0, GPU +0, now: CPU 714, GPU 1904 (MiB)
+[TRT]    Total per-runner device memory is 49521152
+[TRT]    Total per-runner host memory is 30160
+[TRT]    Allocated activation device memory of size 18128896
+[TRT]    [MemUsageSnapshot] ExecutionContext creation end: CPU 714 MiB, GPU 1904 MiB
+[TRT]    
+[TRT]    CUDA engine context initialized on device GPU:
+[TRT]       -- layers       43
+[TRT]       -- maxBatchSize 1
+[TRT]       -- deviceMemory 18128896
+[TRT]       -- bindings     3
+[TRT]       binding 0
+         detected 2 objects in image
+---------------------
+Right knee angle = -44.32155740174412
+     Off by -169.32155740174412 degrees
+---------------------
+Right knee angle = -32.67795723693503
+     Off by -157.67795723693501 degrees
+       -- index   0
+                -- name    'input'
+                -- type    FP32
+                -- in/out  INPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  3
+                -- dim #2  224
+                -- dim #3  224
+[TRT]       binding 1
+                -- index   1
+                -- name    'cmap'
+                -- type    FP32
+                -- in/out  OUTPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  18
+                -- dim #2  56
+                -- dim #3  56
+[TRT]       binding 2
+                -- index   2
+                -- name    'paf'
+                -- type    FP32
+                -- in/out  OUTPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  42
+                -- dim #2  56
+                -- dim #3  56
+[TRT]    
+[TRT]    binding to input 0 input  binding index:  0
+[TRT]    binding to input 0 input  dims (b=1 c=3 h=224 w=224) size=602112
+[TRT]    binding to output 0 cmap  binding index:  1
+[TRT]    binding to output 0 cmap  dims (b=1 c=18 h=56 w=56) size=225792
+[TRT]    binding to output 1 paf  binding index:  2
+[TRT]    binding to output 1 paf  dims (b=1 c=42 h=56 w=56) size=526848
+[TRT]    
+[0;32m[TRT]    device GPU, /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx initialized.
+[0m[0;32m[video]  created imageLoader from file:///home/samjet/2.png
+[0m------------------------------------------------
+imageLoader video options:
+------------------------------------------------
+  -- URI: file:///home/samjet/2.png
+     - protocol:  file
+     - location:  2.png
+     - extension: png
+  -- deviceType: file
+  -- ioType:     input
+  -- codec:      unknown
+  -- width:      0
+  -- height:     0
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[0;32m[video]  created imageWriter from file:///home/samjet/2.png
+[0m------------------------------------------------
+imageWriter video options:
+------------------------------------------------
+  -- URI: file:///home/samjet/2.png
+     - protocol:  file
+     - location:  2.png
+     - extension: png
+  -- deviceType: file
+  -- ioType:     output
+  -- codec:      unknown
+  -- width:      0
+  -- height:     0
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[OpenGL] glDisplay -- X screen 0 resolution:  1920x1080
+[OpenGL] glDisplay -- X window resolution:    1920x1080
+[OpenGL] glDisplay -- display device initialized (1920x1080)
+[0;32m[video]  created glDisplay from display://0
+[0m------------------------------------------------
+glDisplay video options:
+------------------------------------------------
+  -- URI: display://0
+     - protocol:  display
+     - location:  0
+  -- deviceType: display
+  -- ioType:     output
+  -- codec:      raw
+  -- width:      1920
+  -- height:     1080
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[image]  loaded '2.png'  (700x366, 3 channels)
+[OpenGL] glDisplay -- set the window size to 700x366
+[OpenGL] creating 700x366 texture (GL_RGB8 format, 768600 bytes)
+[cuda]   registered openGL texture for interop access (700x366, GL_RGB8, 768600 bytes)
+[image]  saved '2.png'  (700x366, 3 channels)
