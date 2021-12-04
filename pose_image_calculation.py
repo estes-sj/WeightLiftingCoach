@@ -74,7 +74,7 @@ def main():
         # render the image
         output.Render(img)
 
-    # update the title bar
+        # update the title bar
         output.SetStatus("{:s} | Network {:.0f} FPS".format(opt.network, net.GetNetworkFPS()))
 
 
