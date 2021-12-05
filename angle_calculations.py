@@ -105,27 +105,27 @@ def squat_right_back_angle(pose):
 
     # Distance formula = abs sqrt((x2-x1)^2 + (y2-y1)^2)
 
-    # Right upper leg distance
+    # Right back distance
     neck_idx = pose.FindKeypoint(17)
     right_hip_idx = pose.FindKeypoint(12)
 
-    if (right_knee_idx < 0 or right_hip_idx < 0):
+    if (neck_idx < 0 or right_hip_idx < 0):
         return
     
-    right_knee = pose.Keypoints[right_knee_idx]
+    neck = pose.Keypoints[neck_idx]
     right_hip = pose.Keypoints[right_hip_idx]
 
     # right_upper_leg_distance = abs(math.sqrt((right_hip.x - right_knee.x)^2 + (right_hip.y - right_knee.y)^2))
-    right_upper_leg_slope = abs(calcSlope(right_knee, right_hip))
-    print("Right Upper Leg Slope: " + str(right_upper_leg_slope))
+    right_back_slope = abs(calcSlope(neck, right_hip))
+    print("Right Back Slope: " + str(right_back_slope))
 
-    # Right lower leg distance
+    # Right upper leg distance
     right_knee_idx = pose.FindKeypoint(14)
 
-    if (right_ankle_idx < 0):
+    if (right_knee_idx < 0):
         return
 
-    right_ankle = pose.Keypoints[right_ankle_idx]
+    right_knee = pose.Keypoints[right_knee_idx]
 
     # right_lower_leg_distance = abs(math.sqrt((right_ankle.x - right_knee.x)^2 + (right_ankle.y - right_knee.y)^2))
     right_lower_leg_slope = abs((right_ankle.y - right_knee.y)/(right_ankle.x - right_knee.x))
