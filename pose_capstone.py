@@ -75,7 +75,8 @@ def main():
  #           print('Links', pose.Links)
             
             #pointing(pose, display)
-            squat_knee_angle(pose, display)
+            angle_calculations.squat_right_knee_angle(pose)
+            #squat_right_score(pose)
 
         # render the image
         display.Render(img)
@@ -92,6 +93,18 @@ def main():
         # exit on input/output EOS
         if not camera.IsStreaming() or not display.IsStreaming():
             break
+
+# Calculate percent correctness for right-side-view of sqat
+def squat_right_score(pose):
+    angle_calculations.squat_right_knee_angle(pose)
+    angle_calculations.squat_right_back_angle(pose)
+    return
+
+# Calculate percent correctness for left-side-view of sqat
+def squat_left_score(pose):
+    angle_calculations.squat_left_knee_angle(pose)
+    angle_calculations.squat_left_back_angle(pose)
+    return
 
 def pointing(pose, display):
     # find the keypoint index from the list of detected keypoints
@@ -150,87 +163,6 @@ def squat_detection(pose, display):
         print(f"GOOD SQUAT :)")
         display.SetStatus(f"GOOD SQUAT :)")
     return;
-
-def squat_knee_angle(pose, display):
-    print("---------------------") 
-
-    # Distance formula = abs sqrt((x2-x1)^2 + (y2-y1)^2)
-    
-    # Left upper leg distance
-    left_knee_idx = pose.FindKeypoint(13)
-    left_hip_idx = pose.FindKeypoint(11)
-
-    if (left_knee_idx < 0 or left_hip_idx < 0):
-        return
-
-    left_knee = pose.Keypoints[left_knee_idx]
-    left_hip = pose.Keypoints[left_hip_idx]
-
-    # left_upper_leg_distance = abs(math.sqrt((left_hip.x - left_knee.x)^2 + (left_hip.y - left_knee.y)^2))
-    left_upper_leg_slope = abs((left_hip.y - left_knee.y)/(left_hip.x - left_knee.x))
-
-    # Left lower leg distance
-    left_ankle_idx = pose.FindKeypoint(15)
-
-    if (left_ankle_idx < 0):
-        return
-
-    left_ankle = pose.Keypoints[left_ankle_idx]
-
-    # left_lower_leg_distance = abs(math.sqrt((left_ankle.x - left_knee.x)^2 + (left_ankle.y - left_knee.y)^2))
-    left_lower_leg_slope = abs((left_ankle.y - left_knee.y)/(left_ankle.x - left_knee.x))
-
-    # Right upper leg distance
-    right_knee_idx = pose.FindKeypoint(14)
-    right_hip_idx = pose.FindKeypoint(12)
-
-    if (right_knee_idx < 0 or right_hip_idx < 0):
-        return
-    
-    right_knee = pose.Keypoints[right_knee_idx]
-    right_hip = pose.Keypoints[right_hip_idx]
-
-    # right_upper_leg_distance = abs(math.sqrt((right_hip.x - right_knee.x)^2 + (right_hip.y - right_knee.y)^2))
-    right_upper_leg_slope = abs((right_hip.y - right_knee.y)/(right_hip.x - right_knee.x))
-
-    # Right lower leg distance
-    right_ankle_idx = pose.FindKeypoint(16)
-
-    if (right_ankle_idx < 0):
-        return
-
-    right_ankle = pose.Keypoints[right_ankle_idx]
-
-    # right_lower_leg_distance = abs(math.sqrt((right_ankle.x - right_knee.x)^2 + (right_ankle.y - right_knee.y)^2))
-    right_lower_leg_slope = abs((right_ankle.y - right_knee.y)/(right_ankle.x - right_knee.x))
-   
-    # Calculate knee angle of left knee 
-    left_knee_angle = math.degrees(math.atan((left_upper_leg_slope - left_lower_leg_slope) / (1 + left_upper_leg_slope * left_lower_leg_slope)))
-    if left_knee_angle < 0:
-        left_knee_angle += 180  
-
-    # Calculate knee angle of right knee 
-    right_knee_angle = math.degrees(math.atan((right_upper_leg_slope - right_lower_leg_slope) / (1 + right_upper_leg_slope * right_lower_leg_slope)))
-    if right_knee_angle < 0:
-        right_knee_angle += 180
-
-    print("Left knee angle = " + str(left_knee_angle))
-    print("     Off by " + str(left_knee_angle - 125) + " degrees")
-    print("Right knee angle = " + str(right_knee_angle))
-    print("     Off by " + str(right_knee_angle - 125) + " degrees")
-
-# Calculates the slope of a line based on 2 points
-def calcSlope(point1, point2):  # point1 and point2 refers to 2 points in the resnet model                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-    return (point2.y-point1.y)/(point2.x-point1.x)
-
-# Calculate the distance of a line based on 2 points
-def calcDistance(point1, point2):
-    return abs(math.sqrt((point1.x-point2.x)^2 + (point1.y-point2.y)^2))
-
-# Calculates the angle in degress of two intersecting lines given the slope
-def calcAngle(slope1, slope2): 
-    angle = (math.degrees(math.atan((slope1-slope2)/(1 + slope1*slope2))))
-    return angle if angle < 0 else angle+180
 
 def getTime():
 	# Get current date and time
