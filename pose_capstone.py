@@ -107,8 +107,7 @@ def main():
 def squat_right_score(pose):
     right_knee_angle = angle_calculations.squat_right_knee_angle(pose)
     back_angle = angle_calculations.squat_right_back_angle(pose)
-
-    return
+    return angle_calculations.squat_scoring(pose)
 
 # Calculate percent correctness for left-side-view of sqat
 def squat_left_score(pose):
@@ -172,7 +171,7 @@ def squat_detection(pose, display):
     else:
         print(f"GOOD SQUAT :)")
         display.SetStatus(f"GOOD SQUAT :)")
-    return;
+    return
 
 def getTime():
 	# Get current date and time

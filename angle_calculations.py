@@ -135,10 +135,12 @@ def squat_right_back_angle(pose):
     #if right_knee_angle < 0:
     #    right_knee_angle += 180
 
-    print("Back angle = " + str(back_angle))
+    print("Hip angle = " + str(back_angle))
 
     # Desired angle is 180-55 = 125 degrees
-    print("     Off by " + str(back_angle - (180-55)) + " degrees")
+    angle_difference = back_angle - (180-55)
+    print("     Off by " + str(angle_difference) + " degrees")
+
     print("---------------------") 
     return back_angle
 
@@ -185,9 +187,33 @@ def squat_left_back_angle(pose):
     print("---------------------") 
     return back_angle
 
+# Percentage correctness calculation based on the angle
 def squat_scoring(knee_angle, back_angle):
+    print("####################")
+    # % = (value - min)/(max - min)
+    perfect_knee_angle = 55
+    perfect_back_angle = 125
+    knee_score = 100*(((perfect_knee_angle - knee_angle) - 20) / (20 - 5))
+    back_score = 100*(((perfect_back_angle - back_angle) - 20) / (20 - 5))
+    final_score = (knee_score + back_score) / 2
     
-    return
+    knee_angle_difference = back_angle - (180-55)
+    if knee_angle_difference > 0:
+        print("Lower hips to break parallel and have hip joint below the knee")
+    elif knee_angle_difference < 0:
+        print("Squat is too deep. Raise hips to have the hip joint parallel to knee")
+    else:
+        print("Great hip angle!")
+
+    back_angle_difference = knee_angle - (180-125)
+    if back_angle_difference > 0:
+        print("Lean forward to prevent excessive stress on the lower back")
+    elif back_angle_difference < 0:
+        print("Keep chest upward and look straight ahead")
+    else:
+        print("Great back angle!")
+
+    return final_score
 
 # Calculates the slope of a line based on 2 points
 def calcSlope(point1, point2):  # point1 and point2 refers to 2 points in the resnet model                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
