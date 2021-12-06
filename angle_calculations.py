@@ -185,6 +185,10 @@ def squat_left_back_angle(pose):
     print("---------------------") 
     return back_angle
 
+def squat_scoring(knee_angle, back_angle):
+    
+    return
+
 # Calculates the slope of a line based on 2 points
 def calcSlope(point1, point2):  # point1 and point2 refers to 2 points in the resnet model                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
     return (point2.y-point1.y)/(point2.x-point1.x)

@@ -69,14 +69,20 @@ def main():
         # print the pose results
         print("detected {:d} objects in image".format(len(poses)))
 
+        top_score = 0.0
         for pose in poses:
  #           print(pose)
  #           print(pose.Keypoints)
  #           print('Links', pose.Links)
             
             #pointing(pose, display)
-            angle_calculations.squat_right_knee_angle(pose)
+            #angle_calculations.squat_right_knee_angle(pose)
+            
             #squat_right_score(pose)
+
+            last_score = squat_right_score(pose)
+            if last_score > top_score:
+                top_score = last_score
 
         # render the image
         display.Render(img)
@@ -92,12 +98,16 @@ def main():
 
         # exit on input/output EOS
         if not camera.IsStreaming() or not display.IsStreaming():
+            print("###############################")
+            print("BEST SCORE = " + str(top_score))
+            print("###############################")
             break
 
 # Calculate percent correctness for right-side-view of sqat
 def squat_right_score(pose):
     right_knee_angle = angle_calculations.squat_right_knee_angle(pose)
     back_angle = angle_calculations.squat_right_back_angle(pose)
+
     return
 
 # Calculate percent correctness for left-side-view of sqat
