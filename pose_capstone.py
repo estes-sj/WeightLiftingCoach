@@ -96,14 +96,14 @@ def main():
 
 # Calculate percent correctness for right-side-view of sqat
 def squat_right_score(pose):
-    angle_calculations.squat_right_knee_angle(pose)
-    angle_calculations.squat_right_back_angle(pose)
+    right_knee_angle = angle_calculations.squat_right_knee_angle(pose)
+    back_angle = angle_calculations.squat_right_back_angle(pose)
     return
 
 # Calculate percent correctness for left-side-view of sqat
 def squat_left_score(pose):
-    angle_calculations.squat_left_knee_angle(pose)
-    angle_calculations.squat_left_back_angle(pose)
+    left_knee_angle = angle_calculations.squat_left_knee_angle(pose)
+    back_angle = angle_calculations.squat_left_back_angle(pose)
     return
 
 def pointing(pose, display):
