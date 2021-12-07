@@ -137,8 +137,8 @@ def squat_right_back_angle(pose):
 
     print("Hip angle = " + str(back_angle))
 
-    # Desired angle is 180-55 = 125 degrees
-    angle_difference = back_angle - (180-55)
+    # Desired angle is 55 degrees
+    angle_difference = back_angle - 55
     print("     Off by " + str(angle_difference) + " degrees")
 
     print("---------------------") 
@@ -182,8 +182,8 @@ def squat_left_back_angle(pose):
 
     print("Back angle = " + str(back_angle))
 
-    # Desired angle is 180-55 = 125 degrees
-    print("     Off by " + str(back_angle - (180-55)) + " degrees")
+    # Desired angle is 55 degrees
+    print("     Off by " + str(back_angle - 55) + " degrees")
     print("---------------------") 
     return back_angle
 
@@ -192,12 +192,13 @@ def squat_scoring(knee_angle, back_angle):
     print("####################")
     # % = (value - min)/(max - min)
     perfect_knee_angle = float(55.0)
-    perfect_back_angle = float(125.0)
-    knee_score = abs(100*(((perfect_knee_angle-float(knee_angle)) - 20) / (5 - 20)))
-    back_score = abs(100*(((perfect_back_angle-float(back_angle)) - 20) / (5 - 20)))
+    perfect_back_angle = float(55.0)
+    knee_score = abs(100*(((abs(float(back_angle)) - perfect_knee_angle) - 35) / (5 - 35)))
+    back_score = abs(100*(((abs(float(back_angle)) - perfect_back_angle) - 35) / (5 - 35)))
     final_score = (knee_score + back_score) / 2
     
-    knee_angle_difference = back_angle - (180-55)
+    # Add margin of error
+    knee_angle_difference = knee_angle - (180-125)
     if knee_angle_difference > 0:
         print("Lower hips to break parallel and have hip joint below the knee")
     elif knee_angle_difference < 0:
@@ -205,7 +206,7 @@ def squat_scoring(knee_angle, back_angle):
     else:
         print("Great hip angle!")
 
-    back_angle_difference = knee_angle - (180-125)
+    back_angle_difference = back_angle - (55)
     if back_angle_difference > 0:
         print("Lean forward to prevent excessive stress on the lower back")
     elif back_angle_difference < 0:

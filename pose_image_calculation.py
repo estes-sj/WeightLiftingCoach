@@ -9,8 +9,15 @@ import argparse
 import sys
 import cv2
 import math
-
+import angle_calculations
 import numpy as np
+
+sudoPassword = 'scalp431!'
+command = 'xrandr --output HDMI-0 --mode 1920x1080'
+#command = 'xrandr --output HDMI-0 --mode 1280x720'
+p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
+command = 'sudo systemctl restart nvargus-daemon'
+p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
 
 # parse the command line
 parser = argparse.ArgumentParser(description="Run AI weight lifting pose estimation DNN on a video/image stream.", 
@@ -39,24 +46,26 @@ output = jetson.utils.videoOutput(opt.output_URI, argv=sys.argv)
 
 def main():
 
-    try:
-        opt = parser.parse_known_args()[0]
-    except:
-        print("")
-        parser.print_help()
-        sys.exit(0)
-
-    # load the pose estimation model
-    net = jetson.inference.poseNet(opt.network, sys.argv, opt.threshold)
-
-    # create video sources & outputs
-    input = jetson.utils.videoSource(opt.input_URI, argv=sys.argv)
-    output = jetson.utils.videoOutput(opt.output_URI, argv=sys.argv)
-
     while True:
-        # capture the next image
-        img = input.Capture()
+        try:
+			# open streams for camera 0
+            #camera = jetson.utils.videoSource("csi://0", argv=["--input-flip=rotate-180"])      # '/dev/video0' for V4L2 
+            camera = jetson.utils.videoSource('squat6.png')      # '/dev/video0' for V4L2 
+            #display = jetson.utils.videoOutput('display://0') # 'my_video.mp4' for file
+            display = jetson.utils.videoOutput('squat6_results.png') # 'my_video.mp4' for file
+            print(getTime() + "Camera 0 started...\n")
+            break
+        except:
+            p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
+            print(getTime() + "Camera 0 failed to start...restarting")
+            time.sleep(3)
+            print(getTime() + "Done!\n")
 
+    top_score = 0.0
+    while display.IsStreaming(): #and display_1.IsStreaming():
+        # capture the next image
+        img = camera.Capture()
+  
         # perform pose estimation (with overlay)
         poses = net.Process(img, overlay=opt.overlay)
 
@@ -69,14 +78,21 @@ def main():
  #           print('Links', pose.Links)
             
             #pointing(pose, display)
-            squat_knee_angle(pose)
+            #angle_calculations.squat_right_knee_angle(pose)
+            
+            #squat_right_score(pose)
+
+            last_score = squat_right_score(pose)
+            if last_score != None:
+                if last_score > top_score:
+                    top_score = last_score
+                    print("Current Score: " + str(top_score))
 
         # render the image
-        output.Render(img)
+        display.Render(img)
 
         # update the title bar
-        output.SetStatus("{:s} | Network {:.0f} FPS".format(opt.network, net.GetNetworkFPS()))
-
+        display.SetStatus("{:s} | Network {:.0f} FPS".format(opt.network, net.GetNetworkFPS()))
 
         # print text on screen
         #cv2.putText(img, "I HATE CODING", (50, 50), cv2.FONT_HERSHEY_COMPLEX, .8, (0, 0, 0), 2, lineType=cv2.LINE_AA)
@@ -85,8 +101,25 @@ def main():
         # poseNet.PrintProfilerTimes()
 
         # exit on input/output EOS
-        if not input.IsStreaming() or not output.IsStreaming():
+        if not camera.IsStreaming() or not display.IsStreaming():
             break
+
+    print("###############################")
+    print("BEST SCORE = " + str(top_score))
+    print("###############################") 
+# Calculate percent correctness for right-side-view of sqat
+def squat_right_score(pose):
+    right_knee_angle = angle_calculations.squat_right_knee_angle(pose)
+    back_angle = angle_calculations.squat_right_back_angle(pose)
+    if (right_knee_angle != None and back_angle != None):
+        return angle_calculations.squat_scoring(right_knee_angle, back_angle)
+    return
+
+# Calculate percent correctness for left-side-view of sqat
+def squat_left_score(pose):
+    left_knee_angle = angle_calculations.squat_left_knee_angle(pose)
+    back_angle = angle_calculations.squat_left_back_angle(pose)
+    return 1
 
 def pointing(pose, display):
     # find the keypoint index from the list of detected keypoints
@@ -105,7 +138,7 @@ def pointing(pose, display):
 
     point_x = left_shoulder.x - left_wrist.x
     point_y = left_shoulder.y - left_wrist.y
-
+  #  test = angle_calculations.test()
     print(f"person {pose.ID} is pointing towards ({point_x}, {point_y})")
     display.SetStatus(f"person {pose.ID} is pointing towards ({point_x}, {point_y})")
 
@@ -145,60 +178,6 @@ def squat_detection(pose, display):
         print(f"GOOD SQUAT :)")
         display.SetStatus(f"GOOD SQUAT :)")
     return;
-
-def squat_knee_angle(pose):
-    print("---------------------") 
-
-    # Distance formula = abs sqrt((x2-x1)^2 + (y2-y1)^2)
-
-    # Right upper leg distance
-    right_knee_idx = pose.FindKeypoint(14)
-    right_hip_idx = pose.FindKeypoint(12)
-
-    if (right_knee_idx < 0 or right_hip_idx < 0):
-        return
-    
-    right_knee = pose.Keypoints[right_knee_idx]
-    right_hip = pose.Keypoints[right_hip_idx]
-
-    # right_upper_leg_distance = abs(math.sqrt((right_hip.x - right_knee.x)^2 + (right_hip.y - right_knee.y)^2))
-    right_upper_leg_slope = abs((right_hip.y - right_knee.y)/(right_hip.x - right_knee.x))
-    print("Right Upper Leg Slope: " + str(right_upper_leg_slope))
-
-    # Right lower leg distance
-    right_ankle_idx = pose.FindKeypoint(16)
-
-    if (right_ankle_idx < 0):
-        return
-
-    right_ankle = pose.Keypoints[right_ankle_idx]
-
-    # right_lower_leg_distance = abs(math.sqrt((right_ankle.x - right_knee.x)^2 + (right_ankle.y - right_knee.y)^2))
-    right_lower_leg_slope = abs((right_ankle.y - right_knee.y)/(right_ankle.x - right_knee.x))
-    print("Right Lower Leg Slope: " + str(right_lower_leg_slope))
-   
-    # Calculate knee angle of right knee 
-    right_knee_angle = math.degrees(abs(math.atan((right_upper_leg_slope - right_lower_leg_slope) / (1 + right_upper_leg_slope * right_lower_leg_slope))))
-    #if right_knee_angle < 0:
-    #    right_knee_angle += 180
-
-    print("Right knee angle = " + str(right_knee_angle))
-
-    # Desired angle is 180-125 = 55 degrees
-    print("     Off by " + str(right_knee_angle - (180-125)) + " degrees")
-
-# Calculates the slope of a line based on 2 points
-def calcSlope(point1, point2):  # point1 and point2 refers to 2 points in the resnet model                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-    return (point2.y-point1.y)/(point2.x-point1.x)
-
-# Calculate the distance of a line based on 2 points
-def calcDistance(point1, point2):
-    return abs(math.sqrt((point1.x-point2.x)^2 + (point1.y-point2.y)^2))
-
-# Calculates the angle in degress of two intersecting lines given the slope
-def calcAngle(slope1, slope2): 
-    angle = (math.degrees(math.atan((slope1-slope2)/(1 + slope1*slope2))))
-    return angle if angle < 0 else angle+180
 
 def getTime():
 	# Get current date and time

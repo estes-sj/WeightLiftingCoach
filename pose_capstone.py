@@ -50,7 +50,8 @@ def main():
         try:
 			# open streams for camera 0
             camera = jetson.utils.videoSource("csi://0", argv=["--input-flip=rotate-180"])      # '/dev/video0' for V4L2 
-            display = jetson.utils.videoOutput('test_video.mp4') # 'my_video.mp4' for file
+            display = jetson.utils.videoOutput('demo_vid.mp4') # 'my_video.mp4' for file
+            #display = jetson.utils.videoOutput("display://0") # 'my_video.mp4' for file
             print(getTime() + "Camera 0 started...\n")
             break
         except:
