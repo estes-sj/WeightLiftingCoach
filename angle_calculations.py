@@ -191,10 +191,10 @@ def squat_left_back_angle(pose):
 def squat_scoring(knee_angle, back_angle):
     print("####################")
     # % = (value - min)/(max - min)
-    perfect_knee_angle = 55
-    perfect_back_angle = 125
-    knee_score = 100*(((perfect_knee_angle - knee_angle) - 20) / (20 - 5))
-    back_score = 100*(((perfect_back_angle - back_angle) - 20) / (20 - 5))
+    perfect_knee_angle = float(55.0)
+    perfect_back_angle = float(125.0)
+    knee_score = abs(100*(((perfect_knee_angle-float(knee_angle)) - 20) / (5 - 20)))
+    back_score = abs(100*(((perfect_back_angle-float(back_angle)) - 20) / (5 - 20)))
     final_score = (knee_score + back_score) / 2
     
     knee_angle_difference = back_angle - (180-55)

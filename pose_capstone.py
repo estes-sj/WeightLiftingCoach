@@ -50,7 +50,7 @@ def main():
         try:
 			# open streams for camera 0
             camera = jetson.utils.videoSource("csi://0", argv=["--input-flip=rotate-180"])      # '/dev/video0' for V4L2 
-            display = jetson.utils.videoOutput("display://0") # 'my_video.mp4' for file
+            display = jetson.utils.videoOutput('test_video.mp4') # 'my_video.mp4' for file
             print(getTime() + "Camera 0 started...\n")
             break
         except:
@@ -59,6 +59,7 @@ def main():
             time.sleep(3)
             print(getTime() + "Done!\n")
 
+    top_score = 0.0
     while display.IsStreaming(): #and display_1.IsStreaming():
         # capture the next image
         img = camera.Capture()
@@ -69,7 +70,6 @@ def main():
         # print the pose results
         print("detected {:d} objects in image".format(len(poses)))
 
-        top_score = 0.0
         for pose in poses:
  #           print(pose)
  #           print(pose.Keypoints)
@@ -81,8 +81,10 @@ def main():
             #squat_right_score(pose)
 
             last_score = squat_right_score(pose)
-            if last_score > top_score:
-                top_score = last_score
+            if last_score != None:
+                if last_score > top_score:
+                    top_score = last_score
+                    print("Current Score: " + str(top_score))
 
         # render the image
         display.Render(img)
@@ -98,22 +100,24 @@ def main():
 
         # exit on input/output EOS
         if not camera.IsStreaming() or not display.IsStreaming():
-            print("###############################")
-            print("BEST SCORE = " + str(top_score))
-            print("###############################")
             break
 
+    print("###############################")
+    print("BEST SCORE = " + str(top_score))
+    print("###############################") 
 # Calculate percent correctness for right-side-view of sqat
 def squat_right_score(pose):
     right_knee_angle = angle_calculations.squat_right_knee_angle(pose)
     back_angle = angle_calculations.squat_right_back_angle(pose)
-    return angle_calculations.squat_scoring(pose)
+    if (right_knee_angle != None and back_angle != None):
+        return angle_calculations.squat_scoring(right_knee_angle, back_angle)
+    return
 
 # Calculate percent correctness for left-side-view of sqat
 def squat_left_score(pose):
     left_knee_angle = angle_calculations.squat_left_knee_angle(pose)
     back_angle = angle_calculations.squat_left_back_angle(pose)
-    return
+    return 1
 
 def pointing(pose, display):
     # find the keypoint index from the list of detected keypoints
@@ -171,7 +175,7 @@ def squat_detection(pose, display):
     else:
         print(f"GOOD SQUAT :)")
         display.SetStatus(f"GOOD SQUAT :)")
-    return
+    return;
 
 def getTime():
 	# Get current date and time
