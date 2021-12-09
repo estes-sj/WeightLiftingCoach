@@ -86,7 +86,7 @@ def main():
             if last_score != None:
                 if last_score > top_score:
                     top_score = last_score
-                    print("Current Score: " + str(top_score))
+                    print("Current Score: {:.3f}%".format(top_score))
 
         # render the image
         display.Render(img)
@@ -105,7 +105,7 @@ def main():
             break
 
     print("###############################")
-    print("BEST SCORE = " + str(top_score))
+    print("BEST SCORE = {:.3f}%".format(top_score))
     print("###############################") 
 # Calculate percent correctness for right-side-view of sqat
 def squat_right_score(pose):

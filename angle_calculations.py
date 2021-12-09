@@ -193,24 +193,26 @@ def squat_scoring(knee_angle, back_angle):
     # % = (value - min)/(max - min)
     perfect_knee_angle = float(55.0)
     perfect_back_angle = float(55.0)
-    knee_score = abs(100*(((abs(float(back_angle)) - perfect_knee_angle) - 35) / (5 - 35)))
-    back_score = abs(100*(((abs(float(back_angle)) - perfect_back_angle) - 35) / (5 - 35)))
+    knee_score = abs(100*(((perfect_knee_angle - knee_angle) - 35) / (5 - 35)))
+    back_score = abs(100*(((perfect_back_angle - back_angle) - 35) / (5 - 35)))
+
+
     final_score = (knee_score + back_score) / 2
     
     # Add margin of error
     knee_angle_difference = knee_angle - (180-125)
     if knee_angle_difference > 0:
-        print("Lower hips to break parallel and have hip joint below the knee")
+        print("Lower hips to break parallel and have hip joint below the knee. Score = {:.3f}%".format(knee_score))
     elif knee_angle_difference < 0:
-        print("Squat is too deep. Raise hips to have the hip joint parallel to knee")
+        print("Squat is too deep. Raise hips to have the hip joint parallel to knee. Score = {:.3f}%".format(knee_score))
     else:
         print("Great hip angle!")
 
     back_angle_difference = back_angle - (55)
     if back_angle_difference > 0:
-        print("Lean forward to prevent excessive stress on the lower back")
+        print("Lean forward to prevent excessive stress on the lower back. Score = {:.3f}%".format(back_score))
     elif back_angle_difference < 0:
-        print("Keep chest upward and look straight ahead")
+        print("Keep chest upward and look straight ahead. Score = {:.3f}%".format(back_score))
     else:
         print("Great back angle!")
 
