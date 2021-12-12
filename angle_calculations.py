@@ -190,28 +190,45 @@ def squat_left_back_angle(pose):
 # Percentage correctness calculation based on the angle
 def squat_scoring(knee_angle, back_angle):
     print("####################")
-    # % = (value - min)/(max - min)
+
+    # Anything below the range is 100% and above the range is 0%
+    min_range = 5.0
+    max_range = 35.0
+    range = min_range - max_range
+
     perfect_knee_angle = float(55.0)
     perfect_back_angle = float(55.0)
-    knee_score = abs(100*(((perfect_knee_angle - knee_angle) - 35) / (5 - 35)))
-    back_score = abs(100*(((perfect_back_angle - back_angle) - 35) / (5 - 35)))
 
+    # Positive Difference
+    knee_angle_difference = abs(perfect_knee_angle - knee_angle)
+    back_angle_difference = abs(perfect_back_angle - back_angle)
+
+    # % = (value - min)/(max - min)
+    if knee_angle_difference <= max_range and knee_angle_difference >= min_range:
+        knee_score = abs(100*((knee_angle_difference - max_range) / range))
+    else:
+        knee_score = 0.0
+
+    if back_angle_difference <= max_range and knee_angle_difference >= min_range:
+        back_score = abs(100*((back_angle_difference - max_range) / range))
+    else:
+        back_score = 0.0
 
     final_score = (knee_score + back_score) / 2
     
-    # Add margin of error
-    knee_angle_difference = knee_angle - (180-125)
-    if knee_angle_difference > 0:
+    # Uses +/- difference instead of +
+    knee_angle_difference = perfect_knee_angle - knee_angle
+    if knee_angle_difference < -1 * min_range:
         print("Lower hips to break parallel and have hip joint below the knee. Score = {:.3f}%".format(knee_score))
-    elif knee_angle_difference < 0:
+    elif knee_angle_difference > min_range:
         print("Squat is too deep. Raise hips to have the hip joint parallel to knee. Score = {:.3f}%".format(knee_score))
     else:
         print("Great hip angle!")
 
-    back_angle_difference = back_angle - (55)
-    if back_angle_difference > 0:
+    back_angle_difference = perfect_back_angle - back_angle
+    if back_angle_difference < -1 * min_range:
         print("Lean forward to prevent excessive stress on the lower back. Score = {:.3f}%".format(back_score))
-    elif back_angle_difference < 0:
+    elif back_angle_difference > min_range:
         print("Keep chest upward and look straight ahead. Score = {:.3f}%".format(back_score))
     else:
         print("Great back angle!")
