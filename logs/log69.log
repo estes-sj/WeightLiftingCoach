@@ -1,0 +1,4369 @@
+
+poseNet -- loading pose estimation model from:
+        -- model        networks/Pose-ResNet18-Body/pose_resnet18_body.onnx
+        -- topology     networks/Pose-ResNet18-Body/human_pose.json
+        -- colors       networks/Pose-ResNet18-Body/colors.txt
+        -- input_blob   'input'
+        -- output_cmap  'cmap'
+        -- output_paf   'paf'
+        -- threshold    0.150000
+        -- batch_size   1
+
+[TRT]    topology -- keypoint 0  nose
+[TRT]    topology -- keypoint 1  left_eye
+[TRT]    topology -- keypoint 2  right_eye
+[TRT]    topology -- keypoint 3  left_ear
+[TRT]    topology -- keypoint 4  right_ear
+[TRT]    topology -- keypoint 5  left_shoulder
+[TRT]    topology -- keypoint 6  right_shoulder
+[TRT]    topology -- keypoint 7  left_elbow
+[TRT]    topology -- keypoint 8  right_elbow
+[TRT]    topology -- keypoint 9  left_wrist
+[TRT]    topology -- keypoint 10  right_wrist
+[TRT]    topology -- keypoint 11  left_hip
+[TRT]    topology -- keypoint 12  right_hip
+[TRT]    topology -- keypoint 13  left_knee
+[TRT]    topology -- keypoint 14  right_knee
+[TRT]    topology -- keypoint 15  left_ankle
+[TRT]    topology -- keypoint 16  right_ankle
+[TRT]    topology -- keypoint 17  neck
+[TRT]    topology -- skeleton link 0  16 14
+[TRT]    topology -- skeleton link 1  14 12
+[TRT]    topology -- skeleton link 2  17 15
+[TRT]    topology -- skeleton link 3  15 13
+[TRT]    topology -- skeleton link 4  12 13
+[TRT]    topology -- skeleton link 5  6 8
+[TRT]    topology -- skeleton link 6  7 9
+[TRT]    topology -- skeleton link 7  8 10
+[TRT]    topology -- skeleton link 8  9 11
+[TRT]    topology -- skeleton link 9  2 3
+[TRT]    topology -- skeleton link 10  1 2
+[TRT]    topology -- skeleton link 11  1 3
+[TRT]    topology -- skeleton link 12  2 4
+[TRT]    topology -- skeleton link 13  3 5
+[TRT]    topology -- skeleton link 14  4 6
+[TRT]    topology -- skeleton link 15  5 7
+[TRT]    topology -- skeleton link 16  18 1
+[TRT]    topology -- skeleton link 17  18 6
+[TRT]    topology -- skeleton link 18  18 7
+[TRT]    topology -- skeleton link 19  18 12
+[TRT]    topology -- skeleton link 20  18 13
+[TRT]    poseNet -- keypoint 00 'nose'  color 255 0 85 255
+[TRT]    poseNet -- keypoint 01 'left_eye'  color 255 0 0 255
+[TRT]    poseNet -- keypoint 02 'right_eye'  color 255 85 0 255
+[TRT]    poseNet -- keypoint 03 'left_ear'  color 255 170 0 255
+[TRT]    poseNet -- keypoint 04 'right_ear'  color 255 255 0 255
+[TRT]    poseNet -- keypoint 05 'left_shoulder'  color 170 255 0 255
+[TRT]    poseNet -- keypoint 06 'right_shoulder'  color 85 255 0 255
+[TRT]    poseNet -- keypoint 07 'left_elbow'  color 0 255 0 255
+[TRT]    poseNet -- keypoint 08 'right_elbow'  color 0 255 85 255
+[TRT]    poseNet -- keypoint 09 'left_wrist'  color 0 255 170 255
+[TRT]    poseNet -- keypoint 10 'right_wrist'  color 0 255 255 255
+[TRT]    poseNet -- keypoint 11 'left_hip'  color 0 170 255 255
+[TRT]    poseNet -- keypoint 12 'right_hip'  color 0 85 255 255
+[TRT]    poseNet -- keypoint 13 'left_knee'  color 0 0 255 255
+[TRT]    poseNet -- keypoint 14 'right_knee'  color 255 0 170 255
+[TRT]    poseNet -- keypoint 15 'left_ankle'  color 170 0 255 255
+[TRT]    poseNet -- keypoint 16 'right_ankle'  color 255 0 255 255
+[TRT]    poseNet -- keypoint 17 'neck'  color 85 0 255 255
+[TRT]    poseNet -- loaded 18 class colors
+[TRT]    TensorRT version 8.0.1
+[TRT]    loading NVIDIA plugins...
+[TRT]    Registered plugin creator - ::GridAnchor_TRT version 1
+[TRT]    Registered plugin creator - ::GridAnchorRect_TRT version 1
+[TRT]    Registered plugin creator - ::NMS_TRT version 1
+[TRT]    Registered plugin creator - ::Reorg_TRT version 1
+[TRT]    Registered plugin creator - ::Region_TRT version 1
+[TRT]    Registered plugin creator - ::Clip_TRT version 1
+[TRT]    Registered plugin creator - ::LReLU_TRT version 1
+[TRT]    Registered plugin creator - ::PriorBox_TRT version 1
+[TRT]    Registered plugin creator - ::Normalize_TRT version 1
+[TRT]    Registered plugin creator - ::ScatterND version 1
+[TRT]    Registered plugin creator - ::RPROI_TRT version 1
+[TRT]    Registered plugin creator - ::BatchedNMS_TRT version 1
+[TRT]    Registered plugin creator - ::BatchedNMSDynamic_TRT version 1
+[0;31m[TRT]    Could not register plugin creator -  ::FlattenConcat_TRT version 1
+[0m[TRT]    Registered plugin creator - ::CropAndResize version 1
+[TRT]    Registered plugin creator - ::DetectionLayer_TRT version 1
+[TRT]    Registered plugin creator - ::EfficientNMS_ONNX_TRT version 1
+[TRT]    Registered plugin creator - ::EfficientNMS_TRT version 1
+[TRT]    Registered plugin creator - ::Proposal version 1
+[TRT]    Registered plugin creator - ::ProposalLayer_TRT version 1
+[TRT]    Registered plugin creator - ::PyramidROIAlign_TRT version 1
+[TRT]    Registered plugin creator - ::ResizeNearest_TRT version 1
+[TRT]    Registered plugin creator - ::Split version 1
+[TRT]    Registered plugin creator - ::SpecialSlice_TRT version 1
+[TRT]    Registered plugin creator - ::InstanceNormalization_TRT version 1
+[TRT]    detected model format - ONNX  (extension '.onnx')
+[TRT]    desired precision specified for GPU: FASTEST
+[0;33m[TRT]    requested fasted precision for device GPU without providing valid calibrator, disabling INT8
+[0m[TRT]    [MemUsageChange] Init CUDA: CPU +198, GPU +0, now: CPU 228, GPU 1839 (MiB)
+[TRT]    native precisions detected for GPU:  FP32, FP16
+[TRT]    selecting fastest native precision for GPU:  FP16
+[TRT]    attempting to open engine cache file /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx.1.1.8001.GPU.FP16.engine
+[TRT]    loading network plan from engine cache... /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx.1.1.8001.GPU.FP16.engine
+[0;32m[TRT]    device GPU, loaded /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx
+[0m[TRT]    [MemUsageChange] Init CUDA: CPU +0, GPU +0, now: CPU 308, GPU 1938 (MiB)
+[TRT]    Loaded engine size: 79 MB
+[TRT]    [MemUsageSnapshot] deserializeCudaEngine begin: CPU 308 MiB, GPU 1938 MiB
+[0;33m[TRT]    Using an engine plan file across different models of devices is not recommended and is likely to affect performance or even cause errors.
+[0m[TRT]    Using cublas a tactic source
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +159, GPU +7, now: CPU 467, GPU 1945 (MiB)
+[TRT]    Using cuDNN as a tactic source
+[TRT]    [MemUsageChange] Init cuDNN: CPU +240, GPU -23, now: CPU 707, GPU 1922 (MiB)
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU +0, now: CPU 707, GPU 1911 (MiB)
+[TRT]    Deserialization required 6591784 microseconds.
+[TRT]    [MemUsageSnapshot] deserializeCudaEngine end: CPU 707 MiB, GPU 1911 MiB
+[TRT]    [MemUsageSnapshot] ExecutionContext creation begin: CPU 707 MiB, GPU 1911 MiB
+[TRT]    Using cublas a tactic source
+[TRT]    [MemUsageChange] Init cuBLAS/cuBLASLt: CPU +0, GPU +3, now: CPU 707, GPU 1914 (MiB)
+[TRT]    Using cuDNN as a tactic source
+[TRT]    [MemUsageChange] Init cuDNN: CPU +0, GPU +0, now: CPU 707, GPU 1914 (MiB)
+[TRT]    Total per-runner device memory is 49521152
+[TRT]    Total per-runner host memory is 30160
+[TRT]    Allocated activation device memory of size 18128896
+[TRT]    [MemUsageSnapshot] ExecutionContext creation end: CPU 707 MiB, GPU 1906 MiB
+[TRT]    
+[TRT]    CUDA engine context initialized on device GPU:
+[TRT]       -- layers       43
+[TRT]       -- maxBatchSize 1
+[TRT]       -- deviceMemory 18128896
+[TRT]       -- bindings     3
+[TRT]       binding 0
+                -- index   0
+                -- name    'input'
+                -- type    FP32
+                -- in/out  INPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  3
+                -- dim #2  224
+                -- dim #3  224
+[TRT]       binding 1
+                -- index   1
+                -- name    'cmap'
+                -- type    FP32
+                -- in/out  OUTPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  18
+                -- dim #2  56
+                -- dim #3  56
+[TRT]       binding 2
+                -- index   2
+                -- name    'paf'
+                -- type    FP32
+                -- in/out  OUTPUT
+                -- # dims  4
+                -- dim #0  1
+                -- dim #1  42
+                -- dim #2  56
+                -- dim #3  56
+[TRT]    
+[TRT]    binding to input 0 input  binding index:  0
+[TRT]    binding to input 0 input  dims (b=1 c=3 h=224 w=224) size=602112
+[TRT]    binding to output 0 cmap  binding index:  1
+[TRT]    binding to output 0 cmap  dims (b=1 c=18 h=56 w=56) size=225792
+[TRT]    binding to output 1 paf  binding index:  2
+[TRT]    binding to output 1 paf  dims (b=1 c=42 h=56 w=56) size=526848
+[TRT]    
+[0;32m[TRT]    device GPU, /usr/local/bin/networks/Pose-ResNet18-Body/pose_resnet18_body.onnx initialized.
+[0m[OpenGL] glDisplay -- X screen 0 resolution:  1920x1080
+[OpenGL] glDisplay -- X window resolution:    1920x1080
+[OpenGL] glDisplay -- display device initialized (1920x1080)
+[0;32m[video]  created glDisplay from display://0
+[0m------------------------------------------------
+glDisplay video options:
+------------------------------------------------
+  -- URI: display://0
+     - protocol:  display
+     - location:  0
+  -- deviceType: display
+  -- ioType:     output
+  -- codec:      raw
+  -- width:      1920
+  -- height:     1080
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[gstreamer] initialized gstreamer, version 1.14.5.0
+[gstreamer] gstCamera -- attempting to create device csi://0
+[gstreamer] gstCamera pipeline string:
+[gstreamer] nvarguscamerasrc sensor-id=0 ! video/x-raw(memory:NVMM), width=(int)1280, height=(int)720, framerate=30/1, format=(string)NV12 ! nvvidconv flip-method=2 ! video/x-raw(memory:NVMM) ! appsink name=mysink
+[gstreamer] gstCamera successfully created device csi://0
+[0;32m[video]  created gstCamera from csi://0
+[0m------------------------------------------------
+gstCamera video options:
+------------------------------------------------
+  -- URI: csi://0
+     - protocol:  csi
+     - location:  0
+  -- deviceType: csi
+  -- ioType:     input
+  -- codec:      raw
+  -- width:      1280
+  -- height:     720
+  -- frameRate:  30.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: rotate-180
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[0;33m[gstreamer] gstEncoder -- codec not specified, defaulting to H.264
+[0m[gstreamer] gstEncoder -- pipeline launch string:
+[gstreamer] appsrc name=mysource is-live=true do-timestamp=true format=3 ! omxh264enc bitrate=4000000 ! video/x-h264 !  h264parse ! qtmux ! filesink location=test_video.mp4
+[0;32m[video]  created gstEncoder from file:///home/samjet/test_video.mp4
+[0m------------------------------------------------
+gstEncoder video options:
+------------------------------------------------
+  -- URI: file:///home/samjet/test_video.mp4
+     - protocol:  file
+     - location:  test_video.mp4
+     - extension: mp4
+  -- deviceType: file
+  -- ioType:     output
+  -- codec:      h264
+  -- width:      0
+  -- height:     0
+  -- frameRate:  30.000000
+  -- bitRate:    4000000
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[OpenGL] glDisplay -- X screen 0 resolution:  1920x1080
+[OpenGL] glDisplay -- X window resolution:    1920x1080
+[OpenGL] glDisplay -- display device initialized (1920x1080)
+[0;32m[video]  created glDisplay from display://0
+[0m------------------------------------------------
+glDisplay video options:
+------------------------------------------------
+  -- URI: display://0
+     - protocol:  display
+     - location:  0
+  -- deviceType: display
+  -- ioType:     output
+  -- codec:      raw
+  -- width:      1920
+  -- height:     1080
+  -- frameRate:  0.000000
+  -- bitRate:    0
+  -- numBuffers: 4
+  -- zeroCopy:   true
+  -- flipMethod: none
+  -- loop:       0
+  -- rtspLatency 2000
+------------------------------------------------
+[gstreamer] opening gstCamera for streaming, transitioning pipeline to GST_STATE_PLAYING
+[gstreamer] gstreamer changed state from NULL to READY ==> mysink
+[gstreamer] gstreamer changed state from NULL to READY ==> capsfilter1
+[gstreamer] gstreamer changed state from NULL to READY ==> nvvconv0
+[gstreamer] gstreamer changed state from NULL to READY ==> capsfilter0
+[gstreamer] gstreamer changed state from NULL to READY ==> nvarguscamerasrc0
+[gstreamer] gstreamer changed state from NULL to READY ==> pipeline0
+[gstreamer] gstreamer changed state from READY to PAUSED ==> capsfilter1
+[gstreamer] gstreamer changed state from READY to PAUSED ==> nvvconv0
+[gstreamer] gstreamer changed state from READY to PAUSED ==> capsfilter0
+[gstreamer] gstreamer stream status CREATE ==> src
+[gstreamer] gstreamer changed state from READY to PAUSED ==> nvarguscamerasrc0
+[gstreamer] gstreamer changed state from READY to PAUSED ==> pipeline0
+[gstreamer] gstreamer stream status ENTER ==> src
+[gstreamer] gstreamer message new-clock ==> pipeline0
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> capsfilter1
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> nvvconv0
+[gstreamer] gstreamer message stream-start ==> pipeline0
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> capsfilter0
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> nvarguscamerasrc0
+GST_ARGUS: Creating output stream
+CONSUMER: Waiting until producer is connected...
+GST_ARGUS: Available Sensor modes :
+GST_ARGUS: 3264 x 2464 FR = 21.000000 fps Duration = 47619048 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 3264 x 1848 FR = 28.000001 fps Duration = 35714284 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1920 x 1080 FR = 29.999999 fps Duration = 33333334 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1640 x 1232 FR = 29.999999 fps Duration = 33333334 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1280 x 720 FR = 59.999999 fps Duration = 16666667 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: 1280 x 720 FR = 120.000005 fps Duration = 8333333 ; Analog Gain range min 1.000000, max 10.625000; Exposure Range min 13000, max 683709000;
+
+GST_ARGUS: Running with following settings:
+   Camera index = 0 
+   Camera mode  = 5 
+   Output Stream W = 1280 H = 720 
+   seconds to Run    = 0 
+   Frame Rate = 120.000005 
+GST_ARGUS: Setup Complete, Starting captures for 0 seconds
+GST_ARGUS: Starting repeat capture requests.
+CONSUMER: Producer has connected; continuing.
+[gstreamer] gstCamera -- onPreroll
+[gstreamer] gstBufferManager recieve caps:  video/x-raw(memory:NVMM), width=(int)1280, height=(int)720, format=(string)NV12, framerate=(fraction)30/1
+[gstreamer] gstBufferManager -- recieved first frame, codec=raw format=nv12 width=1280 height=720 size=1008
+[gstreamer] gstBufferManager -- recieved NVMM memory
+[gstreamer] gstreamer changed state from READY to PAUSED ==> mysink
+[gstreamer] gstreamer message async-done ==> pipeline0
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> mysink
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> pipeline0
+RingBuffer -- allocated 4 buffers (2764800 bytes each, 11059200 bytes total)
+[OpenGL] glDisplay -- set the window size to 1280x720
+[OpenGL] creating 1280x720 texture (GL_RGB8 format, 2764800 bytes)
+[cuda]   registered openGL texture for interop access (1280x720, GL_RGB8, 2764800 bytes)
+RingBuffer -- allocated 2 buffers (1382400 bytes each, 2764800 bytes total)
+[gstreamer] gstEncoder-- starting pipeline, transitioning to GST_STATE_PLAYING
+[gstreamer] gstreamer changed state from NULL to READY ==> filesink0
+[gstreamer] gstreamer changed state from NULL to READY ==> qtmux0
+[gstreamer] gstreamer changed state from NULL to READY ==> h264parse0
+[gstreamer] gstreamer changed state from NULL to READY ==> capsfilter2
+[gstreamer] gstreamer changed state from NULL to READY ==> omxh264enc-omxh264enc0
+[gstre[2021-12-06 21:33:25]	Camera 0 started...
+
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 13.12149852961738
+Right Lower Leg Slope: 24.550637360577372
+Right knee angle = 2.025642848635496
+     Off by -52.9743571513645 degrees
+---------------------
+---------------------
+Right Back Slope: 5.760941718728973
+Right Upper Leg Slope: 13.12149852961738
+Hip angle = 5.489302866550427
+     Off by -119.51069713344957 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+Current Score: 441.6168476160469
+---------------------
+Right Upper Leg Slope: 10.421978202499234
+Right Lower Leg Slope: 13.30714438108538
+Right knee angle = 1.1832498201209327
+     Off by -53.816750179879065 degrees
+---------------------
+---------------------
+Right Back Slope: 6.007804322347888
+Right Upper Leg Slope: 10.421978202499234
+Hip angle = 3.9694394528809833
+     Off by -121.03056054711902 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+Current Score: 449.49103575666027
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 10.929066995231798
+Right Lower Leg Slope: 16.803826840677218
+Right knee angle = 1.8222863218424925
+     Off by -53.17771367815751 degrees
+---------------------
+---------------------
+Right Back Slope: 6.05975147652806
+Right Upper Leg Slope: 10.929066995231798
+Hip angle = 4.142726858621978
+     Off by -120.85727314137802 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 15.599376664295429
+Right Lower Leg Slope: 14.20596014278362
+Right knee angle = 0.35864494304321526
+     Off by -54.64135505695678 degrees
+---------------------
+---------------------
+Right Back Slope: 6.141458862039795
+Right Upper Leg Slope: 15.599376664295429
+Hip angle = 5.5802473037425075
+     Off by -119.41975269625749 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 10.81536335616303
+Right Lower Leg Slope: 14.508320441637704
+Right knee angle = 1.3396782988175808
+     Off by -53.66032170118242 degrees
+---------------------
+---------------------
+Right Back Slope: 5.75797109050516
+Right Upper Leg Slope: 10.81536335616303
+Hip angle = 4.569807841261515
+     Off by -120.43019215873849 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 16.500723252644708
+Right Lower Leg Slope: 16.440832196409946
+Right knee angle = 0.012602592347050558
+     Off by -54.98739740765295 degrees
+---------------------
+---------------------
+Right Back Slope: 6.252277005231895
+Right Upper Leg Slope: 16.500723252644708
+Hip angle = 5.618943983693641
+     Off by -119.38105601630636 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 10.666118299012352
+Right Lower Leg Slope: 14.736474129699461
+Right knee angle = 1.4740252699624397
+     Off by -53.52597473003756 degrees
+---------------------
+---------------------
+Right Back Slope: 6.009311348848472
+Right Upper Leg Slope: 10.666118299012352
+Hip angle = 4.09182620588748
+     Off by -120.90817379411251 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 15.36890382862352
+Right Lower Leg Slope: 16.442583025366417
+Right knee angle = 0.24247470895552514
+     Off by -54.75752529104447 degrees
+---------------------
+---------------------
+Right Back Slope: 6.348797038422023
+Right Upper Leg Slope: 15.36890382862352
+Hip angle = 5.228341164201864
+     Off by -119.77165883579814 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 11.256387313303446
+Right Lower Leg Slope: 14.95847813258147
+Right knee angle = 1.2521099631666033
+     Off by -53.7478900368334 degrees
+---------------------
+---------------------
+Right Back Slope: 6.011432715164845
+Right Upper Leg Slope: 11.256387313303446
+Hip angle = 4.367910456152466
+     Off by -120.63208954384753 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 15.106821565291366
+Right Lower Leg Slope: 17.517864805428164
+Right knee angle = 0.5200240724061383
+     Off by -54.47997592759386 degrees
+---------------------
+---------------------
+Right Back Slope: 6.303458833379794
+Right Upper Leg Slope: 15.106821565291366
+Hip angle = 5.227270674073995
+     Off by -119.77272932592601 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 11.401516644100052
+Right Lower Leg Slope: 15.760712206873102
+Right knee angle = 1.381962192197771
+     Off by -53.61803780780223 degrees
+---------------------
+---------------------
+Right Back Slope: 6.115124233875322
+Right Upper Leg Slope: 11.401516644100052
+Hip angle = 4.2748657571736794
+     Off by -120.72513424282631 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 15.933430906447684
+Right Lower Leg Slope: 16.002983623696576
+Right knee angle = 0.015567775467202281
+     Off by -54.984432224532796 degrees
+---------------------
+---------------------
+Right Back Slope: 6.26328652672625
+Right Upper Leg Slope: 15.933430906447684
+Hip angle = 5.4800772668759725
+     Off by -119.51992273312403 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 11.374928688323207
+Right Lower Leg Slope: 16.153206671860612
+Right knee angle = 1.481605522240585
+     Off by -53.518394477759415 degrees
+---------------------
+---------------------
+Right Back Slope: 5.830284919825499
+Right Upper Leg Slope: 11.374928688323207
+Hip angle = 4.708460853201639
+     Off by -120.29153914679836 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 15.916312032878617
+Right Lower Leg Slope: 15.891481902971982
+Right knee angle = 0.005602490609653273
+     Off by -54.994397509390346 degrees
+---------------------
+---------------------
+Right Back Slope: 6.291021387958757
+Right Upper Leg Slope: 15.916312032878617
+Hip angle = 5.436893304840546
+     Off by -119.56310669515945 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 14.197495505018317
+Right Lower Leg Slope: 13.603014132758085
+Right knee angle = 0.1754565993723955
+     Off by -54.824543400627604 degrees
+---------------------
+---------------------
+Right Back Slope: 6.654727939442677
+Right Upper Leg Slope: 14.197495505018317
+Hip angle = 4.516872285925445
+     Off by -120.48312771407456 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+Current Score: 451.02557038234056
+---------------------
+Right Upper Leg Slope: 17.198560700876094
+Right Lower Leg Slope: 16.17952255464269
+Right knee angle = 0.2090717783306852
+     Off by -54.79092822166931 degrees
+---------------------
+---------------------
+Right Back Slope: 6.074475577588692
+Right Upper Leg Slope: 17.198560700876094
+Hip angle = 6.020688483445175
+     Off by -118.97931151655483 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 11.773696551136121
+Right Lower Leg Slope: 14.736031135852487
+Right knee angle = 0.9725807505926892
+     Off by -54.02741924940731 degrees
+---------------------
+---------------------
+Right Back Slope: 5.859034653173928
+Right Upper Leg Slope: 11.773696551136121
+Hip angle = 4.830946840914397
+     Off by -120.1690531590856 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 15.769125272732424
+Right Lower Leg Slope: 18.465383178235264
+Right knee angle = 0.5287092166807835
+     Off by -54.47129078331922 degrees
+---------------------
+---------------------
+Right Back Slope: 6.122256022627067
+Right Upper Leg Slope: 15.769125272732424
+Hip angle = 5.648129129644295
+     Off by -119.35187087035571 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 9.204133265865936
+Right Lower Leg Slope: 14.327569534443226
+Right knee angle = 2.208170446784967
+     Off by -52.79182955321503 degrees
+---------------------
+---------------------
+Right Back Slope: 4.731921132828749
+Right Upper Leg Slope: 9.204133265865936
+Hip angle = 5.732096486577366
+     Off by -119.26790351342264 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 15.832948078680008
+Right Lower Leg Slope: 15.682166420958504
+Right knee angle = 0.03465434165137506
+     Off by -54.965345658348625 degrees
+---------------------
+---------------------
+Right Back Slope: 6.195523849975696
+Right Upper Leg Slope: 15.832948078680008
+Hip angle = 5.554885820667002
+     Off by -119.445114179333 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 15.620047318911556
+Right Lower Leg Slope: 17.615624883420438
+Right knee angle = 0.41402617278085124
+     Off by -54.58597382721915 degrees
+---------------------
+---------------------
+Right Back Slope: 6.098696897565917
+Right Upper Leg Slope: 15.620047318911556
+Hip angle = 5.648801067486595
+     Off by -119.3511989325134 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 9.08982225309655
+Right Lower Leg Slope: 13.663643903132552
+Right knee angle = 2.092204401007886
+     Off by -52.90779559899212 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 16.053568616897934
+Right Lower Leg Slope: 20.829641179329336
+Right knee angle = 0.8158568975648933
+     Off by -54.18414310243511 degrees
+---------------------
+---------------------
+Right Back Slope: 5.712049004201836
+Right Upper Leg Slope: 16.053568616897934
+Hip angle = 6.365623605749597
+     Off by -118.63437639425041 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 10.052530724505306
+Right Lower Leg Slope: 14.432917779756604
+Right knee angle = 1.7174828337285966
+     Off by -53.282517166271404 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 16.51793289282951
+Right Lower Leg Slope: 17.805846284877422
+Right knee angle = 0.25004266046231566
+     Off by -54.74995733953769 degrees
+---------------------
+---------------------
+Right Back Slope: 5.79330591874232
+Right Upper Leg Slope: 16.51793289282951
+Hip angle = 6.3290185916718835
+     Off by -118.67098140832812 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 21.70827706627171
+Right Lower Leg Slope: 17.151296342972365
+Right knee angle = 0.6993443548565056
+     Off by -54.30065564514349 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 15.130235053438012
+Right Lower Leg Slope: 15.791710239485358
+Right knee angle = 0.15795973412918674
+     Off by -54.842040265870814 degrees
+---------------------
+---------------------
+Right Back Slope: 5.6969551375286285
+Right Upper Leg Slope: 15.130235053438012
+Hip angle = 6.174498187586242
+     Off by -118.82550181241376 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 23.935716823735575
+Right Lower Leg Slope: 16.330173991710673
+Right knee angle = 1.1118633443605246
+     Off by -53.88813665563948 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 16.971927592001755
+Right Lower Leg Slope: 19.75107972721066
+Right knee angle = 0.47359750394071737
+     Off by -54.52640249605928 degrees
+---------------------
+---------------------
+Right Back Slope: 5.581205863616032
+Right Upper Leg Slope: 16.971927592001755
+Hip angle = 6.7860405268519814
+     Off by -118.21395947314802 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 12.292376850530545
+Right Lower Leg Slope: 17.87155810168764
+Right knee angle = 1.4482045219162647
+     Off by -53.55179547808373 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 17.155277864683978
+Right Lower Leg Slope: 15.445972889796689
+Right knee angle = 0.36820298019226017
+     Off by -54.63179701980774 degrees
+---------------------
+---------------------
+Right Back Slope: 5.632186811717782
+Right Upper Leg Slope: 17.155277864683978
+Hip angle = 6.731939316109699
+     Off by -118.2680606838903 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 12.062701023840507
+Right Lower Leg Slope: 17.560904773894357
+Right knee angle = 1.479823998867772
+     Off by -53.52017600113223 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 16.58134472870263
+Right Lower Leg Slope: 15.40425867742752
+Right knee angle = 0.2630087944414341
+     Off by -54.73699120555857 degrees
+---------------------
+---------------------
+Right Back Slope: 5.8898134189232305
+Right Upper Leg Slope: 16.58134472870263
+Hip angle = 6.18479761247718
+     Off by -118.81520238752282 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 10.97842672857651
+Right Lower Leg Slope: 15.98516663302489
+Right knee angle = 1.6249358773448856
+     Off by -53.37506412265511 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 17.127263926672057
+Right Lower Leg Slope: 15.810795978946842
+Right knee angle = 0.2775153329682834
+     Off by -54.722484667031715 degrees
+---------------------
+---------------------
+Right Back Slope: 5.914875154877063
+Right Upper Leg Slope: 17.127263926672057
+Hip angle = 6.254482720435541
+     Off by -118.74551727956445 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 11.571731351336341
+Right Lower Leg Slope: 15.082766319906455
+Right knee angle = 1.145880484649819
+     Off by -53.85411951535018 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 18.481811445148555
+Right Lower Leg Slope: 15.624841221626996
+Right knee angle = 0.5648755889552808
+     Off by -54.43512441104472 degrees
+---------------------
+---------------------
+Right Back Slope: 5.913464229313476
+Right Upper Leg Slope: 18.481811445148555
+Hip angle = 6.501135702443936
+     Off by -118.49886429755607 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 11.333378905643984
+Right Lower Leg Slope: 16.6929081202585
+Right knee angle = 1.6141853598233595
+     Off by -53.38581464017664 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 17.062350470276687
+Right Lower Leg Slope: 14.381478762513114
+Right knee angle = 0.6234086830873067
+     Off by -54.376591316912695 degrees
+---------------------
+---------------------
+Right Back Slope: 5.965105020066339
+Right Upper Leg Slope: 17.062350470276687
+Hip angle = 6.162478946729706
+     Off by -118.8375210532703 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 11.934427037146516
+Right Lower Leg Slope: 16.256863864402312
+Right knee angle = 1.2697234725106148
+     Off by -53.73027652748939 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 17.247126162652037
+Right Lower Leg Slope: 15.208826751847909
+Right knee angle = 0.44352384016416885
+     Off by -54.55647615983583 degrees
+---------------------
+---------------------
+Right Back Slope: 6.016709717581621
+Right Upper Leg Slope: 17.247126162652037
+Hip angle = 6.118183794350668
+     Off by -118.88181620564933 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 13.61211779225167
+Right Lower Leg Slope: 15.765089468882337
+Right knee angle = 0.5721439379245156
+     Off by -54.427856062075485 degrees
+---------------------
+---------------------
+detected 3 objects in image
+---------------------
+Right Upper Leg Slope: 18.11984455673776
+Right Lower Leg Slope: 16.729335372509034
+Right knee angle = 0.2619569856089904
+     Off by -54.73804301439101 degrees
+---------------------
+---------------------
+Right Back Slope: 5.815947430788887
+Right Upper Leg Slope: 18.11984455673776
+Hip angle = 6.597258194176635
+     Off by -118.40274180582337 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 15.848745795735324
+Right Lower Leg Slope: 14.705399428549063
+Right knee angle = 0.27987610924097595
+     Off by -54.72012389075903 degrees
+---------------------
+---------------------
+Right Back Slope: 4.747452304435657
+Right Upper Leg Slope: 15.848745795735324
+Hip angle = 8.284480675780744
+     Off by -116.71551932421926 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+detected 3 objects in image
+---------------------
+Right Upper Leg Slope: 17.431884012977136
+Right Lower Leg Slope: 14.825822755563257
+Right knee angle = 0.5755092717559795
+     Off by -54.424490728244024 degrees
+---------------------
+---------------------
+Right Back Slope: 5.823110916774843
+Right Upper Leg Slope: 17.431884012977136
+Hip angle = 6.4610884978255925
+     Off by -118.53891150217441 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 16.339512890125423
+Right Lower Leg Slope: 16.268006364708786
+Right knee angle = 0.01535550413586041
+     Off by -54.98464449586414 degrees
+---------------------
+---------------------
+Right Back Slope: 4.234718453964942
+Right Upper Leg Slope: 16.339512890125423
+Hip angle = 9.78439845329675
+     Off by -115.21560154670325 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 19.29072434467373
+Right Lower Leg Slope: 14.891729248665632
+Right knee angle = 0.8742579182994881
+     Off by -54.12574208170051 degrees
+---------------------
+---------------------
+Right Back Slope: 5.8595411901348635
+Right Upper Leg Slope: 19.29072434467373
+Hip angle = 6.717431507510645
+     Off by -118.28256849248936 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 19.118172782376327
+Right Lower Leg Slope: 15.753006987057459
+Right knee angle = 0.638060198991027
+     Off by -54.36193980100897 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 18.432536062300848
+Right Lower Leg Slope: 14.912257905919123
+Right knee angle = 0.7310892797612212
+     Off by -54.26891072023878 degrees
+---------------------
+---------------------
+Right Back Slope: 5.7466377760720055
+Right Upper Leg Slope: 18.432536062300848
+Hip angle = 6.766105346073476
+     Off by -118.23389465392653 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 16.682356443315122
+Right Lower Leg Slope: 17.901098043921756
+Right knee angle = 0.23304670002821107
+     Off by -54.76695329997179 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 18.48634765071587
+Right Lower Leg Slope: 14.676092626028144
+Right knee angle = 0.8016577055453699
+     Off by -54.19834229445463 degrees
+---------------------
+---------------------
+Right Back Slope: 5.902244338661722
+Right Upper Leg Slope: 18.48634765071587
+Hip angle = 6.519799592414469
+     Off by -118.48020040758553 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 15.83489725878622
+Right Lower Leg Slope: 17.957756153059435
+Right knee angle = 0.4262298231168855
+     Off by -54.573770176883116 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 17.318623363566033
+Right Lower Leg Slope: 15.601699140840749
+Right knee angle = 0.3627257196796261
+     Off by -54.637274280320376 degrees
+---------------------
+---------------------
+Right Back Slope: 5.826191790872628
+Right Upper Leg Slope: 17.318623363566033
+Hip angle = 6.434610077101903
+     Off by -118.56538992289809 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 15.278894786463244
+Right Lower Leg Slope: 18.09685567512295
+Right knee angle = 0.5818080833200004
+     Off by -54.41819191668 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 18.47907431011935
+Right Lower Leg Slope: 16.687724399287802
+Right knee angle = 0.33175296660212894
+     Off by -54.66824703339787 degrees
+---------------------
+---------------------
+Right Back Slope: 5.841242118454358
+Right Upper Leg Slope: 18.47907431011935
+Hip angle = 6.6171040287709175
+     Off by -118.38289597122909 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 16.114493215054235
+Right Lower Leg Slope: 24.135809438713345
+Right knee angle = 1.1784558448186162
+     Off by -53.821544155181385 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 16.820036390364987
+Right Lower Leg Slope: 20.972231756149384
+Right knee angle = 0.6724801603514285
+     Off by -54.32751983964857 degrees
+---------------------
+---------------------
+Right Back Slope: 5.668113329839636
+Right Upper Leg Slope: 16.820036390364987
+Hip angle = 6.603081637307591
+     Off by -118.3969183626924 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 16.22326731583264
+Right Lower Leg Slope: 18.11732860808994
+Right knee angle = 0.3679621347094061
+     Off by -54.63203786529059 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 17.991579980436697
+Right Lower Leg Slope: 18.292038585390657
+Right knee angle = 0.05215045657263681
+     Off by -54.94784954342736 degrees
+---------------------
+---------------------
+Right Back Slope: 5.7759418144112535
+Right Upper Leg Slope: 17.991579980436697
+Hip angle = 6.641045837519398
+     Off by -118.3589541624806 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 16.027792724038346
+Right Lower Leg Slope: 16.870443713310273
+Right knee angle = 0.17789574861526522
+     Off by -54.82210425138474 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 16.23251522421111
+Right Lower Leg Slope: 20.638553445530135
+Right knee angle = 0.7512535207460154
+     Off by -54.24874647925398 degrees
+---------------------
+---------------------
+Right Back Slope: 5.552753112555794
+Right Upper Leg Slope: 16.23251522421111
+Hip angle = 6.683778392072749
+     Off by -118.31622160792725 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 13.832582627716299
+Right Lower Leg Slope: 13.485505703773978
+Right knee angle = 0.10603650849827331
+     Off by -54.89396349150173 degrees
+---------------------
+---------------------
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 22.03325005581775
+Right Lower Leg Slope: 15.93049790783229
+Right knee angle = 0.9932564604557261
+     Off by -54.006743539544274 degrees
+---------------------
+---------------------
+Right Back Slope: 4.526287427027825
+Right Upper Leg Slope: 22.03325005581775
+Hip angle = 9.859681966159306
+     Off by -115.1403180338407 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 16.57764829530737
+Right Lower Leg Slope: 20.36985453177415
+Right knee angle = 0.6415069820178023
+     Off by -54.3584930179822 degrees
+---------------------
+---------------------
+Right Back Slope: 5.706320301477881
+Right Upper Leg Slope: 16.57764829530737
+Hip angle = 6.4878015865648875
+     Off by -118.51219841343512 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 14.02824266231841
+Right Lower Leg Slope: 16.880790824123675
+Right knee angle = 0.6872403336137921
+     Off by -54.31275966638621 degrees
+---------------------
+---------------------
+Right Back Slope: 5.8222027438242145
+Right Upper Leg Slope: 14.02824266231841
+Hip angle = 5.668399840221838
+     Off by -119.33160015977816 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 23.449312094243087
+Right Lower Leg Slope: 11.228542020240116
+Right knee angle = 2.647355243929488
+     Off by -52.35264475607051 degrees
+---------------------
+---------------------
+Right Back Slope: 4.950650306056536
+Right Upper Leg Slope: 23.449312094243087
+Hip angle = 8.977816510756625
+     Off by -116.02218348924337 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 15.640233215294916
+Right Lower Leg Slope: 15.248738955823294
+Right knee angle = 0.09365981772089206
+     Off by -54.90634018227911 degrees
+---------------------
+---------------------
+Right Back Slope: 5.639753645711158
+Right Upper Leg Slope: 15.640233215294916
+Hip angle = 6.396387201461511
+     Off by -118.60361279853849 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 33.73654154509371
+Right Lower Leg Slope: 7.003997978493978
+Right knee angle = 6.427690734376889
+     Off by -48.57230926562311 degrees
+---------------------
+---------------------
+Right Back Slope: 6.280964321933579
+Right Upper Leg Slope: 33.73654154509371
+Hip angle = 7.348373053146078
+     Off by -117.65162694685392 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 12.824783555567432
+Right Lower Leg Slope: 14.752117794055275
+Right knee angle = 0.5805918292203279
+     Off by -54.419408170779676 degrees
+---------------------
+---------------------
+Right Back Slope: 5.742979502374158
+Right Upper Leg Slope: 12.824783555567432
+Hip angle = 5.419068743278247
+     Off by -119.58093125672175 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 18.100641298804724
+Right Lower Leg Slope: 19.198170426781353
+Right knee angle = 0.18044110191548615
+     Off by -54.819558898084516 degrees
+---------------------
+---------------------
+Right Back Slope: 11.233482471445658
+Right Upper Leg Slope: 18.100641298804724
+Hip angle = 1.9248517307086777
+     Off by -123.07514826929132 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+Current Score: 459.6490238912528
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 15.539075881167847
+Right Lower Leg Slope: 52.95658860402188
+Right knee angle = 2.6003188143283356
+     Off by -52.39968118567167 degrees
+---------------------
+---------------------
+Right Back Slope: 42.1070601627904
+Right Upper Leg Slope: 15.539075881167847
+Hip angle = 2.3216679279658408
+     Off by -122.67833207203415 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 12.660485756440812
+Right Lower Leg Slope: 14.679167566789083
+Right knee angle = 0.6190008047164021
+     Off by -54.3809991952836 degrees
+---------------------
+---------------------
+Right Back Slope: 6.203978679470016
+Right Upper Leg Slope: 12.660485756440812
+Hip angle = 4.640387605985944
+     Off by -120.35961239401405 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 18.14799736342135
+Right Lower Leg Slope: 7.0889765860061535
+Right knee angle = 4.875446162937264
+     Off by -50.124553837062734 degrees
+---------------------
+---------------------
+Right Back Slope: 8.311327679226784
+Right Upper Leg Slope: 18.14799736342135
+Hip angle = 3.7067672650218833
+     Off by -121.29323273497812 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 13.491014617263943
+Right Lower Leg Slope: 13.487852805517942
+Right knee angle = 0.000990127333121056
+     Off by -54.99900987266688 degrees
+---------------------
+---------------------
+Right Back Slope: 6.344799779973534
+Right Upper Leg Slope: 13.491014617263943
+Hip angle = 4.717468153549284
+     Off by -120.28253184645072 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 7.8758058281912176
+Right Lower Leg Slope: 6.060178795964057
+Right knee angle = 2.133844542013036
+     Off by -52.86615545798696 degrees
+---------------------
+---------------------
+Right Back Slope: 5.737750520562207
+Right Upper Leg Slope: 7.8758058281912176
+Hip angle = 2.6502648001696483
+     Off by -122.34973519983035 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 11.48248941827429
+Right Lower Leg Slope: 12.51255136636972
+Right knee angle = 0.4079288590934912
+     Off by -54.59207114090651 degrees
+---------------------
+---------------------
+Right Back Slope: 6.976257389110562
+Right Upper Leg Slope: 11.48248941827429
+Hip angle = 3.1801186689957124
+     Off by -121.81988133100428 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 5.966512664731069
+Right Lower Leg Slope: 29.983756093098627
+Right knee angle = 7.604275663726838
+     Off by -47.39572433627316 degrees
+---------------------
+---------------------
+Right Back Slope: 4.2239358389961765
+Right Upper Leg Slope: 5.966512664731069
+Hip angle = 3.804856671666821
+     Off by -121.19514332833317 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 13.794996147843781
+Right Lower Leg Slope: 14.062069785642974
+Right knee angle = 0.07847828621475408
+     Off by -54.921521713785246 degrees
+---------------------
+---------------------
+Right Back Slope: 6.091251465275553
+Right Upper Leg Slope: 13.794996147843781
+Hip angle = 5.17695504698831
+     Off by -119.82304495301169 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 3 objects in image
+---------------------
+Right Upper Leg Slope: 1.8195613346965023
+Right Lower Leg Slope: 6.1714184639133745
+Right knee angle = 19.58839185105616
+     Off by -35.41160814894384 degrees
+---------------------
+---------------------
+Right Back Slope: 6.278159301660239
+Right Upper Leg Slope: 1.8195613346965023
+Hip angle = 19.742266853988657
+     Off by -105.25773314601135 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 11.536535325045126
+Right Lower Leg Slope: 13.788423675878029
+Right knee angle = 0.8059890950114218
+     Off by -54.19401090498858 degrees
+---------------------
+---------------------
+Right Back Slope: 6.625894898662522
+Right Upper Leg Slope: 11.536535325045126
+Hip angle = 3.6283990446617436
+     Off by -121.37160095533825 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 12.823992020794293
+Right Lower Leg Slope: 535.374633431085
+Right knee angle = 4.351815471426275
+     Off by -50.64818452857372 degrees
+---------------------
+---------------------
+Right Back Slope: 6.906702510912783
+Right Upper Leg Slope: 12.823992020794293
+Hip angle = 3.7795928667384113
+     Off by -121.22040713326159 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 11.416128106274146
+Right Lower Leg Slope: 11.467947281959379
+Right knee angle = 0.022506291091184565
+     Off by -54.97749370890882 degrees
+---------------------
+---------------------
+Right Back Slope: 6.884323544059192
+Right Upper Leg Slope: 11.416128106274146
+Hip angle = 3.2587720886766567
+     Off by -121.74122791132335 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 9.994974451255304
+Right Lower Leg Slope: 12.494903633956158
+Right knee angle = 1.1376665450087513
+     Off by -53.86233345499125 degrees
+---------------------
+---------------------
+Right Back Slope: 9.588936759641497
+Right Upper Leg Slope: 9.994974451255304
+Hip angle = 0.2402295203916089
+     Off by -124.75977047960839 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+Current Score: 462.07367978199875
+---------------------
+Right Upper Leg Slope: 12.111813517645588
+Right Lower Leg Slope: 14.999686721465547
+Right knee angle = 0.9057101718199998
+     Off by -54.09428982818 degrees
+---------------------
+---------------------
+Right Back Slope: 6.596801230074085
+Right Upper Leg Slope: 12.111813517645588
+Hip angle = 3.899898719798462
+     Off by -121.10010128020154 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 14.962434696680157
+Right Lower Leg Slope: 5.73779864850032
+Right knee angle = 6.06275068826842
+     Off by -48.93724931173158 degrees
+---------------------
+---------------------
+Right Back Slope: 13.527796061863139
+Right Upper Leg Slope: 14.962434696680157
+Hip angle = 0.4040994786765933
+     Off by -124.5959005213234 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 17.28767398671287
+Right Lower Leg Slope: 19.41141081078919
+Right knee angle = 0.3615194420682579
+     Off by -54.63848055793174 degrees
+---------------------
+---------------------
+Right Back Slope: 6.465235514858322
+Right Upper Leg Slope: 17.28767398671287
+Hip angle = 5.481891638065871
+     Off by -119.51810836193413 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 21.53733324592743
+Right Lower Leg Slope: 8.988686176650459
+Right knee angle = 3.689715576433515
+     Off by -51.310284423566486 degrees
+---------------------
+---------------------
+Right Back Slope: 12.897171884945895
+Right Upper Leg Slope: 21.53733324592743
+Hip angle = 1.775245302291278
+     Off by -123.22475469770872 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 28.76766496687243
+Right Lower Leg Slope: 44.68441536415328
+Right knee angle = 0.7088534683417879
+     Off by -54.291146531658214 degrees
+---------------------
+---------------------
+Right Back Slope: 6.2256395938991576
+Right Upper Leg Slope: 28.76766496687243
+Hip angle = 7.134377798979375
+     Off by -117.86562220102063 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 8.619824188875493
+Right Lower Leg Slope: 12.165388302972195
+Right knee angle = 1.918224301009663
+     Off by -53.081775698990334 degrees
+---------------------
+---------------------
+Right Back Slope: 19.586865770084618
+Right Upper Leg Slope: 8.619824188875493
+Hip angle = 3.69471969953038
+     Off by -121.30528030046962 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 688.1355783675514
+Right Lower Leg Slope: 3609.0327635327635
+Right knee angle = 0.06738662260555625
+     Off by -54.932613377394446 degrees
+---------------------
+---------------------
+Right Back Slope: 5.777542478543481
+Right Upper Leg Slope: 688.1355783675514
+Hip angle = 9.736430476918333
+     Off by -115.26356952308167 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 8.102678858770977
+Right Lower Leg Slope: 11.827662561792494
+Right knee angle = 2.2029123089648066
+     Off by -52.797087691035195 degrees
+---------------------
+---------------------
+Right Back Slope: 54.140402759340034
+Right Upper Leg Slope: 8.102678858770977
+Hip angle = 5.977476199946234
+     Off by -119.02252380005376 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 254.38208884688092
+Right Lower Leg Slope: 44.33146695550392
+Right knee angle = 1.0669873120379731
+     Off by -53.93301268796203 degrees
+---------------------
+---------------------
+Right Back Slope: 7.0912112393851165
+Right Upper Leg Slope: 254.38208884688092
+Hip angle = 7.801665980162882
+     Off by -117.19833401983712 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 3 objects in image
+---------------------
+Right Upper Leg Slope: 4.807740164881483
+Right Lower Leg Slope: 4.224580957130776
+Right knee angle = 1.5674869721720588
+     Off by -53.432513027827945 degrees
+---------------------
+---------------------
+Right Back Slope: 14.095446163205557
+Right Upper Leg Slope: 4.807740164881483
+Hip angle = 7.691825762189073
+     Off by -117.30817423781093 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 25.46220876649709
+Right Lower Leg Slope: 100.48965378569078
+Right knee angle = 1.6789251600624555
+     Off by -53.321074839937545 degrees
+---------------------
+---------------------
+Right Back Slope: 16.094210356519973
+Right Upper Leg Slope: 25.46220876649709
+Hip angle = 1.3063812207155014
+     Off by -123.69361877928449 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 9.795955260833052
+Right Lower Leg Slope: 5.231437993972821
+Right knee angle = 4.99292917429317
+     Off by -50.00707082570683 degrees
+---------------------
+---------------------
+Right Back Slope: 35.739733465721336
+Right Upper Leg Slope: 9.795955260833052
+Hip angle = 4.226009790572952
+     Off by -120.77399020942704 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 20.81031785429547
+Right Lower Leg Slope: 56.12530572482693
+Right knee angle = 1.7303761535214086
+     Off by -53.269623846478595 degrees
+---------------------
+---------------------
+Right Back Slope: 14.550349541091892
+Right Upper Leg Slope: 20.81031785429547
+Hip angle = 1.1804545241267876
+     Off by -123.81954547587321 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 136.53175752954633
+Right Lower Leg Slope: 16.27573085015893
+Right knee angle = 3.0962560068765423
+     Off by -51.903743993123456 degrees
+---------------------
+---------------------
+Right Back Slope: 8.980679410027676
+Right Upper Leg Slope: 136.53175752954633
+Hip angle = 5.934076128375849
+     Off by -119.06592387162415 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 15.241518357383724
+Right Lower Leg Slope: 12.374524505209768
+Right knee angle = 0.8662893594998983
+     Off by -54.133710640500105 degrees
+---------------------
+---------------------
+Right Back Slope: 14.774169409879097
+Right Upper Leg Slope: 15.241518357383724
+Hip angle = 0.11838797629878038
+     Off by -124.88161202370122 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+Current Score: 463.38440888067106
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 15.147654270430754
+Right Lower Leg Slope: 18.6707778964747
+Right knee angle = 0.7111930877650948
+     Off by -54.288806912234904 degrees
+---------------------
+---------------------
+Right Back Slope: 9.101883067871727
+Right Upper Leg Slope: 15.147654270430754
+Hip angle = 2.4927857246944543
+     Off by -122.50721427530554 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+Right Upper Leg Slope: 14.38484318307246
+Right Lower Leg Slope: 7.378958269893482
+Right knee angle = 3.7410653411106503
+     Off by -51.25893465888935 degrees
+---------------------
+---------------------
+Right Back Slope: 11.956741281443179
+Right Upper Leg Slope: 14.38484318307246
+Hip angle = 0.8041282964854802
+     Off by -124.19587170351451 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 27.724099340794112
+Right Lower Leg Slope: 22.951173787558623
+Right knee angle = 0.4290963603957574
+     Off by -54.57090363960424 degrees
+---------------------
+---------------------
+Right Back Slope: 18.553354625918505
+Right Upper Leg Slope: 27.724099340794112
+Hip angle = 1.0194314266072024
+     Off by -123.9805685733928 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 6.596097330725741
+Right Lower Leg Slope: 5.446264818457285
+Right knee angle = 1.7836394085299276
+     Off by -53.21636059147007 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 9.210031776590334
+Right Lower Leg Slope: 20.52738174332611
+Right knee angle = 3.4077605324002156
+     Off by -51.59223946759978 degrees
+---------------------
+---------------------
+Right Back Slope: 33.3394115844315
+Right Upper Leg Slope: 9.210031776590334
+Hip angle = 4.47869865324654
+     Off by -120.52130134675346 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 9.608584126647866
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 14.982267061497142
+Right Lower Leg Slope: 12.163383044987446
+Right knee angle = 0.8813674826492944
+     Off by -54.118632517350704 degrees
+---------------------
+---------------------
+Right Back Slope: 146.51020952889363
+Right Upper Leg Slope: 14.982267061497142
+Hip angle = 3.4275116619065846
+     Off by -121.57248833809342 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 33.06704881263839
+Right Lower Leg Slope: 20.381039360849968
+Right knee angle = 1.0767895481343868
+     Off by -53.923210451865614 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 14.464965497667324
+Right Lower Leg Slope: 11.697480284670128
+Right knee angle = 0.9315384952606183
+     Off by -54.06846150473938 degrees
+---------------------
+---------------------
+Right Back Slope: 33.45038251946751
+Right Upper Leg Slope: 14.464965497667324
+Hip angle = 2.242362554358561
+     Off by -122.75763744564144 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 10.271588585759241
+Right Lower Leg Slope: 6.451287511770535
+Right knee angle = 3.2506106456178765
+     Off by -51.749389354382124 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 9.72673074902826
+Right Lower Leg Slope: 6.2728686828463545
+Right knee angle = 3.1877621041369455
+     Off by -51.812237895863056 degrees
+---------------------
+---------------------
+Right Back Slope: 19.374787660677384
+Right Upper Leg Slope: 9.72673074902826
+Hip angle = 2.915313068801551
+     Off by -122.08468693119845 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 7.422391184665925
+Right Lower Leg Slope: 9.955122830481375
+Right knee angle = 1.93694709140508
+     Off by -53.06305290859492 degrees
+---------------------
+---------------------
+detected 4 objects in image
+---------------------
+Right Upper Leg Slope: 10.769202245323308
+Right Lower Leg Slope: 5.96771179821431
+Right knee angle = 4.207461185741645
+     Off by -50.79253881425836 degrees
+---------------------
+---------------------
+Right Back Slope: 29.428447276940904
+Right Upper Leg Slope: 10.769202245323308
+Hip angle = 3.3589202561935956
+     Off by -121.6410797438064 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+Right Upper Leg Slope: 5.171741975513376
+Right Lower Leg Slope: 112.05113560305207
+Right knee angle = 10.43225007430684
+     Off by -44.567749925693164 degrees
+---------------------
+---------------------
+detected 3 objects in image
+---------------------
+Right Upper Leg Slope: 23.148365647950076
+Right Lower Leg Slope: 7.327455406864173
+Right knee angle = 5.297702555625597
+     Off by -49.7022974443744 degrees
+---------------------
+---------------------
+Right Back Slope: 30.633222710746598
+Right Upper Leg Slope: 23.148365647950076
+Hip angle = 0.6038999855112064
+     Off by -124.3961000144888 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+---------------------
+---------------------
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 150.0800486413955
+Right Lower Leg Slope: 11.404142055227403
+Right knee angle = 4.629539754077285
+     Off by -50.370460245922715 degrees
+---------------------
+---------------------
+Right Back Slope: 71.17458462262881
+Right Upper Leg Slope: 150.0800486413955
+Hip angle = 0.423187912799751
+     Off by -124.57681208720025 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 20.337721501644136
+Right Lower Leg Slope: 9.317797216699802
+Right knee angle = 3.3106726860792883
+     Off by -51.689327313920714 degrees
+---------------------
+---------------------
+Right Back Slope: 29.215202048429234
+Right Upper Leg Slope: 20.337721501644136
+Hip angle = 0.8545523166913812
+     Off by -124.14544768330862 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to kneeamer] gstreamer changed state from NULL to READY ==> mysource
+[gstreamer] gstreamer changed state from NULL to READY ==> pipeline1
+[gstreamer] gstreamer changed state from READY to PAUSED ==> qtmux0
+[gstreamer] gstreamer changed state from READY to PAUSED ==> h264parse0
+[gstreamer] gstreamer changed state from READY to PAUSED ==> capsfilter2
+[gstreamer] gstreamer changed state from READY to PAUSED ==> omxh264enc-omxh264enc0
+[gstreamer] gstreamer stream status CREATE ==> src
+[gstreamer] gstreamer changed state from READY to PAUSED ==> mysource
+[gstreamer] gstreamer changed state from READY to PAUSED ==> pipeline1
+[gstreamer] gstreamer stream status ENTER ==> src
+[gstreamer] gstreamer message new-clock ==> pipeline1
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> qtmux0
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> h264parse0
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> capsfilter2
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> omxh264enc-omxh264enc0
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> mysource
+[gstreamer] gstEncoder -- new caps: video/x-raw, width=1280, height=720, format=(string)I420, framerate=30/1
+[gstreamer] gstreamer stream status CREATE ==> src
+[gstreamer] gstreamer stream status ENTER ==> src
+[gstreamer] gstreamer message stream-start ==> pipeline1
+[gstreamer] gstreamer changed state from READY to PAUSED ==> filesink0
+[gstreamer] gstreamer message async-done ==> pipeline1
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> filesink0
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> pipeline1
+[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplica
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 23.455371974183077
+Right Lower Leg Slope: 93.6582566408701
+Right knee angle = 1.8295484047208987
+     Off by -53.170451595279104 degrees
+---------------------
+---------------------
+Right Back Slope: 104.8315386762175
+Right Upper Leg Slope: 23.455371974183077
+Hip angle = 1.8947444039256691
+     Off by -123.10525559607433 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 11.959841783250848
+Right Lower Leg Slope: 85.08135577416196
+Right knee angle = 4.106170418391504
+     Off by -50.89382958160849 degrees
+---------------------
+---------------------
+Right Back Slope: 18.08416934111449
+Right Upper Leg Slope: 11.959841783250848
+Hip angle = 1.6145024909869297
+     Off by -123.38549750901306 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 12.921708699875312
+Right Lower Leg Slope: 33.762558122505766
+Right knee angle = 2.7287258175469
+     Off by -52.2712741824531 degrees
+---------------------
+---------------------
+Right Back Slope: 17.390672030883692
+Right Upper Leg Slope: 12.921708699875312
+Hip angle = 1.1342480337881427
+     Off by -123.86575196621186 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 11.348308936371149
+Right Lower Leg Slope: 32.622792625915146
+Right knee angle = 3.2800696024616256
+     Off by -51.71993039753838 degrees
+---------------------
+---------------------
+Right Back Slope: 32.759007301319855
+Right Upper Leg Slope: 11.348308936371149
+Hip angle = 3.2873656637168853
+     Off by -121.71263433628312 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 10.117519521335767
+Right Lower Leg Slope: 21.669704606066084
+Right knee angle = 3.002517547249065
+     Off by -51.99748245275094 degrees
+---------------------
+---------------------
+Right Back Slope: 342.3549507168459
+Right Upper Leg Slope: 10.117519521335767
+Hip angle = 5.477335552346706
+     Off by -119.5226644476533 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 5.120264878703709
+Right Lower Leg Slope: 5.491157514450867
+Right knee angle = 0.7298152667275517
+     Off by -54.27018473327245 degrees
+---------------------
+---------------------
+Right Back Slope: 79.04639361154044
+Right Upper Leg Slope: 5.120264878703709
+Hip angle = 10.326100694067941
+     Off by -114.67389930593205 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 6.270077016890255
+Right Lower Leg Slope: 10.461878139021417
+Right knee angle = 3.601616852183654
+     Off by -51.39838314781635 degrees
+---------------------
+---------------------
+Right Back Slope: 87.21809984813972
+Right Upper Leg Slope: 6.270077016890255
+Hip angle = 8.404756681023876
+     Off by -116.59524331897612 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 9.25620537063741
+Right Lower Leg Slope: 14.657741863140151
+Right knee angle = 2.2632091407126977
+     Off by -52.736790859287304 degrees
+---------------------
+---------------------
+Right Back Slope: 66.52085462349265
+Right Upper Leg Slope: 9.25620537063741
+Hip angle = 5.304814795038074
+     Off by -119.69518520496193 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 13.185947677138437
+Right Lower Leg Slope: 25.65387010399153
+Right knee angle = 2.1046269155127955
+     Off by -52.895373084487204 degrees
+---------------------
+---------------------
+Right Back Slope: 94.43858512301489
+Right Upper Leg Slope: 13.185947677138437
+Hip angle = 3.730237183066809
+     Off by -121.2697628169332 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 15.916567422610752
+Right Lower Leg Slope: 27.77036291675052
+Right knee angle = 1.5327243003697653
+     Off by -53.467275699630235 degrees
+---------------------
+---------------------
+Right Back Slope: 50.474099170413524
+Right Upper Leg Slope: 15.916567422610752
+Hip angle = 2.4600284098485643
+     Off by -122.53997159015144 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 10.618055711243134
+Right Lower Leg Slope: 38.10300025333864
+Right knee angle = 3.8768384840974326
+     Off by -51.12316151590257 degrees
+---------------------
+---------------------
+Right Back Slope: 32.676996381022825
+Right Upper Leg Slope: 10.618055711243134
+Hip angle = 3.627350279316605
+     Off by -121.3726497206834 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 8.050962656453047
+Right Lower Leg Slope: 38.48015772528307
+Right knee angle = 5.591739733952012
+     Off by -49.40826026604799 degrees
+---------------------
+---------------------
+Right Back Slope: 133.86523081052067
+Right Upper Leg Slope: 8.050962656453047
+Hip angle = 6.652371185191281
+     Off by -118.34762881480871 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 8.30743238883464
+Right Lower Leg Slope: 48.96546907642229
+Right knee angle = 5.693941026519606
+     Off by -49.3060589734804 degrees
+---------------------
+---------------------
+Right Back Slope: 57.604364717628165
+Right Upper Leg Slope: 8.30743238883464
+Hip angle = 5.869361487795153
+     Off by -119.13063851220485 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 8.42901269602878
+Right Lower Leg Slope: 11.290340341969362
+Right knee angle = 1.7042710023533634
+     Off by -53.295728997646634 degrees
+---------------------
+---------------------
+Right Back Slope: 31.712237012116336
+Right Upper Leg Slope: 8.42901269602878
+Hip angle = 4.959681995357102
+     Off by -120.0403180046429 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 7.343667498151192
+Right Lower Leg Slope: 11.831762146482959
+Right knee angle = 2.9233133775883333
+     Off by -52.076686622411664 degrees
+---------------------
+---------------------
+Right Back Slope: 33.7591992735454
+Right Upper Leg Slope: 7.343667498151192
+Hip angle = 6.057677760514335
+     Off by -118.94232223948566 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 8.129360321662897
+Right Lower Leg Slope: 14.138686891702744
+Right knee angle = 2.9671012597017223
+     Off by -52.03289874029828 degrees
+---------------------
+---------------------
+Right Back Slope: 25.145812822881037
+Right Upper Leg Slope: 8.129360321662897
+Hip angle = 4.735434280932768
+     Off by -120.26456571906724 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 5.621275363536522
+Right Lower Leg Slope: 9.30044839201047
+Right knee angle = 3.950177915461661
+     Off by -51.04982208453834 degrees
+---------------------
+---------------------
+Right Back Slope: 773.9975308641975
+Right Upper Leg Slope: 5.621275363536522
+Hip angle = 10.013114484189666
+     Off by -114.98688551581033 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 6.2935765138788895
+Right Lower Leg Slope: 8.214070880745902
+Right knee angle = 2.087213182172329
+     Off by -52.91278681782767 degrees
+---------------------
+---------------------
+Right Back Slope: 70.4578803964198
+Right Upper Leg Slope: 6.2935765138788895
+Hip angle = 8.215239045913133
+     Off by -116.78476095408686 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 8.23164395229983
+Right Lower Leg Slope: 7.951063353394662
+Right knee angle = 0.24192491430546187
+     Off by -54.758075085694536 degrees
+---------------------
+---------------------
+Right Back Slope: 24.797163887022812
+Right Upper Leg Slope: 8.23164395229983
+Hip angle = 4.617162572013185
+     Off by -120.38283742798681 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 7.818513600498759
+Right Lower Leg Slope: 8.587046096800012
+Right knee angle = 0.6462156538843636
+     Off by -54.35378434611564 degrees
+---------------------
+---------------------
+Right Back Slope: 21.702613675508093
+Right Upper Leg Slope: 7.818513600498759
+Hip angle = 4.650471822539979
+     Off by -120.34952817746002 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 9.084215790371816
+Right Lower Leg Slope: 10.56738952815415
+Right knee angle = 0.8760421232994117
+     Off by -54.12395787670059 degrees
+---------------------
+---------------------
+Right Back Slope: 20.253573787127117
+Right Upper Leg Slope: 9.084215790371816
+Hip angle = 3.455260139928132
+     Off by -121.54473986007187 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 7.938429470394108
+Right Lower Leg Slope: 10.85255892187863
+Right knee angle = 1.9150978809083958
+     Off by -53.0849021190916 degrees
+---------------------
+---------------------
+Right Back Slope: 24.512372050555047
+Right Upper Leg Slope: 7.938429470394108
+Hip angle = 4.843576073611393
+     Off by -120.15642392638861 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 6.909656884333587
+Right Lower Leg Slope: 15.898179992296264
+Right knee angle = 4.635774973308984
+     Off by -50.36422502669102 degrees
+---------------------
+---------------------
+Right Back Slope: 40.17117354067693
+Right Upper Leg Slope: 6.909656884333587
+Hip angle = 6.808957591899709
+     Off by -118.19104240810029 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 7.002685330363034
+Right Lower Leg Slope: 12.674357209101203
+Right knee angle = 3.6157655776260613
+     Off by -51.384234422373936 degrees
+---------------------
+---------------------
+Right Back Slope: 54.39964185611959
+Right Upper Leg Slope: 7.002685330363034
+Hip angle = 7.07390678463997
+     Off by -117.92609321536003 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 10.804981011186607
+Right Lower Leg Slope: 9.56590231300468
+Right knee angle = 0.6802516013884078
+     Off by -54.319748398611594 degrees
+---------------------
+---------------------
+Right Back Slope: 10.355671108351642
+Right Upper Leg Slope: 10.804981011186607
+Hip angle = 0.22803419200301422
+     Off by -124.77196580799699 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+Current Score: 463.639047355362
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 6.9190705154611996
+Right Lower Leg Slope: 6.075690106300957
+Right knee angle = 1.1226313960921308
+     Off by -53.87736860390787 degrees
+---------------------
+---------------------
+Right Back Slope: 8.053901999120933
+Right Upper Leg Slope: 6.9190705154611996
+Hip angle = 1.1460871036599871
+     Off by -123.85391289634 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 9.171146677381191
+Right Lower Leg Slope: 8.102861797920502
+Right knee angle = 0.8126683165397436
+     Off by -54.18733168346026 degrees
+---------------------
+---------------------
+Right Back Slope: 8.668323329893084
+Right Upper Leg Slope: 9.171146677381191
+Hip angle = 0.35788609230716933
+     Off by -124.64211390769283 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 11.320815468544069
+Right Lower Leg Slope: 7.64632054000428
+Right knee angle = 2.4029624281746966
+     Off by -52.597037571825304 degrees
+---------------------
+---------------------
+Right Back Slope: 8.770314801302579
+Right Upper Leg Slope: 11.320815468544069
+Hip angle = 1.4568315166250958
+     Off by -123.5431684833749 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 11.346252828551664
+Right Lower Leg Slope: 8.330840103236712
+Right knee angle = 1.8080628765146463
+     Off by -53.19193712348535 degrees
+---------------------
+---------------------
+Right Back Slope: 12.89670135045384
+Right Upper Leg Slope: 11.346252828551664
+Hip angle = 0.602941282921756
+     Off by -124.39705871707824 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 14.026776050911295
+Right Lower Leg Slope: 10.321906777231671
+Right knee angle = 1.4557773056830399
+     Off by -53.54422269431696 degrees
+---------------------
+---------------------
+Right Back Slope: 16.5834191701528
+Right Upper Leg Slope: 14.026776050911295
+Hip angle = 0.6270186081271927
+     Off by -124.37298139187281 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 9.948740542194738
+Right Lower Leg Slope: 6.642659564930084
+Right knee angle = 2.821320244802236
+     Off by -52.17867975519776 degrees
+---------------------
+---------------------
+Right Back Slope: 15.717481035252119
+Right Upper Leg Slope: 9.948740542194738
+Hip angle = 2.0993731809112517
+     Off by -122.90062681908874 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 8.846927402603981
+Right Lower Leg Slope: 6.393749083232888
+Right knee angle = 2.440227312278765
+     Off by -52.559772687721235 degrees
+---------------------
+---------------------
+Right Back Slope: 21.162687596466455
+Right Upper Leg Slope: 8.846927402603981
+Hip angle = 3.7435917124762517
+     Off by -121.25640828752375 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 8.275121242385799
+Right Lower Leg Slope: 6.692124069868653
+Right knee angle = 1.60834032643119
+     Off by -53.39165967356881 degrees
+---------------------
+---------------------
+Right Back Slope: 30.889983986807042
+Right Upper Leg Slope: 8.275121242385799
+Hip angle = 5.036262311497084
+     Off by -119.96373768850292 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 10.499792101980558
+Right Lower Leg Slope: 7.630657520111593
+Right knee angle = 2.0256430291147565
+     Off by -52.974356970885246 degrees
+---------------------
+---------------------
+Right Back Slope: 116.82968641918377
+Right Upper Leg Slope: 10.499792101980558
+Hip angle = 4.950029670939627
+     Off by -120.04997032906037 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 12.848836192629324
+Right Lower Leg Slope: 9.122043280202618
+Right knee angle = 1.8057952863903068
+     Off by -53.19420471360969 degrees
+---------------------
+---------------------
+Right Back Slope: 45.41619550139594
+Right Upper Leg Slope: 12.848836192629324
+Hip angle = 3.1888807831026553
+     Off by -121.81111921689734 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 9.731488477078514
+Right Lower Leg Slope: 9.112095289515144
+Right knee angle = 0.3957440516943006
+     Off by -54.6042559483057 degrees
+---------------------
+---------------------
+Right Back Slope: 73.76843056489577
+Right Upper Leg Slope: 9.731488477078514
+Hip angle = 5.090425178873637
+     Off by -119.90957482112637 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 6.767225808503196
+Right Lower Leg Slope: 7.495832100044399
+Right knee angle = 0.8070083538520559
+     Off by -54.192991646147945 degrees
+---------------------
+---------------------
+Right Back Slope: 18.087637601044094
+Right Upper Leg Slope: 6.767225808503196
+Hip angle = 5.241370530097805
+     Off by -119.75862946990219 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 5.735463540989292
+Right Lower Leg Slope: 7.694606012483901
+Right knee angle = 2.485594250383382
+     Off by -52.51440574961662 degrees
+---------------------
+---------------------
+Right Back Slope: 12.955445925043474
+Right Upper Leg Slope: 5.735463540989292
+Hip angle = 5.476545617556358
+     Off by -119.52345438244365 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 6.84314152054436
+Right Lower Leg Slope: 10.484667658126353
+Right knee angle = 2.865644288270413
+     Off by -52.13435571172959 degrees
+---------------------
+---------------------
+Right Back Slope: 20.462413332411952
+Right Upper Leg Slope: 6.84314152054436
+Hip angle = 5.5160601620194765
+     Off by -119.48393983798053 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 7.847279570693896
+Right Lower Leg Slope: 7.188353028698962
+Right knee angle = 0.6575979669482004
+     Off by -54.3424020330518 degrees
+---------------------
+---------------------
+Right Back Slope: 13.512846313644808
+Right Upper Leg Slope: 7.847279570693896
+Hip angle = 3.0298319129521247
+     Off by -121.97016808704788 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 8.386982298602266
+Right Lower Leg Slope: 7.131175834860462
+Right knee angle = 1.1830835904310713
+     Off by -53.816916409568925 degrees
+---------------------
+---------------------
+Right Back Slope: 14.254583805732064
+Right Upper Leg Slope: 8.386982298602266
+Hip angle = 2.7865242921357947
+     Off by -122.2134757078642 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 7.195575441729128
+Right Lower Leg Slope: 6.385658790497314
+Right knee angle = 0.9883215352269443
+     Off by -54.011678464773055 degrees
+---------------------
+---------------------
+Right Back Slope: 23.033398054886188
+Right Upper Leg Slope: 7.195575441729128
+Hip angle = 5.426015617777712
+     Off by -119.57398438222229 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 6.73890750296696
+Right Lower Leg Slope: 6.674221567783992
+Right knee angle = 0.08061055992770833
+     Off by -54.919389440072294 degrees
+---------------------
+---------------------
+Right Back Slope: 34.54301929850018
+Right Upper Leg Slope: 6.73890750296696
+Hip angle = 6.782424635324016
+     Off by -118.21757536467598 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 8.039210474112279
+Right Lower Leg Slope: 6.7364111128695
+Right knee angle = 1.3531039787810264
+     Off by -53.64689602121897 degrees
+---------------------
+---------------------
+Right Back Slope: 53.86698545121579
+Right Upper Leg Slope: 8.039210474112279
+Hip angle = 6.027088540280603
+     Off by -118.9729114597194 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 8.818382080547568
+Right Lower Leg Slope: 8.418928137141501
+Right knee angle = 0.3041787214556265
+     Off by -54.69582127854437 degrees
+---------------------
+---------------------
+Right Back Slope: 448.4301687763713
+Right Upper Leg Slope: 8.818382080547568
+Hip angle = 6.341904834594739
+     Off by -118.65809516540526 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 6.775282752120641
+Right Lower Leg Slope: 10.580730819065494
+Right knee angle = 2.9969032669595776
+     Off by -52.00309673304042 degrees
+---------------------
+---------------------
+Right Back Slope: 24.040403152361115
+Right Upper Leg Slope: 6.775282752120641
+Hip angle = 6.014033117974647
+     Off by -118.98596688202535 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 6.156367944020497
+Right Lower Leg Slope: 10.270122274045129
+Right knee angle = 3.664821806491226
+     Off by -51.335178193508774 degrees
+---------------------
+---------------------
+Right Back Slope: 12.008905941195803
+Right Upper Leg Slope: 6.156367944020497
+Hip angle = 4.466045341235916
+     Off by -120.53395465876409 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 5.5900528195890455
+Right Lower Leg Slope: 15.959984243054706
+Right knee angle = 6.5570364459633375
+     Off by -48.442963554036666 degrees
+---------------------
+---------------------
+Right Back Slope: 6.204676647102431
+Right Upper Leg Slope: 5.5900528195890455
+Hip angle = 0.9867561267427397
+     Off by -124.01324387325727 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 6.8888596584703095
+Right Lower Leg Slope: 19.295025395738698
+Right knee angle = 5.292668319703114
+     Off by -49.70733168029689 degrees
+---------------------
+---------------------
+Right Back Slope: 5.3721902676419635
+Right Upper Leg Slope: 6.8888596584703095
+Hip angle = 2.2850997381967586
+     Off by -122.71490026180324 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 7.241340310958353
+Right Lower Leg Slope: 9.419490613158802
+Right knee angle = 1.8026024375260041
+     Off by -53.197397562473995 degrees
+---------------------
+---------------------
+Right Back Slope: 9.978697960680517
+Right Upper Leg Slope: 7.241340310958353
+Hip angle = 2.1398844329135973
+     Off by -122.8601155670864 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 7.638931781288355
+Right Lower Leg Slope: 8.045178753151742
+Right knee angle = 0.372673492283606
+     Off by -54.6273265077164 degrees
+---------------------
+---------------------
+Right Back Slope: 25.185394199719735
+Right Upper Leg Slope: 7.638931781288355
+Hip angle = 5.184319972205902
+     Off by -119.8156800277941 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 12.741032686838993
+Right Lower Leg Slope: 11.526248529130067
+Right knee angle = 0.4707302621484612
+     Off by -54.529269737851536 degrees
+---------------------
+---------------------
+Right Back Slope: 110.89192439862543
+Right Upper Leg Slope: 12.741032686838993
+Hip angle = 3.9710821899488846
+     Off by -121.02891781005111 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 13.77650321271559
+Right Lower Leg Slope: 6.807733501236555
+Right knee angle = 4.204848865716446
+     Off by -50.79515113428356 degrees
+---------------------
+---------------------
+Right Back Slope: 12.579116383718551
+Right Upper Leg Slope: 13.77650321271559
+Hip angle = 0.3936065034054937
+     Off by -124.6063934965945 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 34.17065560165975
+Right Lower Leg Slope: 8.075859878317953
+Right knee angle = 5.382490998242866
+     Off by -49.617509001757135 degrees
+---------------------
+---------------------
+Right Back Slope: 6.625662878040957
+Right Upper Leg Slope: 34.17065560165975
+Hip angle = 6.906500049478514
+     Off by -118.09349995052149 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 14.574156889376951
+Right Lower Leg Slope: 5.892391544198773
+Right knee angle = 5.706741499583532
+     Off by -49.29325850041647 degrees
+---------------------
+---------------------
+Right Back Slope: 5.436314420465294
+Right Upper Leg Slope: 14.574156889376951
+Hip angle = 6.497760135941443
+     Off by -118.50223986405855 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 19.910557333739774
+Right Lower Leg Slope: 6.069996903705233
+Right knee angle = 6.479903986195842
+     Off by -48.52009601380416 degrees
+---------------------
+---------------------
+Right Back Slope: 6.382674943153092
+Right Upper Leg Slope: 19.910557333739774
+Hip angle = 6.029136686064483
+     Off by -118.97086331393552 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 39.28873640453277
+Right Lower Leg Slope: 5.859865314100643
+Right knee angle = 8.226359429911916
+     Off by -46.773640570088084 degrees
+---------------------
+---------------------
+Right Back Slope: 5.348797582574391
+Right Upper Leg Slope: 39.28873640453277
+Hip angle = 9.131636492360641
+     Off by -115.86836350763936 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 35.01397895094212
+Right Lower Leg Slope: 7.54934405416843
+Right knee angle = 5.909653036547524
+     Off by -49.090346963452475 degrees
+---------------------
+---------------------
+Right Back Slope: 5.668127972827445
+Right Upper Leg Slope: 35.01397895094212
+Hip angle = 8.369527764566094
+     Off by -116.6304722354339 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 20.042138785796556
+Right Lower Leg Slope: 6.515287351261604
+Right knee angle = 5.8695596773898835
+     Off by -49.13044032261011 degrees
+---------------------
+---------------------
+Right Back Slope: 6.810257523148148
+Right Upper Leg Slope: 20.042138785796556
+Hip angle = 5.497066498434299
+     Off by -119.5029335015657 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 16.17644880431785
+Right Lower Leg Slope: 7.1423579633276715
+Right knee angle = 4.432736051622754
+     Off by -50.567263948377246 degrees
+---------------------
+---------------------
+Right Back Slope: 7.991729731579963
+Right Upper Leg Slope: 16.17644880431785
+Hip angle = 3.5948896179557663
+     Off by -121.40511038204423 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 14.341542290383444
+Right Lower Leg Slope: 7.06017748005939
+Right knee angle = 4.0730840691375745
+     Off by -50.92691593086243 degrees
+---------------------
+---------------------
+Right Back Slope: 13.464523631551835
+Right Upper Leg Slope: 14.341542290383444
+Hip angle = 0.25887995318692353
+     Off by -124.74112004681308 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 9.540219632938333
+Right Lower Leg Slope: 9.349528161740778
+Right knee angle = 0.12113323572327912
+     Off by -54.87886676427672 degrees
+---------------------
+---------------------
+Right Back Slope: 27.697333290614722
+Right Upper Leg Slope: 9.540219632938333
+Hip angle = 3.916116701463138
+     Off by -121.08388329853686 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 8.13535894843276
+Right Lower Leg Slope: 7.156919306116452
+Right knee angle = 0.9464956884830865
+     Off by -54.05350431151691 degrees
+---------------------
+---------------------
+Right Back Slope: 54.620748440317534
+Right Upper Leg Slope: 8.13535894843276
+Hip angle = 5.958798896119514
+     Off by -119.04120110388048 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 7.125451428154525
+Right Lower Leg Slope: 6.815019241921029
+Right knee angle = 0.35888195507204723
+     Off by -54.64111804492795 degrees
+---------------------
+---------------------
+Right Back Slope: 20.822838077665804
+Right Upper Leg Slope: 7.125451428154525
+Hip angle = 5.239355979361104
+     Off by -119.76064402063889 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 3.687331533691261
+Right Lower Leg Slope: 6.290237298058803
+Right knee angle = 6.140486455642133
+     Off by -48.85951354435787 degrees
+---------------------
+---------------------
+Right Back Slope: 1325.4111253196932
+Right Upper Leg Slope: 3.687331533691261
+Hip angle = 15.13034792727619
+     Off by -109.86965207272381 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 1.8976089322938472
+Right Lower Leg Slope: 6.262911524798183
+Right knee angle = 18.71643900585507
+     Off by -36.283560994144935 degrees
+---------------------
+---------------------
+Right Back Slope: 8.472383128149474
+Right Upper Leg Slope: 1.8976089322938472
+Hip angle = 21.056779469025415
+     Off by -103.94322053097459 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 1.4857132781475872
+Right Lower Leg Slope: 5.387608726869897
+Right knee angle = 23.428535624316808
+     Off by -31.571464375683192 degrees
+---------------------
+---------------------
+Right Back Slope: 4.937058956612951
+Right Upper Leg Slope: 1.4857132781475872
+Hip angle = 22.493271239083644
+     Off by -102.50672876091636 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 1.0426239188829116
+Right Lower Leg Slope: 4.344432543439255
+Right knee angle = 30.842028205608216
+     Off by -24.157971794391784 degrees
+---------------------
+---------------------
+Right Back Slope: 2.5152244541960807
+Right Upper Leg Slope: 1.0426239188829116
+Hip angle = 22.12284766314559
+     Off by -102.87715233685441 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.9162881165314347
+Right Lower Leg Slope: 4.435913270207219
+Right knee angle = 34.79736130414213
+     Off by -20.20263869585787 degrees
+---------------------
+---------------------
+Right Back Slope: 1.977036276747892
+Right Upper Leg Slope: 0.9162881165314347
+Hip angle = 20.670707359461115
+     Off by -104.32929264053888 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.7396449226082753
+Right Lower Leg Slope: 3.5683403753561955
+Right knee angle = 37.85658649496317
+     Off by -17.143413505036833 degrees
+---------------------
+---------------------
+Right Back Slope: 1.9238341480430468
+Right Upper Leg Slope: 0.7396449226082753
+Hip angle = 26.04650692917276
+     Off by -98.95349307082724 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+---------------------
+Right Back Slope: 1.7024389166186564
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.41293524527893005
+Right Lower Leg Slope: 2.6470688217238054
+Right knee angle = 46.86716515917114
+     Off by -8.132834840828863 degrees
+---------------------
+---------------------
+Right Back Slope: 1.7489079349585621
+Right Upper Leg Slope: 0.41293524527893005
+Hip angle = 37.802253780194356
+     Off by -87.19774621980565 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.23191960882046447
+Right Lower Leg Slope: 2.236750627091556
+Right knee angle = 52.85449442754248
+     Off by -2.145505572457523 degrees
+---------------------
+---------------------
+Right Back Slope: 1.595301697045883
+Right Upper Leg Slope: 0.23191960882046447
+Hip angle = 44.86166065040914
+     Off by -80.13833934959086 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.1002973778286478
+Right Lower Leg Slope: 2.241351617171524
+Right knee angle = 60.228050884752484
+     Off by 5.228050884752484 degrees
+---------------------
+---------------------
+Right Back Slope: 1.4752316091167488
+Right Upper Leg Slope: 0.1002973778286478
+Hip angle = 50.14077581152487
+     Off by -74.85922418847514 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.07218958054957572
+Right Lower Leg Slope: 2.297244836492463
+Right knee angle = 62.34731645419909
+     Off by 7.347316454199088 degrees
+---------------------
+---------------------
+Right Back Slope: 1.4275152816125891
+Right Upper Leg Slope: 0.07218958054957572
+Hip angle = 50.859074049441055
+     Off by -74.14092595055894 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.061370242638275244
+Right Lower Leg Slope: 2.377899757621308
+Right knee angle = 63.67948780570446
+     Off by 8.679487805704461 degrees
+---------------------
+---------------------
+Right Back Slope: 1.2111190160977239
+Right Upper Leg Slope: 0.061370242638275244
+Hip angle = 46.94225108877828
+     Off by -78.05774891122172 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.07463010511134995
+Right Lower Leg Slope: 2.3448302872062663
+Right knee angle = 62.63512401842323
+     Off by 7.635124018423227 degrees
+---------------------
+---------------------
+Right Back Slope: 1.1130089155953424
+Right Upper Leg Slope: 0.07463010511134995
+Hip angle = 43.793324683605356
+     Off by -81.20667531639464 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.08813727820759876
+Right Lower Leg Slope: 2.592168357602385
+Right knee angle = 63.86763360529934
+     Off by 8.86763360529934 degrees
+---------------------
+---------------------
+Right Back Slope: 1.1304012721005896
+Right Upper Leg Slope: 0.08813727820759876
+Hip angle = 43.46581023009451
+     Off by -81.53418976990548 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.18070989030589493
+Right Lower Leg Slope: 2.7617518577512836
+Right knee angle = 59.851868951899
+     Off by 4.851868951899 degrees
+---------------------
+---------------------
+Right Back Slope: 1.153295307354464
+Right Upper Leg Slope: 0.18070989030589493
+Hip angle = 38.828709337807304
+     Off by -86.17129066219269 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.18432315260763607
+Right Lower Leg Slope: 2.7790143692290883
+Right knee angle = 59.76553284428369
+     Off by 4.76553284428369 degrees
+---------------------
+---------------------
+Right Back Slope: 1.1750571360754127
+Right Upper Leg Slope: 0.18432315260763607
+Hip angle = 39.157754301734656
+     Off by -85.84224569826534 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.1943293746752323
+Right Lower Leg Slope: 2.7609979707452537
+Right knee angle = 59.09303919328318
+     Off by 4.093039193283182 degrees
+---------------------
+---------------------
+Right Back Slope: 1.201558598566419
+Right Upper Leg Slope: 0.1943293746752323
+Hip angle = 39.23381179577812
+     Off by -85.76618820422189 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.21969499474873033
+Right Lower Leg Slope: 2.8815735939847085
+Right knee angle = 58.47080959609604
+     Off by 3.4708095960960392 degrees
+---------------------
+---------------------
+Right Back Slope: 1.202744139122108
+Right Upper Leg Slope: 0.21969499474873033
+Hip angle = 37.868030856772386
+     Off by -87.13196914322762 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.22121470537426416
+Right Lower Leg Slope: 2.912843104764924
+Right knee angle = 58.578498887152534
+     Off by 3.5784988871525343 degrees
+---------------------
+---------------------
+Right Back Slope: 1.2317745903025112
+Right Upper Leg Slope: 0.22121470537426416
+Hip angle = 38.455249391760134
+     Off by -86.54475060823987 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.21274463341370844
+Right Lower Leg Slope: 2.903667242297528
+Right knee angle = 58.98638840764914
+     Off by 3.9863884076491374 degrees
+---------------------
+---------------------
+Right Back Slope: 1.183440198931818
+Right Upper Leg Slope: 0.21274463341370844
+Hip angle = 37.79207739462207
+     Off by -87.20792260537793 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.23268902285120596
+Right Lower Leg Slope: 3.246123987757444
+Right knee angle = 59.77903608277092
+     Off by 4.779036082770922 degrees
+---------------------
+---------------------
+Right Back Slope: 1.1397891951062122
+Right Upper Leg Slope: 0.23268902285120596
+Hip angle = 35.63872827271317
+     Off by -89.36127172728683 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.16084921917298067
+Right Lower Leg Slope: 3.3370409556313994
+Right knee angle = 64.18056528742612
+     Off by 9.18056528742612 degrees
+---------------------
+---------------------
+Right Back Slope: 1.1015156290271955
+Right Upper Leg Slope: 0.16084921917298067
+Hip angle = 38.62786231813018
+     Off by -86.37213768186982 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.19357704311957302
+Right Lower Leg Slope: 3.0222699648372906
+Right knee angle = 60.73615643090916
+     Off by 5.736156430909162 degrees
+---------------------
+---------------------
+Right Back Slope: 1.0838446717428267
+Right Upper Leg Slope: 0.19357704311957302
+Hip angle = 36.348440126340726
+     Off by -88.65155987365927 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.21178240584591873
+Right Lower Leg Slope: 2.9757122464455255
+Right knee angle = 59.46731663583
+     Off by 4.467316635830002 degrees
+---------------------
+---------------------
+Right Back Slope: 1.0810106987207566
+Right Upper Leg Slope: 0.21178240584591873
+Hip angle = 35.27176026662782
+     Off by -89.72823973337218 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.2021404853128991
+Right Lower Leg Slope: 2.9960252862944876
+Right knee angle = 60.11444295032303
+     Off by 5.114442950323031 degrees
+---------------------
+---------------------
+Right Back Slope: 1.1323773392195646
+Right Upper Leg Slope: 0.2021404853128991
+Hip angle = 37.12453825816578
+     Off by -87.87546174183421 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.15246812537026794
+Right Lower Leg Slope: 2.8721299176523964
+Right knee angle = 62.13421177712811
+     Off by 7.134211777128108 degrees
+---------------------
+---------------------
+Right Back Slope: 1.0575682047537216
+Right Upper Leg Slope: 0.15246812537026794
+Hip angle = 37.933630028838
+     Off by -87.066369971162 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.14091999326931579
+Right Lower Leg Slope: 2.995240904010928
+Right knee angle = 63.51644228882154
+     Off by 8.516442288821537 degrees
+---------------------
+---------------------
+Right Back Slope: 1.0434748010272354
+Right Upper Leg Slope: 0.14091999326931579
+Hip angle = 38.1974780411689
+     Off by -86.80252195883111 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.10293841685741156
+Right Lower Leg Slope: 2.6107853469466966
+Right knee angle = 63.164599401105725
+     Off by 8.164599401105725 degrees
+---------------------
+---------------------
+Right Back Slope: 1.0761463204965418
+Right Upper Leg Slope: 0.10293841685741156
+Hip angle = 41.223245900835096
+     Off by -83.7767540991649 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.13223397219270644
+Right Lower Leg Slope: 2.776947340126169
+Right knee angle = 62.66291727462224
+     Off by 7.662917274622238 degrees
+---------------------
+---------------------
+Right Back Slope: 1.0515781497313883
+Right Upper Leg Slope: 0.13223397219270644
+Hip angle = 38.90740775869942
+     Off by -86.09259224130058 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.09836245506143433
+Right Lower Leg Slope: 2.7532581706304278
+Right knee angle = 64.42098996773603
+     Off by 9.420989967736034 degrees
+---------------------
+---------------------
+Right Back Slope: 1.1057065239055737
+Right Upper Leg Slope: 0.09836245506143433
+Hip angle = 42.25615452640776
+     Off by -82.74384547359224 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.1151980001454033
+Right Lower Leg Slope: 2.640102035516997
+Right knee angle = 62.68326061482992
+     Off by 7.683260614829919 degrees
+---------------------
+---------------------
+Right Back Slope: 1.061226109665966
+Right Upper Leg Slope: 0.1151980001454033
+Hip angle = 40.130005609002524
+     Off by -84.86999439099748 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.09811208019717352
+Right Lower Leg Slope: 2.6961450910949756
+Right knee angle = 64.04671234382245
+     Off by 9.046712343822449 degrees
+---------------------
+---------------------
+Right Back Slope: 1.0108194958448231
+Right Upper Leg Slope: 0.09811208019717352
+Hip angle = 39.704810597880005
+     Off by -85.29518940212 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.10533786914267454
+Right Lower Leg Slope: 2.6784151950627435
+Right knee angle = 63.51338575016005
+     Off by 8.513385750160047 degrees
+---------------------
+---------------------
+Right Back Slope: 1.0551168311313557
+Right Upper Leg Slope: 0.10533786914267454
+Hip angle = 40.52302579672264
+     Off by -84.47697420327736 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.14805523717461852
+Right Lower Leg Slope: 2.582007631111123
+Right knee angle = 60.407077403416956
+     Off by 5.407077403416956 degrees
+---------------------
+---------------------
+Right Back Slope: 1.1252083466099205
+Right Upper Leg Slope: 0.14805523717461852
+Hip angle = 39.94996915868098
+     Off by -85.05003084131903 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.15078504849067886
+Right Lower Leg Slope: 2.491748925586608
+Right knee angle = 59.55844662709875
+     Off by 4.558446627098753 degrees
+---------------------
+---------------------
+Right Back Slope: 1.1242215771316624
+Right Upper Leg Slope: 0.15078504849067886
+Hip angle = 39.77201666092615
+     Off by -85.22798333907386 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.17325755025313824
+Right Lower Leg Slope: 2.5525897195061793
+Right knee angle = 58.777442029407375
+     Off by 3.777442029407375 degrees
+---------------------
+---------------------
+Right Back Slope: 1.1063161604113085
+Right Upper Leg Slope: 0.17325755025313824
+Hip angle = 38.06019968813073
+     Off by -86.93980031186928 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+Current Score: 493.9829621314
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.18096105153925976
+Right Lower Leg Slope: 2.605796717182179
+Right knee angle = 58.747905050276586
+     Off by 3.747905050276586 degrees
+---------------------
+---------------------
+Right Back Slope: 1.15000233213617
+Right Upper Leg Slope: 0.18096105153925976
+Hip angle = 38.733669753830675
+     Off by -86.26633024616933 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.14355524906011752
+Right Lower Leg Slope: 2.5527898296213656
+Right knee angle = 60.43901888159473
+     Off by 5.439018881594727 degrees
+---------------------
+---------------------
+Right Back Slope: 1.1089017916847401
+Right Upper Leg Slope: 0.14355524906011752
+Hip angle = 39.78677974500865
+     Off by -85.21322025499134 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.1643467386376768
+Right Lower Leg Slope: 2.6097600329181456
+Right knee angle = 59.701372867772136
+     Off by 4.701372867772136 degrees
+---------------------
+---------------------
+Right Back Slope: 1.1829763751874305
+Right Upper Leg Slope: 0.1643467386376768
+Hip angle = 40.45836969323873
+     Off by -84.54163030676128 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.16555887593533805
+Right Lower Leg Slope: 2.419004725531655
+Right knee angle = 58.13957871592298
+     Off by 3.1395787159229798 degrees
+---------------------
+---------------------
+Right Back Slope: 1.1700798952495026
+Right Upper Leg Slope: 0.16555887593533805
+Hip angle = 40.0808379206341
+     Off by -84.91916207936589 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.18248058216339894
+Right Lower Leg Slope: 2.5610052200247053
+Right knee angle = 58.32918249714327
+     Off by 3.3291824971432717 degrees
+---------------------
+---------------------
+Right Back Slope: 1.1623432638201512
+Right Upper Leg Slope: 0.18248058216339894
+Hip angle = 38.951986802409756
+     Off by -86.04801319759025 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.19853188043320164
+Right Lower Leg Slope: 2.4102778785709384
+Right knee angle = 56.237902658129926
+     Off by 1.2379026581299257 degrees
+---------------------
+---------------------
+Right Back Slope: 1.2033053410260444
+Right Upper Leg Slope: 0.19853188043320164
+Hip angle = 39.04289060369877
+     Off by -85.95710939630123 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.2565242286101135
+Right Lower Leg Slope: 2.4092502140886167
+Right knee angle = 53.070758767006566
+     Off by -1.9292412329934336 degrees
+---------------------
+---------------------
+Right Back Slope: 1.2279777443714355
+Right Upper Leg Slope: 0.2565242286101135
+Hip angle = 36.45493260302307
+     Off by -88.54506739697693 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.3343640020110608
+Right Lower Leg Slope: 2.5656057716414726
+Right knee angle = 50.217501078319685
+     Off by -4.782498921680315 degrees
+---------------------
+---------------------
+Right Back Slope: 1.2210451455979316
+Right Upper Leg Slope: 0.3343640020110608
+Hip angle = 32.1954540984699
+     Off by -92.8045459015301 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.3674606763755234
+Right Lower Leg Slope: 2.4660684614865818
+Right knee angle = 47.75086635991486
+     Off by -7.249133640085141 degrees
+---------------------
+---------------------
+Right Back Slope: 1.2988353509677095
+Right Upper Leg Slope: 0.3674606763755234
+Hip angle = 32.23019244965253
+     Off by -92.76980755034748 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.39962288553192415
+Right Lower Leg Slope: 2.881198661830556
+Right knee angle = 49.07646872528086
+     Off by -5.923531274719139 degrees
+---------------------
+---------------------
+Right Back Slope: 1.2271281984045426
+Right Upper Leg Slope: 0.39962288553192415
+Hip angle = 29.04025734794755
+     Off by -95.95974265205246 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.34169533835072274
+Right Lower Leg Slope: 2.908579946371511
+Right knee angle = 52.16143932364945
+     Off by -2.8385606763505535 degrees
+---------------------
+---------------------
+Right Back Slope: 1.2526002503617488
+Right Upper Leg Slope: 0.34169533835072274
+Hip angle = 32.53319934085269
+     Off by -92.46680065914731 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.33944774654637816
+Right Lower Leg Slope: 3.0537803714900016
+Right knee angle = 53.118629144046
+     Off by -1.8813708559540032 degrees
+---------------------
+---------------------
+Right Back Slope: 1.2017689322800031
+Right Upper Leg Slope: 0.33944774654637816
+Hip angle = 31.486265221380915
+     Off by -93.51373477861908 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.33576197591886714
+Right Lower Leg Slope: 3.2374656782686415
+Right knee angle = 54.27484667761361
+     Off by -0.7251533223863902 degrees
+---------------------
+---------------------
+Right Back Slope: 1.1858831490342456
+Right Upper Leg Slope: 0.33576197591886714
+Hip angle = 31.300531679915284
+     Off by -93.69946832008472 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.3424629771334512
+Right Lower Leg Slope: 2.8725439377119666
+Right knee angle = 51.90135938611571
+     Off by -3.0986406138842923 degrees
+---------------------
+---------------------
+Right Back Slope: 1.2221409689472178
+Right Upper Leg Slope: 0.3424629771334512
+Hip angle = 31.804292795384132
+     Off by -93.19570720461587 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.4289866408944427
+Right Lower Leg Slope: 2.4546032077614552
+Right knee angle = 44.61543934934998
+     Off by -10.384560650650023 degrees
+---------------------
+---------------------
+Right Back Slope: 1.3582572496597216
+Right Upper Leg Slope: 0.4289866408944427
+Hip angle = 30.419418224416393
+     Off by -94.58058177558361 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.42138628909687226
+Right Lower Leg Slope: 2.073941164540223
+Right knee angle = 41.40796464357992
+     Off by -13.592035356420077 degrees
+---------------------
+---------------------
+Right Back Slope: 1.4400862474748042
+Right Upper Leg Slope: 0.42138628909687226
+Hip angle = 32.37388574333692
+     Off by -92.62611425666307 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.48491201301139203
+Right Lower Leg Slope: 2.63321235748075
+Right knee angle = 43.3357076069254
+     Off by -11.664292393074597 degrees
+---------------------
+---------------------
+Right Back Slope: 1.4793859277611898
+Right Upper Leg Slope: 0.48491201301139203
+Hip angle = 30.07372767779314
+     Off by -94.92627232220686 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.47064024854931247
+Right Lower Leg Slope: 2.3487364251574903
+Right knee angle = 41.73403094438033
+     Off by -13.26596905561967 degrees
+---------------------
+---------------------
+Right Back Slope: 1.4962624971620486
+Right Upper Leg Slope: 0.47064024854931247
+Hip angle = 31.040365021752077
+     Off by -93.95963497824792 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 2 objects in image
+---------------------
+Right Upper Leg Slope: 0.5362954076722658
+Right Lower Leg Slope: 3.381456451279222
+Right knee angle = 45.32098668390979
+     Off by -9.679013316090213 degrees
+---------------------
+---------------------
+Right Back Slope: 1.3907966978985913
+Right Upper Leg Slope: 0.5362954076722658
+Hip angle = 26.078943606507927
+     Off by -98.92105639349208 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+---------------------
+---------------------
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.47152114116940835
+Right Lower Leg Slope: 2.785164093491356
+Right knee angle = 45.004695706259156
+     Off by -9.995304293740844 degrees
+---------------------
+---------------------
+Right Back Slope: 1.4993668076186872
+Right Upper Leg Slope: 0.47152114116940835
+Hip angle = 31.053897817025145
+     Off by -93.94610218297485 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.4926300104197786
+Right Lower Leg Slope: 2.7252087674869867
+Right knee angle = 43.62343166190113
+     Off by -11.37656833809887 degrees
+---------------------
+---------------------
+Right Back Slope: 1.4947857005731089
+Right Upper Leg Slope: 0.4926300104197786
+Hip angle = 29.991544588885855
+     Off by -95.00845541111414 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.49887204545560077
+Right Lower Leg Slope: 3.3135288528444073
+Right knee angle = 46.69322422136687
+     Off by -8.306775778633131 degrees
+---------------------
+---------------------
+Right Back Slope: 1.4855876574891624
+Right Upper Leg Slope: 0.49887204545560077
+Hip angle = 29.540824545586513
+     Off by -95.45917545441348 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.32135410433371897
+Right Lower Leg Slope: 2.9562840995118385
+Right knee angle = 53.49622890338279
+     Off by -1.503771096617207 degrees
+---------------------
+---------------------
+Right Back Slope: 1.410853665682225
+Right Upper Leg Slope: 0.32135410433371897
+Hip angle = 36.8563175306943
+     Off by -88.1436824693057 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.28713626795443287
+Right Lower Leg Slope: 2.6741552566430578
+Right knee angle = 53.47603101847904
+     Off by -1.5239689815209587 degrees
+---------------------
+---------------------
+Right Back Slope: 1.4993025743975763
+Right Upper Leg Slope: 0.28713626795443287
+Hip angle = 40.27694106474999
+     Off by -84.72305893525001 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.054003736809911045
+Right Lower Leg Slope: 2.170696101853102
+Right knee angle = 62.17415683609958
+     Off by 7.174156836099577 degrees
+---------------------
+---------------------
+Right Back Slope: 1.3479149526374017
+Right Upper Leg Slope: 0.054003736809911045
+Hip angle = 50.33759315915086
+     Off by -74.66240684084914 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.21842591636853
+Right Lower Leg Slope: 2.4762515574309645
+Right knee angle = 55.68799539196379
+     Off by 0.6879953919637884 degrees
+---------------------
+---------------------
+Right Back Slope: 1.652884068474145
+Right Upper Leg Slope: 0.21842591636853
+Hip angle = 46.50456598783027
+     Off by -78.49543401216974 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Lean forward to prevent excessive stress on the lower back
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.5023300250429612
+Right Lower Leg Slope: 3.0346377277801957
+Right knee angle = 45.08971683350688
+     Off by -9.910283166493123 degrees
+---------------------
+---------------------
+Right Back Slope: 1.6022280121209567
+Right Upper Leg Slope: 0.5023300250429612
+Hip angle = 31.358687168326572
+     Off by -93.64131283167343 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 0.765854041043139
+Right Lower Leg Slope: 3.693465189146658
+Right knee angle = 37.40361874554498
+     Off by -17.596381254455018 degrees
+---------------------
+---------------------
+Right Back Slope: 1.7258506634943174
+Right Upper Leg Slope: 0.765854041043139
+Hip angle = 22.46410643586944
+     Off by -102.53589356413056 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 1.0482121313260362
+Right Lower Leg Slope: 4.240357500835282
+Right knee angle = 30.38201955836079
+     Off by -24.61798044163921 degrees
+---------------------
+---------------------
+Right Back Slope: 2.1605771747557454
+Right Upper Leg Slope: 1.0482121313260362
+Hip angle = 18.815030715213613
+     Off by -106.18496928478639 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 1.5418986645600505
+Right Lower Leg Slope: 4.833700637668222
+Right knee angle = 21.276962464738983
+     Off by -33.723037535261014 degrees
+---------------------
+---------------------
+Right Back Slope: 3.5042049427597863
+Right Upper Leg Slope: 1.5418986645600505
+Hip angle = 17.038234805582004
+     Off by -107.96176519441799 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 2.1615334294796806
+Right Lower Leg Slope: 5.568777128975521
+Right knee angle = 14.646636339570778
+     Off by -40.353363660429224 degrees
+---------------------
+---------------------
+Right Back Slope: 5.588875337453579
+Right Upper Leg Slope: 2.1615334294796806
+Hip angle = 14.682484023795043
+     Off by -110.31751597620496 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 3.350031013118035
+Right Lower Leg Slope: 11.807013379003951
+Right knee angle = 11.77947482140373
+     Off by -43.22052517859627 degrees
+---------------------
+---------------------
+Right Back Slope: 7.773082498602028
+Right Upper Leg Slope: 3.350031013118035
+Hip angle = 9.28982753146199
+     Off by -115.710172468538 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 5.811235728238347
+Right Lower Leg Slope: 28.790501968503936
+Right knee angle = 7.774564254639201
+     Off by -47.2254357453608 degrees
+---------------------
+---------------------
+Right Back Slope: 9.68177842238653
+Right Upper Leg Slope: 5.811235728238347
+Hip angle = 3.8668700826521767
+     Off by -121.13312991734783 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 10.173269509512757
+Right Lower Leg Slope: 17.82713838079536
+Right knee angle = 2.4033585774815585
+     Off by -52.596641422518445 degrees
+---------------------
+---------------------
+Right Back Slope: 16.35444240722703
+Right Upper Leg Slope: 10.173269509512757
+Hip angle = 2.114937068849758
+     Off by -122.88506293115024 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 59.705148040286375
+Right Lower Leg Slope: 11.206977411685703
+Right knee angle = 4.139449591861595
+     Off by -50.86055040813841 degrees
+---------------------
+---------------------
+Right Back Slope: 61.713243418524215
+Right Upper Leg Slope: 59.705148040286375
+Hip angle = 0.031217557696213972
+     Off by -124.96878244230379 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 468.7946344892221
+Right Lower Leg Slope: 6.309918277494647
+Right knee angle = 8.883158699324797
+     Off by -46.116841300675205 degrees
+---------------------
+---------------------
+Right Back Slope: 15.395985446095517
+Right Upper Leg Slope: 468.7946344892221
+Hip angle = 3.5940359917273024
+     Off by -121.4059640082727 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 30.645895790862212
+Right Lower Leg Slope: 6.510991370591548
+Right knee angle = 6.862681571875219
+     Off by -48.13731842812478 degrees
+---------------------
+---------------------
+Right Back Slope: 9.043636251822322
+Right Upper Leg Slope: 30.645895790862212
+Hip angle = 4.440903364901506
+     Off by -120.5590966350985 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 46.04630278902486
+Right Lower Leg Slope: 6.269513912248792
+Right knee angle = 7.818341251836825
+     Off by -47.18165874816317 degrees
+---------------------
+---------------------
+Right Back Slope: 10.467131363868551
+Right Upper Leg Slope: 46.04630278902486
+Hip angle = 4.213200295776952
+     Off by -120.78679970422304 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 26.404653254931617
+Right Lower Leg Slope: 6.277111623916452
+Right knee angle = 6.882790607616379
+     Off by -48.11720939238362 degrees
+---------------------
+---------------------
+Right Back Slope: 10.234422085625825
+Right Upper Leg Slope: 26.404653254931617
+Hip angle = 3.4117501316898657
+     Off by -121.58824986831013 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+detected 1 objects in image
+---------------------
+Right Upper Leg Slope: 34.95281331682487
+Right Lower Leg Slope: 5.698521968831703
+Right knee angle = 8.31437075325843
+     Off by -46.68562924674157 degrees
+---------------------
+---------------------
+Right Back Slope: 12.262098432629841
+Right Upper Leg Slope: 34.95281331682487
+Hip angle = 3.0234888771739548
+     Off by -121.97651112282604 degrees
+---------------------
+####################
+Squat is too deep. Raise hips to have the hip joint parallel to knee
+Keep chest upward and look straight ahead
+###############################
+BEST SCORE = 463.639047355362
+###############################
+te link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[0;33m[TRT]    poseNet::postProcess() -- duplicate link detected, skipping...
+[0m[OpenGL] glDisplay -- the window has been closed
+[gstreamer] gstCamera -- stopping pipeline, transitioning to GST_STATE_NULL
+GST_ARGUS: Cleaning up
+CONSUMER: Done Success
+GST_ARGUS: Done Success
+[gstreamer] gstCamera -- pipeline stopped
+[gstreamer] gstEncoder -- shutting down pipeline, sending EOS
+[gstreamer] gstEncoder -- transitioning pipeline to GST_STATE_NULL
+[gstreamer] gstEncoder -- pipeline stopped
