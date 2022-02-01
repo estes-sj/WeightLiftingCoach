@@ -74,25 +74,30 @@ About the project
 <!-- GETTING STARTED -->
 ## Getting Started
 
-getting started
+This project is based
 
 ### Prerequisites
 
-Installation
-* update
-  ```sh
-  sudo apt upgrade
-  ```
+1. Nvidia Jetson Nano 2GB/4GB
+2. SD Card 8GB+
+3. MIPI CSI Camera
 
 ### Installation
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Clone the repo
+## Jetson-inference
+
+1. First you must have installed jetson-inference from the instructions <a href="https://github.com/dusty-nv/jetson-inference/blob/master/docs/building-repo-2.md">here</a> Review the documentation <a href="https://github.com/dusty-nv/jetson-inference">here</a>
+
+2. Clone the repo
    ```sh
    git clone https://github.com/primetime728/WeightLiftingCoach
    ```
-
+3. Run the program using
+  ```
+  python3 pose_capstone.py
+  ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
