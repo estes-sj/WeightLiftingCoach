@@ -123,22 +123,16 @@ Screenshots and stuff
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-<!-- LICENSE -->
+<!-- CONTACT -->
+## Team
+
+[![Samuel Estes](docs/1642564740099.jpg)](https://www.linkedin.com/in/samuel-estes-b5598122b/)  | [![Zach Farr](docs/1639155008086.jpg)](https://www.linkedin.com/in/zachary-farr-97bb68182/)  | [![Emily Hattman](docs/1610480133202.jpg)](https://www.quandl.com/)
+---|---|---
+[Samuel Estes](https://github.com/primetime728) |[Zach Farr](https://www.linkedin.com/in/zachary-farr-97bb68182/) |[Emily Hattman](https://www.linkedin.com/in/emily-hattman-335050192/)
+
 ## License
 
-VMI
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Samuel Estes - estessj22@mail.vmi.edu
-Zachary Farr - farrzr22@mail.vmi.edu
-Emily Hattman - hattmanee22@mail.vmi.edu
-
+VMI (https://www.vmi.edu/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
