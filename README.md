@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="s">
-    <img src="form_pictures/good_form_demo.png" alt="Logo" width="50%" height="50%">
+    <img src="form_pictures/good_form_demo.png" alt="Logo" width="100">
   </a>
 
   <h3 align="center">Smart Lifting</h3>
@@ -60,7 +60,11 @@ About the project
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+Currently uses angle found from joints of the right-side of the body.
+[![Product Name Screen Shot][docs/angles_for_form_2.png]]
 
+Using pose detection and computer vision, this software offers real-time feedback on the performance of a user's squat form.
+[![Demo_Screen_Shot][docs/2(2).png]]
 
 ### Built With
 
@@ -84,10 +88,6 @@ This project is built using the jetson-inference computer vision libary created 
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-## Jetson-inference
-
 1. First you must have installed jetson-inference from the instructions <a href="https://github.com/dusty-nv/jetson-inference/blob/master/docs/building-repo-2.md">here</a> Review the documentation <a href="https://github.com/dusty-nv/jetson-inference">here</a>
 
 2. Clone the repo
@@ -95,9 +95,9 @@ _Below is an example of how you can instruct your audience on installing and set
    git clone https://github.com/primetime728/WeightLiftingCoach
    ```
 3. Run the program using
-  ```
-  python3 pose_capstone.py
-  ```
+   ```
+   python3 fancyGUI.py
+   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -116,8 +116,11 @@ Screenshots and stuff
 ## Roadmap
 
 - [x] Proof-of-concept
-- [x] Sprint 1
-- [ ] Sprint 2
+- [x] Sprint 1 - Detect Right-side view of squat
+- [X] Sprint 2 - Simple GUI
+- [ ] Sprint 3 - TBD
+- [ ] Sprint 4 - TBD
+- [ ] Sprint 5 - TBD
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -140,7 +143,10 @@ VMI (https://www.vmi.edu/)
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-
+Advisors:
+Dr. Lasisi
+BG Smith (USA, Retired
+Dr. Gracanin
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
