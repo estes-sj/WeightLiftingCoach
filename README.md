@@ -17,7 +17,7 @@
     ·
     <a href="https://github.com/primetime728/WeightLiftingCoach/issues">Report Bug</a>
     ·
-    <a href="estessj22@mail.vmi.edu">Request Feature</a>
+    <a href="mailto:estessj22@mail.vmi.edu">Request Feature</a>
   </p>
 </div>
 
