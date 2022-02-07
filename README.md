@@ -61,10 +61,14 @@ About the project
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 Currently uses angle found from joints of the right-side of the body.
-<img src="[docs/angles_for_form_2.png" alt="Product Screen Shot">
+<a href="s">
+<img src="docs/angles_for_form_2.png" alt="Product Screen Shot">
+</a>
 
 Using pose detection and computer vision, this software offers real-time feedback on the performance of a user's squat form.
-<img src="[docs/2(2).png" alt="Demo_Screen_Shot">
+<a href="s">
+<img src="docs/2(2).png" alt="Demo_Screen_Shot">
+</a>
 
 ### Built With
 
