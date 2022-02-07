@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="s">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="form_pictures/good_form_demo.png" alt="Logo" width="50%" height="50%">
   </a>
 
   <h3 align="center">Smart Lifting</h3>
@@ -10,14 +10,14 @@
   <p align="center">
     VMI Capstone Team 6 - Samuel Estes, Zachary Farr, Emily Hattman
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/primetime728/WeightLiftingCoach"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/primetime728/WeightLiftingCoach/blob/master/videos/test_video.mp4">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/primetime728/WeightLiftingCoach/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="estessj22@mail.vmi.edu">Request Feature</a>
   </p>
 </div>
 
@@ -64,8 +64,8 @@ About the project
 
 ### Built With
 
-* [Python](https://google.com/)
-
+* [Python](https://www.python.org/)
+* [C++](https://www.cplusplus.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -74,7 +74,7 @@ About the project
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This project is based
+This project is built using the jetson-inference computer vision libary created by NVIDIA developers.
 
 ### Prerequisites
 
@@ -135,7 +135,9 @@ VMI
 <!-- CONTACT -->
 ## Contact
 
+Samuel Estes - estessj22@mail.vmi.edu
 Zachary Farr - farrzr22@mail.vmi.edu
+Emily Hattman - hattmanee22@mail.vmi.edu
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
