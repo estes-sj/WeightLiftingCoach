@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="s">
-    <img src="form_pictures/good_form_demo.png" alt="Logo" width="100">
+    <img src="form_pictures/good_form_demo.png" alt="Logo" width="200">
   </a>
 
   <h3 align="center">Smart Lifting</h3>
@@ -61,10 +61,10 @@ About the project
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 Currently uses angle found from joints of the right-side of the body.
-[![Product Name Screen Shot][docs/angles_for_form_2.png]]
+<img src="[docs/angles_for_form_2.png" alt="Product Screen Shot">
 
 Using pose detection and computer vision, this software offers real-time feedback on the performance of a user's squat form.
-[![Demo_Screen_Shot][docs/2(2).png]]
+<img src="[docs/2(2).png" alt="Demo_Screen_Shot">
 
 ### Built With
 
@@ -144,9 +144,9 @@ VMI (https://www.vmi.edu/)
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 Advisors:
-Dr. Lasisi
-BG Smith (USA, Retired
-Dr. Gracanin
+<p>Dr. Lasisi</p>
+<p>BG Smith (USA, Retired)</p>
+<p>Dr. Gracanin</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
