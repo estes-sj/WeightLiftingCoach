@@ -19,6 +19,8 @@ p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
 command = 'sudo systemctl restart nvargus-daemon'
 p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
 
+# python3 fancyGui.py form_pictures/squat6.png form_pictures/squat6_results.png >> logs/log_squat6.log
+# >> append; > overwrite
 # parse the command line
 parser = argparse.ArgumentParser(description="Run AI weight lifting pose estimation DNN on a video/image stream.",
                                  formatter_class=argparse.RawTextHelpFormatter,
