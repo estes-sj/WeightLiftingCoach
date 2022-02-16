@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="s">
-    <img src="form_pictures/good_form_demo.png" alt="Logo" width="50%" height="50%">
+    <img src="form_pictures/good_form_demo.png" alt="Logo" width="200">
   </a>
 
   <h3 align="center">Smart Lifting</h3>
@@ -54,13 +54,18 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-About the project
+Currently uses angle found from joints of the right-side of the body.
+<br>
+<a href="s">
+<img src="docs/angles_for_form_2.png" alt="Product Screen Shot">
+</a>
+<br>
+Using pose detection and computer vision, this software offers real-time feedback on the performance of a user's squat form.
+<a href="s">
+<img src="docs/2(2).png" alt="Demo_Screen_Shot">
+</a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 ### Built With
 
@@ -84,10 +89,6 @@ This project is built using the jetson-inference computer vision libary created 
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-## Jetson-inference
-
 1. First you must have installed jetson-inference from the instructions <a href="https://github.com/dusty-nv/jetson-inference/blob/master/docs/building-repo-2.md">here</a> Review the documentation <a href="https://github.com/dusty-nv/jetson-inference">here</a>
 
 2. Clone the repo
@@ -95,9 +96,9 @@ _Below is an example of how you can instruct your audience on installing and set
    git clone https://github.com/primetime728/WeightLiftingCoach
    ```
 3. Run the program using
-  ```
-  python3 pose_capstone.py
-  ```
+   ```
+   python3 fancyGUI.py
+   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -116,29 +117,26 @@ Screenshots and stuff
 ## Roadmap
 
 - [x] Proof-of-concept
-- [x] Sprint 1
-- [ ] Sprint 2
+- [x] Sprint 1 - Detect Right-side view of squat
+- [X] Sprint 2 - Simple GUI
+- [ ] Sprint 3 - TBD
+- [ ] Sprint 4 - TBD
+- [ ] Sprint 5 - TBD
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-<!-- LICENSE -->
-## License
-
-VMI
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- CONTACT -->
-## Contact
+## Team
 
-Samuel Estes - estessj22@mail.vmi.edu
-Zachary Farr - farrzr22@mail.vmi.edu
-Emily Hattman - hattmanee22@mail.vmi.edu
+[![Samuel Estes](docs/1642564740099.jpg)](https://www.linkedin.com/in/samuel-estes-b5598122b/)  | [![Zach Farr](docs/1639155008086.jpg)](https://www.linkedin.com/in/zachary-farr-97bb68182/)  | [![Emily Hattman](docs/1610480133202.jpg)](https://www.quandl.com/)
+---|---|---
+[Samuel Estes](https://github.com/primetime728) |[Zach Farr](https://www.linkedin.com/in/zachary-farr-97bb68182/) |[Emily Hattman](https://www.linkedin.com/in/emily-hattman-335050192/)
 
+## License
+
+VMI (https://www.vmi.edu/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -146,7 +144,10 @@ Emily Hattman - hattmanee22@mail.vmi.edu
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-
+Advisors:
+<p>Dr. Lasisi</p>
+<p>BG Smith (USA, Retired)</p>
+<p>Dr. Gracanin</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
