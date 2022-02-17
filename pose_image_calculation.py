@@ -19,13 +19,14 @@ p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
 command = 'sudo systemctl restart nvargus-daemon'
 p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
 
+# python3 pose_image_calculation.py form_pictures/squat6.png form_pictures/squat6_results.png > logs/log_squat6.log
 # parse the command line
 parser = argparse.ArgumentParser(description="Run AI weight lifting pose estimation DNN on a video/image stream.", 
                                  formatter_class=argparse.RawTextHelpFormatter, epilog=jetson.inference.poseNet.Usage() +
                                  jetson.utils.videoSource.Usage() + jetson.utils.videoOutput.Usage() + jetson.utils.logUsage())
 
-parser.add_argument("input_URI", type=str, default="csi://0", nargs='?', help="URI of the input stream")
-parser.add_argument("output_URI", type=str, default="display://0", nargs='?', help="URI of the output stream")
+parser.add_argument("input_URI", type=str, default="", nargs='?', help="URI of the input stream")
+parser.add_argument("output_URI", type=str, default="", nargs='?', help="URI of the output stream")
 parser.add_argument("--network", type=str, default="resnet18-body", help="pre-trained model to load (see below for options)")
 parser.add_argument("--overlay", type=str, default="links,keypoints", help="pose overlay flags (e.g. --overlay=links,keypoints)\nvalid combinations are:  'links', 'keypoints', 'boxes', 'none'")
 parser.add_argument("--threshold", type=float, default=0.15, help="minimum detection threshold to use") 
@@ -41,7 +42,7 @@ except:
 net = jetson.inference.poseNet(opt.network, sys.argv, opt.threshold)
 
 # create video sources & outputs
-#input = jetson.utils.videoSource(opt.input_URI, argv=sys.argv)
+input = jetson.utils.videoSource(opt.input_URI, argv=sys.argv)
 output = jetson.utils.videoOutput(opt.output_URI, argv=sys.argv)
 
 def main():
@@ -50,9 +51,9 @@ def main():
         try:
 			# open streams for camera 0
             #camera = jetson.utils.videoSource("csi://0", argv=["--input-flip=rotate-180"])      # '/dev/video0' for V4L2 
-            camera = jetson.utils.videoSource('squat6.png')      # '/dev/video0' for V4L2 
+            camera = jetson.utils.videoSource('form_pictures/squat6.png')      # '/dev/video0' for V4L2 
             #display = jetson.utils.videoOutput('display://0') # 'my_video.mp4' for file
-            display = jetson.utils.videoOutput('squat6_results.png') # 'my_video.mp4' for file
+            display = jetson.utils.videoOutput('form_pictures/squat6_results.png') # 'my_video.mp4' for file
             print(getTime() + "Camera 0 started...\n")
             break
         except:
