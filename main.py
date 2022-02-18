@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+# <<<<<<< HEAD
 # Written by Samuel Estes, Zach Farr, Emily Hattman
 
 import time
@@ -500,5 +500,5 @@ if __name__ == '__main__':
 #     { 18, 7 },
 #     { 18, 12 },
 #     { 18, 13 }
->>>>>>> 867eb07d7f96847b67293d3d004acad7448833da
+# >>>>>>> 867eb07d7f96847b67293d3d004acad7448833da
 # };
