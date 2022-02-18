@@ -51,7 +51,7 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: main.main(),
+    command=lambda: pose_capstone.main(),
     relief="flat"
 )
 button_1.place(
