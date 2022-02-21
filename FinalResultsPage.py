@@ -14,7 +14,7 @@ def final_results_log():
 
     phrase = "###############################"
     line_number = "Log does not exist..."
-    log_file = open("logs\log_squat6.log","r")
+    log_file = open("logs\log_demo.log","r")
 
     # Find where final results are
     for number, line in enumerate(log_file):
