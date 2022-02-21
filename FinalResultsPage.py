@@ -28,7 +28,7 @@ def final_results_log():
     log_file.close()
 
     # Reopen file
-    log_file = open("logs\log_squat6.log","r")
+    log_file = open("logs\log_demo.log","r")
     # Read file
     contents = log_file.readlines()
     # Store final results in array
