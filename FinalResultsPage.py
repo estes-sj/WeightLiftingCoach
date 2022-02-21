@@ -23,16 +23,25 @@ def final_results_log():
             line_number = number
             break
 
-    contents = log_file.readlines()
-
-    # Store final results in array
-    final_results = contents[line_number+1:line_number+4]
-
+    #print(contents)
+    print(line_number)
+    # Close file
     log_file.close()
 
+    # Reopen file
+    log_file = open("logs\log_squat6.log","r")
+    # Read file
+    contents = log_file.readlines()
+    # Store final results in array
+    final_results = contents[line_number+1:line_number+4]
+    # Print contents to test
+    print(final_results)
+    log_file.close()
+
+    # Return array of final results
     return final_results
 
-final_results = final_results_log
+final_results = final_results_log()
 
 window = Tk()
 
@@ -73,7 +82,7 @@ canvas.create_text(
     210.0,
     anchor="nw",
     # Final Score will go here
-    text=str(final_results[2]),
+    text=final_results[2],
     fill="#000000",
     font=(fontStyle, 69 * -1)
 )
@@ -83,9 +92,9 @@ canvas.create_text(
     393.0,
     anchor="nw",
     # Comments will go here!
-    text=str(final_results[0:1]),
+    text=final_results[0:2],
     fill="#000000",
-    font=(fontStyle, 69 * -1)
+    font=(fontStyle, 30 * -1)
 )
 
 canvas.create_text(
