@@ -14,7 +14,7 @@ def final_results_log():
 
     phrase = "###############################"
     line_number = "Log does not exist..."
-    log_file = open("logs\log_demo.log","r")
+    log_file = open("log_demo.log","r")
 
     # Find where final results are
     for number, line in enumerate(log_file):
@@ -28,7 +28,7 @@ def final_results_log():
     log_file.close()
 
     # Reopen file
-    log_file = open("logs\log_demo.log","r")
+    log_file = open("log_demo.log","r")
     # Read file
     contents = log_file.readlines()
     # Store final results in array
