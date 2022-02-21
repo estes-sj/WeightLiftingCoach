@@ -81,10 +81,11 @@ def main():
             
             #squat_right_score(pose)
 
-            last_score = squat_right_score(pose)
-            if last_score != None:
-                if last_score > top_score:
-                    top_score = last_score
+            # Returns an array [squat right final score, knee angle, back angle]
+            last_scores = squat_right_score(pose)
+            if last_scores != None:
+                if last_scores[0] > top_score:
+                    top_score = last_scores[0]
                     print("Current Score: {:.3f}%".format(top_score))
 
         # render the image
@@ -104,6 +105,7 @@ def main():
             break
 
     print("###############################")
+    angle_calculations.squat_scoring(last_scores[1], last_scores[2])
     print("BEST SCORE = {:.3f}%".format(top_score))
     print("###############################") 
 # Calculate percent correctness for right-side-view of sqat
