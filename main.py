@@ -1,4 +1,3 @@
-# <<<<<<< HEAD
 # Written by Samuel Estes, Zach Farr, Emily Hattman
 
 import time
@@ -20,7 +19,7 @@ p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
 command = 'sudo systemctl restart nvargus-daemon'
 p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
 
-# python3 fancyGui.py form_pictures/squat6.png form_pictures/squat6_results.png >> logs/log_squat6.log
+# python3 main.py form_pictures/squat6.png form_pictures/squat6_results.png >> logs/log_squat6.log
 # >> append; > overwrite
 # parse the command line
 parser = argparse.ArgumentParser(description="Run AI weight lifting pose estimation DNN on a video/image stream.",
@@ -249,5 +248,4 @@ if __name__ == '__main__':
 #     { 18, 7 },
 #     { 18, 12 },
 #     { 18, 13 }
-# =======
-# Written by Samuel Estes, Zach Farr, Emily Hattman
+# };

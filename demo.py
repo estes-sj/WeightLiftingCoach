@@ -88,6 +88,7 @@ def main():
             if last_scores != None:
                 if last_scores[0] > top_score:
                     top_score = last_scores[0]
+                    final_scores = last_scores
                     print("Current Score: {:.3f}%".format(top_score))
 
         # render the image
@@ -108,7 +109,7 @@ def main():
     
     # Add try-catch if needed
     print("###############################")
-    angle_calculations.squat_scoring(last_scores[1], last_scores[2])
+    angle_calculations.squat_scoring(final_scores[1], final_scores[2])
     print("BEST SCORE = {:.3f}%".format(top_score))
     print("###############################") 
 # Calculate percent correctness for right-side-view of sqat
