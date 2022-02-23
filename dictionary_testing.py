@@ -1,3 +1,6 @@
+from warnings import catch_warnings
+import squat_dictionary
+
 """ List is a collection which is ordered and changeable. Allows duplicate members.
 
 Tuple is a collection which is ordered and unchangeable. Allows duplicate members.
@@ -10,15 +13,19 @@ thisdict = {
   "brand": "Ford",
   "electric": False,
   "year": 1964,
-  "colors": ["red", "white", "blue"]
+  "colors": ["red", "white", "blue"],
+  "model": "Range"
 }
 print(thisdict)
 print(len(thisdict))
 print(type(thisdict))
 
-x = thisdict["model"]
-# or 
-x = thisdict.get("model")
+try:
+  x = thisdict["model"]
+  # or 
+  x = thisdict.get("model")
+except:
+  pass
 
 # return all keys
 x = thisdict.keys()
@@ -52,6 +59,15 @@ del thisdict["model"]
 
 del thisdict
 print(thisdict) #this will cause an error because "thisdict" no longer exists.
+
+
+###
+print (squat_dictionary.squat_dict)
+squat_dictionary.squat_dict["year"] = 2022
+print (squat_dictionary.squat_dict)
+
+
+
 
 """ clear()	Removes all the elements from the dictionary
 copy()	Returns a copy of the dictionary

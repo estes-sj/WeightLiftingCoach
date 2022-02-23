@@ -188,6 +188,7 @@ def squat_left_back_angle(pose):
     return back_angle
 
 # Percentage correctness calculation based on the angle
+# Squat scoring in the bottom position
 def squat_scoring(knee_angle, back_angle):
     print("####################")
 
