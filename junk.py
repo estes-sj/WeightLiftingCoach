@@ -17,6 +17,7 @@ def findY():
     print(y)
     ts2 = time.time()
     print("Option2: " + str(ts2-ts))
+    return ts2-ts
 
 def main():
     ts = time.time()
@@ -24,7 +25,8 @@ def main():
     print(y)
     ts2 = time.time()
     print("Option1: " + str(ts2-ts))
-    findY()
+    ts3 = findY()
+    print (str((ts3/(ts2-ts))*100) + " times faster")
 
 if __name__ == '__main__':
     main()
