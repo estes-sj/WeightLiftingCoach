@@ -20,6 +20,7 @@ command = 'sudo systemctl restart nvargus-daemon'
 p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
 
 # python3 pose_image_calculation.py form_pictures/squat6.png form_pictures/squat6_results.png > logs/log_squat6.log
+# python3 pose_image_calculation.py > logs/log_squat6.log
 # parse the command line
 parser = argparse.ArgumentParser(description="Run AI weight lifting pose estimation DNN on a video/image stream.", 
                                  formatter_class=argparse.RawTextHelpFormatter, epilog=jetson.inference.poseNet.Usage() +
@@ -83,10 +84,10 @@ def main():
             
             #squat_right_score(pose)
 
-            last_score = squat_right_score(pose)
-            if last_score != None:
-                if last_score > top_score:
-                    top_score = last_score
+            last_scores = squat_right_score(pose)
+            if last_scores != None:
+                if last_scores[0] > top_score:
+                    top_score = last_scores[0]
                     print("Current Score: {:.3f}%".format(top_score))
 
         # render the image
@@ -104,8 +105,10 @@ def main():
         # exit on input/output EOS
         if not camera.IsStreaming() or not display.IsStreaming():
             break
-
+    
+    # Add try-catch if needed
     print("###############################")
+    angle_calculations.squat_scoring(last_scores[1], last_scores[2])
     print("BEST SCORE = {:.3f}%".format(top_score))
     print("###############################") 
 # Calculate percent correctness for right-side-view of sqat
@@ -190,7 +193,7 @@ def getTime():
 # Run main
 if __name__ == '__main__':
 	main()
-
+ 
 
 
 

@@ -188,6 +188,7 @@ def squat_left_back_angle(pose):
     return back_angle
 
 # Percentage correctness calculation based on the angle
+# Squat scoring in the bottom position
 def squat_scoring(knee_angle, back_angle):
     print("####################")
 
@@ -233,7 +234,9 @@ def squat_scoring(knee_angle, back_angle):
     else:
         print("Great back angle!")
 
-    return final_score
+    final_scores = [final_score, knee_angle, back_angle]
+
+    return final_scores
 
 # Calculates the slope of a line based on 2 points
 def calcSlope(point1, point2):  # point1 and point2 refers to 2 points in the resnet model                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
