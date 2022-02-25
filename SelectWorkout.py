@@ -1,13 +1,32 @@
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from importlib import reload
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
 fontStyle = "Consolas"
 
+
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
+
+def PosSys():
+    window.destroy()
+    import PositionSystem
+    reload(PositionSystem)
+
+
+def StPg():
+    window.destroy()
+    import StartPage
+    reload(StartPage)
+
+
+def PrevWkts():
+    window.destroy()
+    import PreviousLiftVideos
+    reload(PreviousLiftVideos)
 
 window = Tk()
 
@@ -40,7 +59,7 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_1 clicked"),
+    command=lambda: PosSys(),
     relief="flat"
 )
 button_1.place(
@@ -56,7 +75,7 @@ button_2 = Button(
     image=button_image_2,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_2 clicked"),
+    command=lambda: PrevWkts(),
     relief="flat"
 )
 button_2.place(
@@ -72,7 +91,7 @@ button_3 = Button(
     image=button_image_3,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_3 clicked"),
+    command=lambda: StPg(),
     relief="flat"
 )
 button_3.place(

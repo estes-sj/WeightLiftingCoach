@@ -6,29 +6,26 @@ OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
 fontStyle = "Consolas"
 
-
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
+
+
+def FinRes():
+    window.destroy()
+    import FinalResultsPage
+    reload(FinalResultsPage)
+
+
+def PosSys():
+    window.destroy()
+    import PositionSystem
+    reload(PositionSystem)
 
 
 window = Tk()
 
 window.geometry("1920x1080")
 window.configure(bg="#FFFFFF")
-
-
-def Conductwkt():
-    window.destroy()
-    import ConductLift
-    reload(ConductLift)
-    # samProgram.main()
-
-
-def SelWkt():
-    window.destroy()
-    import SelectWorkout
-    reload(SelectWorkout)
-
 
 canvas = Canvas(
     window,
@@ -41,27 +38,6 @@ canvas = Canvas(
 )
 
 canvas.place(x=0, y=0)
-canvas.create_text(
-    305.0,
-    192.0,
-    anchor="nw",
-    text="Position the Smart \n"
-         "Lifting system about\n"
-         "six feet away with a\n"
-         "clear view of your\n"
-         "side.",
-    fill="#000000",
-    font=(fontStyle, 69 * -1)
-)
-
-canvas.create_text(
-    305.0,
-    0.0,
-    anchor="nw",
-    text="Barbell Back Squat",
-    fill="#000000",
-    font=(fontStyle, 144 * -1)
-)
 
 button_image_1 = PhotoImage(
     file=relative_to_assets("Continue.png"))
@@ -69,7 +45,7 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: Conductwkt(),
+    command=lambda: FinRes(),
     relief="flat"
 )
 button_1.place(
@@ -85,7 +61,7 @@ button_2 = Button(
     image=button_image_2,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: SelWkt(),
+    command=lambda: PosSys(),
     relief="flat"
 )
 button_2.place(
@@ -94,8 +70,6 @@ button_2.place(
     width=214.0,
     height=99.0
 )
-img = PhotoImage(
-    file=relative_to_assets("SideView.png"))
-canvas.create_image(1388.0, 539.5, image=img)
+
 window.resizable(False, False)
 window.mainloop()

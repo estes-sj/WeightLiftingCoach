@@ -1,5 +1,6 @@
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from importlib import reload
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -13,6 +14,13 @@ window = Tk()
 
 window.geometry("1920x1080")
 window.configure(bg="#FFFFFF")
+
+
+def SelWkt():
+    window.destroy()
+    import SelectWorkout
+    reload(SelectWorkout)
+
 
 canvas = Canvas(
     window,
@@ -60,8 +68,8 @@ button_2 = Button(
     relief="flat"
 )
 button_2.place(
-    x=175.0,
-    y=648.0,
+    x=823.0,
+    y=222.0,
     width=273.0,
     height=321.0
 )
@@ -77,7 +85,7 @@ button_3 = Button(
 )
 button_3.place(
     x=1471.0,
-    y=648.0,
+    y=223.0,
     width=273.0,
     height=321.0
 )
@@ -92,7 +100,7 @@ button_4 = Button(
     relief="flat"
 )
 button_4.place(
-    x=823.0,
+    x=175.0,
     y=648.0,
     width=273.0,
     height=321.0
@@ -109,7 +117,7 @@ button_5 = Button(
 )
 button_5.place(
     x=823.0,
-    y=222.0,
+    y=648.0,
     width=273.0,
     height=321.0
 )
@@ -125,10 +133,11 @@ button_6 = Button(
 )
 button_6.place(
     x=1471.0,
-    y=223.0,
+    y=648.0,
     width=273.0,
     height=321.0
 )
+
 
 button_image_7 = PhotoImage(
     file=relative_to_assets("Back.png"))
@@ -136,7 +145,7 @@ button_7 = Button(
     image=button_image_7,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_7 clicked"),
+    command=lambda: SelWkt(),
     relief="flat"
 )
 button_7.place(

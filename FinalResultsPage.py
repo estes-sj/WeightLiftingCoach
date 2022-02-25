@@ -1,3 +1,4 @@
+from importlib import reload
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
@@ -8,6 +9,17 @@ fontStyle = "Consolas"
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
+
+def goHome():
+    window.destroy()
+    import StartPage
+    reload(StartPage)
+
+
+def NextSet():
+    window.destroy()
+    import PositionSystem
+    reload(PositionSystem)
 
 window = Tk()
 
@@ -67,7 +79,7 @@ canvas.create_text(
     anchor="nw",
     text="Barbell Back Squat",
     fill="#000000",
-    font=("Space Grotesk", 144 * -1)
+    font=(fontStyle, 144 * -1)
 )
 
 button_image_1 = PhotoImage(
@@ -76,7 +88,7 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_1 clicked"),
+    command=lambda: NextSet(),
     relief="flat"
 )
 button_1.place(
@@ -92,7 +104,7 @@ button_2 = Button(
     image=button_image_2,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_2 clicked"),
+    command=lambda: goHome(),
     relief="flat"
 )
 button_2.place(

@@ -1,9 +1,6 @@
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
-import SelectWorkout
-import PositionSystem
-import PreviousLiftVideos
-import FinalResultsPage
+from importlib import reload
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -18,6 +15,12 @@ window = Tk()
 
 window.geometry("1920x1080")
 window.configure(bg="#FFFFFF")
+
+
+def SelWkt():
+    window.destroy()
+    import SelectWorkout
+    reload(SelectWorkout)
 
 
 canvas = Canvas(
@@ -56,7 +59,7 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    # command=lambda: myversion.main(),
+    command=lambda: SelWkt(),
     relief="flat"
 )
 button_1.place(
@@ -65,7 +68,6 @@ button_1.place(
     width=600.0,
     height=106.0
 )
-
 
 window.resizable(False, False)
 window.mainloop()
