@@ -1,0 +1,50 @@
+<collection shelf="Exercise Log">
+<exercise title="squat_1">
+   <id></id>
+   <date></date>
+   <score></score>
+   <rating></rating>
+   <stars></stars>
+   <description></description>
+</exercise>
+<exercise title="squat_2">
+   <id></id>
+   <date></date>
+   <score></score>
+   <rating></rating>
+   <stars></stars>
+   <description></description>
+</exercise>
+   <exercise title="squat_3">
+   <id></id>
+   <date></date>
+   <score></score>
+   <rating></rating>
+   <stars></stars>
+   <description></description>
+</exercise>
+<exercise title="squat_4">
+   <id></id>
+   <date></date>
+   <score></score>
+   <rating></rating>
+   <stars></stars>
+   <description></description>
+</exercise>
+<exercise title="squat_5">
+   <id></id>
+   <date></date>
+   <score></score>
+   <rating></rating>
+   <stars></stars>
+   <description></description>
+</exercise>
+<exercise title="squat_6">
+   <id></id>
+   <date></date>
+   <score></score>
+   <rating></rating>
+   <stars></stars>
+   <description></description>
+</exercise>
+</collection>
