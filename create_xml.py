@@ -48,6 +48,8 @@ def new_xml():
     print("Oldest File Removed: " + del_oldest_file())
     #print(next_file())
 
+    return save_path_file
+
 # Returns the next file number in sequence w/o replacements
 def next_file_number():
     # Find newest file ID number
