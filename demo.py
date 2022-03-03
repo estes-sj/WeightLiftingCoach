@@ -12,6 +12,7 @@ import math
 import angle_calculations
 import numpy as np
 import create_xml
+import atexit
 
 sudoPassword = 'scalp431!'
 command = 'xrandr --output HDMI-0 --mode 1920x1080'
@@ -54,6 +55,9 @@ BOT_SQUAT_FLAG = False
 top_knee_angle = 10
 mid_knee_angle = 30
 bot_knee_angle = 55
+
+# Initialize reps variable and reset each time program is ran
+reps = 0
 
 def main():
 
@@ -128,82 +132,40 @@ def squat_right_score(pose):
     return
 
 def verify_squat(pose):
-    angle = angle_calculations.squat_right_knee_angle
     if TOP_SQUAT_FLAG == False:
         #if false, check angle against desired and set to true if close
+        angle = angle_calculations.squat_right_knee_angle(pose, top_knee_angle)
         angle_difference = angle - top_knee_angle
         # if within +- 5 degrees of desired angle, set to true
         if (angle_difference < 5 and angle_difference > -5):
             TOP_SQUAT_FLAG = True
+            # Print Top Squat angle to XML
     # Check for mid-point knee angle
     if (TOP_SQUAT_FLAG == True) and (MID_SQUAT_FLAG == False):
+        angle = angle_calculations.squat_right_knee_angle(pose, mid_knee_angle)
         angle_difference = angle - mid_knee_angle
         if (angle_difference < 5 and angle_difference > -5):
             MID_SQUAT_FLAG = True
-
-# Calculate percent correctness for left-side-view of sqat
-def squat_left_score(pose):
-    left_knee_angle = angle_calculations.squat_left_knee_angle(pose)
-    back_angle = angle_calculations.squat_left_back_angle(pose)
-    return 1
-
-def pointing(pose, display):
-    # find the keypoint index from the list of detected keypoints
-    # you can find these keypoint names in the model's JSON file, 
-    # or with net.GetKeypointName() / net.GetNumKeypoints()
-    print("---------------------") 
-
-    left_wrist_idx = pose.FindKeypoint(9) #9 = left wrist
-    left_shoulder_idx = pose.FindKeypoint(5) #5 = left shoulder
-    # if the keypoint index is < 0, it means it wasn't found in the image
-    if left_wrist_idx < 0 or left_shoulder_idx < 0:
-        return
-    
-    left_wrist = pose.Keypoints[left_wrist_idx]
-    left_shoulder = pose.Keypoints[left_shoulder_idx]
-
-    point_x = left_shoulder.x - left_wrist.x
-    point_y = left_shoulder.y - left_wrist.y
-  #  test = angle_calculations.test()
-    print(f"person {pose.ID} is pointing towards ({point_x}, {point_y})")
-    display.SetStatus(f"person {pose.ID} is pointing towards ({point_x}, {point_y})")
-
-    #cv2.putText(display, "I HATE CODING", (50, 50), cv2.FONT_HERSHEY_COMPLEX, .8, (0, 0, 0), 2, lineType=cv2.LINE_AA)
-
-    #Parameters:
-    #frame: current running frame of the video.
-    #Text: The text string to be inserted.
-    #org: bottom-left corner of the text string
-    #font: the type of font to be used.
-    #color: the colour of the font.
-    #thickness: the thickness of the font
-
-    print("---------------------")
-
-def squat_detection(pose, display):
-    print("---------------------") 
-    left_knee_idx = pose.FindKeypoint(13)
-    left_hip_idx = pose.FindKeypoint(11)
-
-    right_knee_idx = pose.FindKeypoint(14)
-    right_hip_idx = pose.FindKeypoint(12)
-
-    # if the keypoint index is < 0, it means it wasn't found in the image
-    if (left_knee_idx < 0 or left_hip_idx < 0) and (right_knee_idx < 0 or right_hip_idx < 0):
-        return
-    
-    left_knee = pose.Keypoints[left_knee_idx]
-    left_hip = pose.Keypoints[left_hip_idx]
-    right_knee = pose.Keypoints[right_knee_idx]
-    right_hip = pose.Keypoints[right_hip_idx]
-
-    if right_hip.y > right_knee.y or left_hip.y > left_knee.y:
-        print(f"BREAK 90!!!!!!!!!")
-        display.SetStatus(f"BREAK 90!!!!!!!!!")
-    else:
-        print(f"GOOD SQUAT :)")
-        display.SetStatus(f"GOOD SQUAT :)")
-    return;
+            # Print Mid Squat angle to XML
+    # Check for bottom point knee angle and score
+    if (TOP_SQUAT_FLAG == True) and (MID_SQUAT_FLAG == True) and (BOT_SQUAT_FLAG == False):
+        angle = angle_calculations.squat_right_knee_angle(pose, bot_knee_angle)
+        angle_difference = angle - bot_knee_angle
+        if (angle_difference < 5 and angle_difference > -5):
+            BOT_SQUAT_FLAG = True
+            # Score the bottom squat position
+            squat_right_score(pose)
+            # Print Bot Squat angle and score
+    # Check for return to top point, increment rep and continue
+    if (TOP_SQUAT_FLAG == True) and (MID_SQUAT_FLAG == True) and (BOT_SQUAT_FLAG == True):
+        angle = angle_calculations.squat_right_knee_angle(pose, top_knee_angle)
+        angle_difference = angle - mid_knee_angle
+        if (angle_difference < 5 and angle_difference > -5):
+            MID_SQUAT_FLAG = False
+            BOT_SQUAT_FLAG = False
+            reps += 1
+            # Create Next Rep Data on XML
+            # Print Top Squat angle to XML
 
 def getTime():
 	# Get current date and time
@@ -212,9 +174,17 @@ def getTime():
 	x = dt.strftime("[%Y-%m-%d %H:%M:%S]	")
 	return str(x)
 
+# Exit Handler
+def exit_handler():
+    # Print final score to XML
+    # Print rep number to XML
+    print ("Workout Completed!")
+
 # Run main
 if __name__ == '__main__':
 	main()
+# When completed, run exit handler
+atexit.register(exit_handler)
  
 
 
