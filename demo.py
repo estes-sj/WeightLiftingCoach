@@ -135,8 +135,11 @@ def verify_squat(pose):
         # if within +- 5 degrees of desired angle, set to true
         if (angle_difference < 5 and angle_difference > -5):
             TOP_SQUAT_FLAG = True
-    if (TOP_SQUAT_FLAG)
-    return
+    # Check for mid-point knee angle
+    if (TOP_SQUAT_FLAG == True) and (MID_SQUAT_FLAG == False):
+        angle_difference = angle - mid_knee_angle
+        if (angle_difference < 5 and angle_difference > -5):
+            MID_SQUAT_FLAG = True
 
 # Calculate percent correctness for left-side-view of sqat
 def squat_left_score(pose):
