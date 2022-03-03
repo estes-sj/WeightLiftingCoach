@@ -12,7 +12,10 @@ import numpy as np
 
 # Side-view angles
 
-def squat_right_knee_angle(pose):
+#Top ~10
+#Middle ~30
+#Bottom ~55
+def squat_right_knee_angle(pose, x): # Where x is desired angle
     print("---------------------") 
 
     # Distance formula = abs sqrt((x2-x1)^2 + (y2-y1)^2)
@@ -50,54 +53,10 @@ def squat_right_knee_angle(pose):
 
     print("Right knee angle = " + str(right_knee_angle))
 
-    # Desired angle is 180-125 = 55 degrees
-    print("     Off by " + str(right_knee_angle - (180-125)) + " degrees")
+    # Desired angle is 180-125 = 55 degrees bottom of squat
+    print("     Off by " + str(right_knee_angle - (x)) + " degrees")
     print("---------------------") 
     return right_knee_angle
-
-def squat_left_knee_angle(pose):
-    print("---------------------") 
-
-    # Distance formula = abs sqrt((x2-x1)^2 + (y2-y1)^2)
-    
-    # Left upper leg distance
-    left_knee_idx = pose.FindKeypoint(13)
-    left_hip_idx = pose.FindKeypoint(11)
-
-    if (left_knee_idx < 0 or left_hip_idx < 0):
-        return
-
-    left_knee = pose.Keypoints[left_knee_idx]
-    left_hip = pose.Keypoints[left_hip_idx]
-
-    # left_upper_leg_distance = abs(math.sqrt((left_hip.x - left_knee.x)^2 + (left_hip.y - left_knee.y)^2))
-    left_upper_leg_slope = abs(calcSlope(left_knee, left_hip))
-    print("Left Upper Leg Slope: " + str(left_upper_leg_slope))
-
-    # Left lower leg distance
-    left_ankle_idx = pose.FindKeypoint(15)
-
-    if (left_ankle_idx < 0):
-        return
-
-    left_ankle = pose.Keypoints[left_ankle_idx]
-
-    # left_lower_leg_distance = abs(math.sqrt((left_ankle.x - left_knee.x)^2 + (left_ankle.y - left_knee.y)^2))
-    left_lower_leg_slope = abs(calcSlope(left_knee, left_ankle))
-
-    print("Left Lower Leg Slope: " + str(left_lower_leg_slope))
-   
-    # Calculate knee angle of left knee 
-    left_knee_angle = calcAngle(left_upper_leg_slope, left_lower_leg_slope)
-    #if right_knee_angle < 0:
-    #    right_knee_angle += 180
-
-    print("Left knee angle = " + str(left_knee_angle))
-
-    # Desired angle is 180-125 = 55 degrees
-    print("     Off by " + str(left_knee_angle - (180-125)) + " degrees")
-    print("-----------------------")
-    return left_knee_angle
 
 def squat_right_back_angle(pose):
     print("---------------------") 
@@ -143,6 +102,50 @@ def squat_right_back_angle(pose):
 
     print("---------------------") 
     return back_angle
+
+def squat_left_knee_angle(pose):
+    print("---------------------") 
+
+    # Distance formula = abs sqrt((x2-x1)^2 + (y2-y1)^2)
+    
+    # Left upper leg distance
+    left_knee_idx = pose.FindKeypoint(13)
+    left_hip_idx = pose.FindKeypoint(11)
+
+    if (left_knee_idx < 0 or left_hip_idx < 0):
+        return
+
+    left_knee = pose.Keypoints[left_knee_idx]
+    left_hip = pose.Keypoints[left_hip_idx]
+
+    # left_upper_leg_distance = abs(math.sqrt((left_hip.x - left_knee.x)^2 + (left_hip.y - left_knee.y)^2))
+    left_upper_leg_slope = abs(calcSlope(left_knee, left_hip))
+    print("Left Upper Leg Slope: " + str(left_upper_leg_slope))
+
+    # Left lower leg distance
+    left_ankle_idx = pose.FindKeypoint(15)
+
+    if (left_ankle_idx < 0):
+        return
+
+    left_ankle = pose.Keypoints[left_ankle_idx]
+
+    # left_lower_leg_distance = abs(math.sqrt((left_ankle.x - left_knee.x)^2 + (left_ankle.y - left_knee.y)^2))
+    left_lower_leg_slope = abs(calcSlope(left_knee, left_ankle))
+
+    print("Left Lower Leg Slope: " + str(left_lower_leg_slope))
+   
+    # Calculate knee angle of left knee 
+    left_knee_angle = calcAngle(left_upper_leg_slope, left_lower_leg_slope)
+    #if right_knee_angle < 0:
+    #    right_knee_angle += 180
+
+    print("Left knee angle = " + str(left_knee_angle))
+
+    # Desired angle is 180-125 = 55 degrees
+    print("     Off by " + str(left_knee_angle - (180-125)) + " degrees")
+    print("-----------------------")
+    return left_knee_angle
 
 def squat_left_back_angle(pose):
     print("---------------------") 

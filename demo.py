@@ -11,6 +11,7 @@ import cv2
 import math
 import angle_calculations
 import numpy as np
+import create_xml
 
 sudoPassword = 'scalp431!'
 command = 'xrandr --output HDMI-0 --mode 1920x1080'
@@ -46,6 +47,14 @@ net = jetson.inference.poseNet(opt.network, sys.argv, opt.threshold)
 input = jetson.utils.videoSource(opt.input_URI, argv=sys.argv)
 output = jetson.utils.videoOutput(opt.output_URI, argv=sys.argv)
 
+# Flags to keep track of squat position during rep
+TOP_SQUAT_FLAG = False
+MID_SQUAT_FLAG = False
+BOT_SQUAT_FLAG = False
+top_knee_angle = 10
+mid_knee_angle = 30
+bot_knee_angle = 55
+
 def main():
 
     while True:
@@ -63,27 +72,24 @@ def main():
             time.sleep(3)
             print(getTime() + "Done!\n")
 
+    # Generate new xml file
+    create_xml.main()
     top_score = 0.0
     while display.IsStreaming(): #and display_1.IsStreaming():
         # capture the next image
         img = camera.Capture()
-  
         # perform pose estimation (with overlay)
         poses = net.Process(img, overlay=opt.overlay)
-
         # print the pose results
         print("detected {:d} objects in image".format(len(poses)))
 
         for pose in poses:
+ 
+ #           Print captured pose information
  #           print(pose)
  #           print(pose.Keypoints)
  #           print('Links', pose.Links)
-            
-            #pointing(pose, display)
-            #angle_calculations.squat_right_knee_angle(pose)
-            
-            #squat_right_score(pose)
-
+            verify_squat()
             last_scores = squat_right_score(pose)
             if last_scores != None:
                 if last_scores[0] > top_score:
@@ -96,9 +102,6 @@ def main():
 
         # update the title bar
         display.SetStatus("{:s} | Network {:.0f} FPS".format(opt.network, net.GetNetworkFPS()))
-
-        # print text on screen
-        #cv2.putText(img, "I HATE CODING", (50, 50), cv2.FONT_HERSHEY_COMPLEX, .8, (0, 0, 0), 2, lineType=cv2.LINE_AA)
 
         # print out performance info
         # poseNet.PrintProfilerTimes()
@@ -115,9 +118,24 @@ def main():
 # Calculate percent correctness for right-side-view of sqat
 def squat_right_score(pose):
     right_knee_angle = angle_calculations.squat_right_knee_angle(pose)
+    #post knee angle to xml
     back_angle = angle_calculations.squat_right_back_angle(pose)
+    #post back angle to xml
+
+    #if bottom of squat, calculate score
     if (right_knee_angle != None and back_angle != None):
         return angle_calculations.squat_scoring(right_knee_angle, back_angle)
+    return
+
+def verify_squat(pose):
+    angle = angle_calculations.squat_right_knee_angle
+    if TOP_SQUAT_FLAG == False:
+        #if false, check angle against desired and set to true if close
+        angle_difference = angle - top_knee_angle
+        # if within +- 5 degrees of desired angle, set to true
+        if (angle_difference < 5 and angle_difference > -5):
+            TOP_SQUAT_FLAG = True
+    if (TOP_SQUAT_FLAG)
     return
 
 # Calculate percent correctness for left-side-view of sqat
