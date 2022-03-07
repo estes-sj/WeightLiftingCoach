@@ -2,8 +2,6 @@ from xml.dom import minidom
 import os 
 from datetime import datetime
 import glob
-import xml.etree.ElementTree as ET
-
   
 def new_xml():
     root = minidom.Document()
@@ -69,14 +67,41 @@ def new_xml():
     return save_path_file
 
 # Adds element tags to store next repetition
-def add_new_rep():
-    tree = ET.parse(newest_file())
-    print(newest_file())
-    root = tree.getroot()
-    print(root[0])
-    ET.SubElement(root[0], 'next_rep')
-    #Element.set(‘attrname’, ‘value’) – Modifying element attributes. 
-    #Element.SubElement(parent, new_childtag) -creates a new child tag under the parent. 
+def add_new_rep(rep_count):
+    file_path = newest_file()
+    file = minidom.parse(file_path)
+    
+    repChild = file.createElement('rep')
+    repChild.setAttribute('number', str(rep_count))
+    file.firstChild.appendChild(repChild)
+
+    productChild = file.createElement('knee_angle_top')
+    repChild.appendChild(productChild)
+    productChild.appendChild(file.createTextNode("0"))
+
+    productChild = file.createElement('knee_angle_mid')
+    repChild.appendChild(productChild)
+    productChild.appendChild(file.createTextNode("0"))
+
+    productChild = file.createElement('knee_angle_bottom')
+    repChild.appendChild(productChild)
+    productChild.appendChild(file.createTextNode("0"))
+
+    productChild = file.createElement('back_angle_bottom')
+    repChild.appendChild(productChild)
+    productChild.appendChild(file.createTextNode("0"))
+
+    productChild = file.createElement('feedback')
+    repChild.appendChild(productChild)
+    productChild.appendChild(file.createTextNode("None"))
+
+    # writing the changes in "file" object to 
+    # the "test.xml" file
+    with open(file_path, "w" ) as fs: 
+  
+        fs.write( file.toxml() )
+        fs.close() 
+
 
 # Returns the next file number in sequence w/o replacements
 def next_file_number():
@@ -94,7 +119,7 @@ def newest_file():
     latest_file = max(list_of_files, key=os.path.getmtime) #getmtime/getctime
     print(latest_file) #-1 = newest, 0 = oldest
     return latest_file
-
+ 
 def del_oldest_file():
     list_of_files = os.listdir('data')
     full_path = ["data/{0}".format(x) for x in list_of_files]
@@ -141,4 +166,4 @@ def next_path(path_pattern):
 
 if __name__ == '__main__':
     #new_xml()
-    add_new_rep()
+    add_new_rep(2)
