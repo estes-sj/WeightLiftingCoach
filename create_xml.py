@@ -95,13 +95,14 @@ def add_new_rep(rep_count):
     repChild.appendChild(productChild)
     productChild.appendChild(file.createTextNode("None"))
 
+    xml_str = file.toprettyxml(indent ="\t") 
+
     # writing the changes in "file" object to 
     # the "test.xml" file
     with open(file_path, "w" ) as fs: 
   
         fs.write( file.toxml() )
         fs.close() 
-
 
 # Returns the next file number in sequence w/o replacements
 def next_file_number():
@@ -121,20 +122,32 @@ def newest_file():
     return latest_file
  
 def del_oldest_file():
-    list_of_files = os.listdir('data')
-    full_path = ["data/{0}".format(x) for x in list_of_files]
+    oldest_data = None
+    oldest_video = None
 
-    if len(list_of_files) > 10:
-        oldest_file = min(full_path, key=os.path.getmtime)
-        os.remove(oldest_file)
-        return oldest_file
+    # Delete oldest XML data
+    list_of_data = os.listdir('data')
+    full_path = ["data/{0}".format(x) for x in list_of_data]
+    if len(list_of_data) > 20:
+        oldest_data = min(full_path, key=os.path.getmtime)
+        os.remove(oldest_data)
 
-"""     list_of_files = os.listdir('videos')
-    full_path = ["videos/{0}".format(x) for x in list_of_files]
-    if len(list_of_files) > 15:
-        oldest_file = min(full_path, key=os.path.getmtime)
-        os.remove(oldest_file)
-        return oldest_file """
+    # Delete oldest video
+    list_of_videos = os.listdir('videos')
+    full_path = ["videos/{0}".format(x) for x in list_of_videos]
+    if len(list_of_videos) > 20:
+        oldest_video = min(full_path, key=os.path.getmtime)
+        os.remove(oldest_video)
+
+    if oldest_data != None and oldest_video != None:
+        oldest_files = [oldest_data, oldest_video]
+        return oldest_files
+    elif oldest_data != None:
+        return oldest_data
+    elif oldest_video != None:
+        return oldest_video
+    else:
+        return
 
 # O(logn) Returns the file path of the next squat with replacements considered
 def next_path(path_pattern):
@@ -165,5 +178,10 @@ def next_path(path_pattern):
     return path_pattern % b
 
 if __name__ == '__main__':
-    #new_xml()
+    # Testing
+    
+    new_xml()
     add_new_rep(2)
+    add_new_rep(3)
+    add_new_rep(4)
+    add_new_rep(5)
