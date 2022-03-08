@@ -78,7 +78,7 @@ def main():
             print(getTime() + "Done!\n")
 
     # Generate new xml file and save path
-    save_data_path = create_xml.main()
+    save_data_path = create_xml.new_xml()
     top_score = 0.0
     while display.IsStreaming(): #and display_1.IsStreaming():
         # capture the next image
