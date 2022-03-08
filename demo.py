@@ -117,10 +117,10 @@ def main():
             break
     
     # Add try-catch if needed
-    print("###############################")
+"""     print("###############################")
     angle_calculations.squat_scoring(final_scores[1], final_scores[2])
     print("BEST REP SCORE = {:.3f}%".format(top_score))
-    print("###############################") 
+    print("###############################")  """
 # Calculate percent correctness for right-side-view of sqat
 def squat_right_score(pose):
     right_knee_angle = angle_calculations.squat_right_knee_angle(pose)
