@@ -7,7 +7,6 @@ import os
 import datetime
 import argparse
 import sys
-import cv2
 import math
 import angle_calculations
 import numpy as np
