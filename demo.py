@@ -1,5 +1,6 @@
 # Written by Samuel Estes, Zach Farr, Emily Hattman
 
+import cv2
 import time
 import jetson.inference
 import jetson.utils
