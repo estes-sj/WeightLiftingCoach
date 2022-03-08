@@ -65,7 +65,7 @@ def main():
     while True:
         try:
 			# open streams for camera 0
-            camera = jetson.utils.videoSource('file://videos/IMG_2826.MP4')      # '/dev/video0' for V4L2 
+            camera = jetson.utils.videoSource('file://videos/test_video_sample.mp4')      # '/dev/video0' for V4L2 
             #camera = jetson.utils.videoSource("csi://0", argv=["--input-flip=rotate-180"])      # '/dev/video0' for V4L2 
             #display = jetson.utils.videoOutput('display://0') # 'my_video.mp4' for file
             display = jetson.utils.videoOutput('file://videos/IMG_2826_RESULTS.mp4') # 'my_video.mp4' for file
