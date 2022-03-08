@@ -66,10 +66,9 @@ def main():
     while True:
         try:
             #display = jetson.utils.videoOutput('display://0') # 'my_video.mp4' for file
-            display = jetson.utils.videoOutput('videos/IMG_2826_RESULTS.mp4', argv=["--output-width=1280 --output-height=720"]) # 'my_video.mp4' for file
+            display = jetson.utils.videoOutput('videos/IMG_2827_RESULTS.mp4') # 'my_video.mp4' for file
 			# open streams for camera 0
-            time.sleep(8)
-            camera = jetson.utils.videoSource('videos/IMG_2826.avi', argv=["--input-width=1280 --input-height=720"])      # '/dev/video0' for V4L2 
+            camera = jetson.utils.videoSource('videos/IMG_2827.avi', argv=["--input-width=1792 --input-height=828"])      # '/dev/video0' for V4L2 
             #camera = jetson.utils.videoSource("csi://0", argv=["--input-flip=rotate-180"])      # '/dev/video0' for V4L2 
             print(getTime() + "Camera 0 started...\n")
             break
@@ -82,7 +81,7 @@ def main():
     # Generate new xml file and save path
     save_data_path = create_xml.new_xml()
     top_score = 0.0
-    while display.IsStreaming(): #and display_1.IsStreaming():
+    while display.IsStreaming():
         # capture the next image
         img = camera.Capture()
         # perform pose estimation (with overlay)
@@ -173,7 +172,7 @@ def verify_squat(pose):
     # Check for return to top point, increment rep and continue
     if (TOP_SQUAT_FLAG == True) and (MID_SQUAT_FLAG == True) and (BOT_SQUAT_FLAG == True):
         angle = angle_calculations.squat_right_knee_angle(pose, top_knee_angle)
-        angle_difference = angle - mid_knee_angle
+        angle_difference = angle - top_knee_angle
         if (angle_difference < 5 and angle_difference > -5):
             MID_SQUAT_FLAG = False
             BOT_SQUAT_FLAG = False
