@@ -104,6 +104,17 @@ def add_new_rep(rep_count):
         fs.write( file.toxml() )
         fs.close() 
 
+def modify_value(save_data_path, element, rep, value):
+    file = minidom.parse(save_data_path)
+    # modifying the value of a tag(here "age")
+    file.getElementsByTagName( element )[ rep-1 ].childNodes[ 0 ].nodeValue = str(value)
+    # writing the changes in "file" object to 
+    # the save_data_path file
+    with open(save_data_path, "w" ) as fs: 
+        fs.write( file.toxml() )
+        fs.close() 
+    return
+
 # Returns the next file number in sequence w/o replacements
 def next_file_number():
     # Find newest file ID number
@@ -117,6 +128,14 @@ def newest_file():
     # Find newest file
     list_of_files = glob.glob('data/*.xml') # * means all if need specific format then *.csv
     # Newest log
+    latest_file = max(list_of_files, key=os.path.getmtime) #getmtime/getctime
+    print(latest_file) #-1 = newest, 0 = oldest
+    return latest_file
+
+def newest_video():
+    # Find newest video
+    list_of_files = glob.glob('videos/*') # * means all if need specific format then *.csv
+    # Newest video
     latest_file = max(list_of_files, key=os.path.getmtime) #getmtime/getctime
     print(latest_file) #-1 = newest, 0 = oldest
     return latest_file
@@ -135,7 +154,7 @@ def del_oldest_file():
     # Delete oldest video
     list_of_videos = os.listdir('videos')
     full_path = ["videos/{0}".format(x) for x in list_of_videos]
-    if len(list_of_videos) > 20:
+    if len(list_of_videos) > 30:
         oldest_video = min(full_path, key=os.path.getmtime)
         os.remove(oldest_video)
 
@@ -180,8 +199,9 @@ def next_path(path_pattern):
 if __name__ == '__main__':
     # Testing
     
-    new_xml()
-    add_new_rep(2)
-    add_new_rep(3)
-    add_new_rep(4)
-    add_new_rep(5)
+    #new_xml()
+    #add_new_rep(2)
+    #add_new_rep(3)
+    #add_new_rep(4)
+    #add_new_rep(5)
+    modify_value(newest_file(), "knee_angle_top", 4, 9)

@@ -55,19 +55,22 @@ BOT_SQUAT_FLAG = False
 top_knee_angle = 10
 mid_knee_angle = 30
 bot_knee_angle = 55
+# Store data path once created in main()
+global save_data_path
 
 # Initialize reps variable and reset each time program is ran
-reps = 0
+reps = 1
 
 def main():
-
+    global save_data_path
     while True:
         try:
 			# open streams for camera 0
+            camera = jetson.utils.videoSource('videos\IMG_2826.MP4')      # '/dev/video0' for V4L2 
             #camera = jetson.utils.videoSource("csi://0", argv=["--input-flip=rotate-180"])      # '/dev/video0' for V4L2 
             camera = jetson.utils.videoSource('csi://0', argv=["--input-flip=rotate-180"])      # '/dev/video0' for V4L2 
             #display = jetson.utils.videoOutput('display://0') # 'my_video.mp4' for file
-            display = jetson.utils.videoOutput('videos/demo.mp4') # 'my_video.mp4' for file
+            display = jetson.utils.videoOutput('videos\IMG_2826_RESULTS.MP4') # 'my_video.mp4' for file
             print(getTime() + "Camera 0 started...\n")
             break
         except:
@@ -76,8 +79,8 @@ def main():
             time.sleep(3)
             print(getTime() + "Done!\n")
 
-    # Generate new xml file
-    create_xml.main()
+    # Generate new xml file and save path
+    save_data_path = create_xml.main()
     top_score = 0.0
     while display.IsStreaming(): #and display_1.IsStreaming():
         # capture the next image
@@ -140,6 +143,7 @@ def verify_squat(pose):
         if (angle_difference < 5 and angle_difference > -5):
             TOP_SQUAT_FLAG = True
             # Print Top Squat angle to XML
+            create_xml.modify_value(save_data_path, "knee_angle_top", reps, angle)
     # Check for mid-point knee angle
     if (TOP_SQUAT_FLAG == True) and (MID_SQUAT_FLAG == False):
         angle = angle_calculations.squat_right_knee_angle(pose, mid_knee_angle)
@@ -147,6 +151,7 @@ def verify_squat(pose):
         if (angle_difference < 5 and angle_difference > -5):
             MID_SQUAT_FLAG = True
             # Print Mid Squat angle to XML
+            create_xml.modify_value(save_data_path, "knee_angle_mid", reps, angle)
     # Check for bottom point knee angle and score
     if (TOP_SQUAT_FLAG == True) and (MID_SQUAT_FLAG == True) and (BOT_SQUAT_FLAG == False):
         angle = angle_calculations.squat_right_knee_angle(pose, bot_knee_angle)
@@ -156,6 +161,7 @@ def verify_squat(pose):
             # Score the bottom squat position
             squat_right_score(pose)
             # Print Bot Squat angle and score
+            create_xml.modify_value(save_data_path, "knee_angle_bot", reps, angle)
     # Check for return to top point, increment rep and continue
     if (TOP_SQUAT_FLAG == True) and (MID_SQUAT_FLAG == True) and (BOT_SQUAT_FLAG == True):
         angle = angle_calculations.squat_right_knee_angle(pose, top_knee_angle)
@@ -165,6 +171,7 @@ def verify_squat(pose):
             BOT_SQUAT_FLAG = False
             reps += 1
             # Create Next Rep Data on XML
+            create_xml.add_new_rep(reps)
             # Print Top Squat angle to XML
 
 def getTime():
