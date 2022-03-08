@@ -95,13 +95,13 @@ def main():
  #           print(pose)
  #           print(pose.Keypoints)
  #           print('Links', pose.Links)
-            verify_squat(pose)
+            """ verify_squat(pose)
             last_scores = squat_right_score(pose)
             if last_scores != None:
                 if last_scores[0] > top_score:
                     top_score = last_scores[0]
                     final_scores = last_scores
-                    print("Current Score: {:.3f}%".format(top_score))
+                    print("Current Score: {:.3f}%".format(top_score)) """
 
         # render the image
         display.Render(img)
