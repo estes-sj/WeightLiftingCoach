@@ -94,7 +94,7 @@ def main():
  #           print(pose)
  #           print(pose.Keypoints)
  #           print('Links', pose.Links)
-            verify_squat()
+            verify_squat(pose)
             last_scores = squat_right_score(pose)
             if last_scores != None:
                 if last_scores[0] > top_score:
