@@ -134,6 +134,12 @@ def squat_right_score(pose):
     return
 
 def verify_squat(pose):
+    global TOP_SQUAT_FLAG
+    global MID_SQUAT_FLAG
+    global BOT_SQUAT_FLAG
+    global top_knee_angle
+    global mid_knee_angle
+    global bot_knee_angle
     if TOP_SQUAT_FLAG == False:
         #if false, check angle against desired and set to true if close
         angle = angle_calculations.squat_right_knee_angle(pose, top_knee_angle)
