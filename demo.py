@@ -140,6 +140,8 @@ def verify_squat(pose):
     global top_knee_angle
     global mid_knee_angle
     global bot_knee_angle
+    global save_data_path
+    global reps
     if TOP_SQUAT_FLAG == False:
         #if false, check angle against desired and set to true if close
         angle = angle_calculations.squat_right_knee_angle(pose, top_knee_angle)
