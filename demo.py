@@ -68,7 +68,7 @@ def main():
             camera = jetson.utils.videoSource('videos/IMG_2826.MP4', argv=["--input-width=1280 --input-height=720"])      # '/dev/video0' for V4L2 
             #camera = jetson.utils.videoSource("csi://0", argv=["--input-flip=rotate-180"])      # '/dev/video0' for V4L2 
             #display = jetson.utils.videoOutput('display://0') # 'my_video.mp4' for file
-            display = jetson.utils.videoOutput('videos/IMG_2826_RESULTS.mp4') # 'my_video.mp4' for file
+            display = jetson.utils.videoOutput('videos/IMG_2826_RESULTS.mp4', argv=["--output-width=1280 --output-height=720"]) # 'my_video.mp4' for file
             print(getTime() + "Camera 0 started...\n")
             break
         except:
