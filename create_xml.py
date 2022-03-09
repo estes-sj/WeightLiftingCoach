@@ -124,6 +124,7 @@ def next_file_number():
     # Returns newest file ID number + 1
     return int(latest_file[16:len(latest_file)-4])+1
 
+# Find newest data file
 def newest_file():
     # Find newest file
     list_of_files = glob.glob('data/*.xml') # * means all if need specific format then *.csv
@@ -139,7 +140,14 @@ def newest_video():
     latest_file = max(list_of_files, key=os.path.getmtime) #getmtime/getctime
     print(latest_file) #-1 = newest, 0 = oldest
     return latest_file
- 
+
+# Returns the 6 most recent data xml files 
+def previous_lift_files():
+    # Find newest file
+    list_of_files = glob.glob('data/*.xml') # * means all if need specific format then *.csv
+    latest_file = sorted(list_of_files, key=os.path.getmtime, reverse=True) #getmtime/getctime
+    return latest_file[0:7] # 0 = newest because reversed list
+
 def del_oldest_file():
     oldest_data = None
     oldest_video = None
@@ -167,6 +175,16 @@ def del_oldest_file():
         return oldest_video
     else:
         return
+
+# New method to obtain final results as an array
+def getFinalResults():
+    latest_file = newest_file()
+    file = minidom.parse(latest_file)
+    final_score = file.getElementsByTagName( "final_score" )[ 0 ].childNodes[ 0 ].nodeValue
+    final_feedback = file.getElementsByTagName( "final_feedback" )[ 0 ].childNodes[ 0 ].nodeValue
+    final_results = [final_score, final_feedback]
+    return final_results
+
 
 # O(logn) Returns the file path of the next squat with replacements considered
 def next_path(path_pattern):
@@ -204,4 +222,6 @@ if __name__ == '__main__':
     #add_new_rep(3)
     #add_new_rep(4)
     #add_new_rep(5)
-    modify_value(newest_file(), "knee_angle_top", 4, 9)
+    #modify_value(newest_file(), "knee_angle_top", 4, 9)
+    #previous_lift_files()
+    getFinalResults()

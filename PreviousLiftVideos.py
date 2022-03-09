@@ -1,6 +1,10 @@
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from importlib import reload
+import glob
+import os
+from venv import create
+import create_xml
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -15,6 +19,12 @@ window = Tk()
 window.geometry("1920x1080")
 window.configure(bg="#FFFFFF")
 
+# Get list of most recent files where 0 = newest file
+latest_file_list = create_xml.previous_lift_files()
+
+# Send file information
+def find_previous_lift():
+    return
 
 def SelWkt():
     window.destroy()

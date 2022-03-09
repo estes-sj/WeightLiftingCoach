@@ -1,5 +1,6 @@
 # Written by Samuel Estes, Zach Farr, Emily Hattman
 
+from venv import create
 import cv2
 import time
 import jetson.inference
@@ -57,6 +58,8 @@ mid_knee_angle = 30
 bot_knee_angle = 55
 # Store data path once created in main()
 global save_data_path
+# Variable to track depth of squat
+deepest_knee_angle = 0
 
 # Initialize reps variable and reset each time program is ran
 reps = 1
@@ -66,10 +69,12 @@ def main():
     while True:
         try:
             #display = jetson.utils.videoOutput('display://0') # 'my_video.mp4' for file
-            display = jetson.utils.videoOutput('videos/IMG_2827_RESULTS.mp4') # 'my_video.mp4' for file
-			# open streams for camera 0
-            camera = jetson.utils.videoSource('videos/IMG_2827.avi', argv=["--input-width=1792 --input-height=828"])      # '/dev/video0' for V4L2 
-            #camera = jetson.utils.videoSource("csi://0", argv=["--input-flip=rotate-180"])      # '/dev/video0' for V4L2 
+            #display = jetson.utils.videoOutput('videos/IMG_2829_RESULTS.mp4') # 'my_video.mp4' for file
+            display = jetson.utils.videoOutput('videos/squat_video_' + str(create_xml.next_file_number()) + '.mp4') # 'my_video.mp4' for file
+            # open streams for camera 0
+            #camera = jetson.utils.videoSource('videos/IMG_2827.avi', argv=["--input-width=1792 --input-height=828"])      # '/dev/video0' for V4L2 
+            camera = jetson.utils.videoSource("csi://0", argv=["--input-flip=rotate-180"])      # '/dev/video0' for V4L2 
+            #camera = jetson.utils.videoSource("/dev/video1")      # USB Camera 
             print(getTime() + "Camera 0 started...\n")
             break
         except:
@@ -161,14 +166,19 @@ def verify_squat(pose):
             create_xml.modify_value(save_data_path, "knee_angle_mid", reps, angle)
     # Check for bottom point knee angle and score
     if (TOP_SQUAT_FLAG == True) and (MID_SQUAT_FLAG == True) and (BOT_SQUAT_FLAG == False):
-        angle = angle_calculations.squat_right_knee_angle(pose, bot_knee_angle)
-        angle_difference = angle - bot_knee_angle
+        # Knee
+        knee_angle = angle_calculations.squat_right_knee_angle(pose, bot_knee_angle)
+        angle_difference = knee_angle - bot_knee_angle
         if (angle_difference < 5 and angle_difference > -5):
             BOT_SQUAT_FLAG = True
             # Score the bottom squat position
-            squat_right_score(pose)
+            # final_scores = [final_score, knee_angle, back_angle, final_feedback]
+            final_feedback = squat_right_score(pose)
             # Print Bot Squat angle and score
-            create_xml.modify_value(save_data_path, "knee_angle_bot", reps, angle)
+            create_xml.modify_value(save_data_path, "knee_angle_bottom", reps, angle)
+            # Bottom Back angle print to xml 
+            create_xml.modify_value(save_data_path, "back_angle_bottom", reps, final_feedback[2])
+            create_xml.modify_value(save_data_path, "feedback", reps, final_feedback[4])
     # Check for return to top point, increment rep and continue
     if (TOP_SQUAT_FLAG == True) and (MID_SQUAT_FLAG == True) and (BOT_SQUAT_FLAG == True):
         angle = angle_calculations.squat_right_knee_angle(pose, top_knee_angle)
