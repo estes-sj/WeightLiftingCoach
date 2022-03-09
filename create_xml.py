@@ -217,11 +217,11 @@ def next_path(path_pattern):
 if __name__ == '__main__':
     # Testing
     
-    #new_xml()
-    #add_new_rep(2)
-    #add_new_rep(3)
-    #add_new_rep(4)
-    #add_new_rep(5)
-    #modify_value(newest_file(), "knee_angle_top", 4, 9)
+    new_xml()
+    add_new_rep(2)
+    add_new_rep(3)
+    add_new_rep(4)
+    add_new_rep(5)
+    modify_value(newest_file(), "knee_angle_top", 4, 9)
     #previous_lift_files()
-    getFinalResults()
+    #getFinalResults()
