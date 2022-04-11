@@ -86,41 +86,47 @@ def main():
     # Generate new xml file and save path
     save_data_path = create_xml.new_xml()
     top_score = 0.0
-    while display.IsStreaming():
-        # capture the next image
-        img = camera.Capture()
-        # perform pose estimation (with overlay)
-        poses = net.Process(img, overlay=opt.overlay)
-        # print the pose results
-        print("detected {:d} objects in image".format(len(poses)))
+    try:
+        while display.IsStreaming():
+            # capture the next image
+            img = camera.Capture()
+            # perform pose estimation (with overlay)
+            poses = net.Process(img, overlay=opt.overlay)
+            # print the pose results
+            print("detected {:d} objects in image".format(len(poses)))
 
-        for pose in poses:
- 
- #           Print captured pose information
- #           print(pose)
- #           print(pose.Keypoints)
- #           print('Links', pose.Links)
-            verify_squat(pose)
-            """last_scores = squat_right_score(pose)
-            if last_scores != None:
-                if last_scores[0] > top_score:
-                    top_score = last_scores[0]
-                    final_scores = last_scores
-                    print("Current Score: {:.3f}%".format(top_score)) """
-
-        # render the image
-        display.Render(img)
-
-        # update the title bar
-        display.SetStatus("{:s} | Network {:.0f} FPS".format(opt.network, net.GetNetworkFPS()))
-
-        # print out performance info
-        # poseNet.PrintProfilerTimes()
-
-        # exit on input/output EOS
-        if not camera.IsStreaming() or not display.IsStreaming():
-            break
+            for pose in poses:
     
+    #           Print captured pose information
+    #           print(pose)
+    #           print(pose.Keypoints)
+    #           print('Links', pose.Links)
+                verify_squat(pose)
+                """last_scores = squat_right_score(pose)
+                if last_scores != None:
+                    if last_scores[0] > top_score:
+                        top_score = last_scores[0]
+                        final_scores = last_scores
+                        print("Current Score: {:.3f}%".format(top_score)) """
+
+            # render the image
+            display.Render(img)
+
+            # update the title bar
+            display.SetStatus("{:s} | Network {:.0f} FPS".format(opt.network, net.GetNetworkFPS()))
+
+            # print out performance info
+            # poseNet.PrintProfilerTimes()
+
+            # exit on input/output EOS
+            if not camera.IsStreaming() or not display.IsStreaming():
+                break
+    except KeyboardInterrupt:
+        pass
+    pid = os.getpid()
+    os.system('echo %s|sudo -S kill -9 %d' % (sudoPassword, pid))
+    os.system('python3 FinalResultsPage.py')  
+
     # Add try-catch if needed
 """     print("###############################")
     angle_calculations.squat_scoring(final_scores[1], final_scores[2])

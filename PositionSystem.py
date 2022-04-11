@@ -19,10 +19,10 @@ window.configure(bg="#FFFFFF")
 
 
 def Conductwkt():
-    demo.main()
     window.destroy()
     import ConductLift
     reload(ConductLift)
+    demo.main()
     # samProgram.main()
 
 
