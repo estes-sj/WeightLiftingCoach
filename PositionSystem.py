@@ -21,8 +21,8 @@ window.configure(bg="#FFFFFF")
 def Conductwkt():
     window.destroy()
     import ConductLift
-    reload(ConductLift)
-    demo.main()
+    #reload(ConductLift)
+    demo.spawn_program_and_die(['python3', 'ConductLift.py'])
     # samProgram.main()
 
 
