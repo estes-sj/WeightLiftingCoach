@@ -51,6 +51,9 @@ net = jetson.inference.poseNet(opt.network, sys.argv, opt.threshold)
 input = jetson.utils.videoSource(opt.input_URI, argv=sys.argv)
 output = jetson.utils.videoOutput(opt.output_URI, argv=sys.argv)
 
+# Flag to run video
+run_video = True
+
 # Flags to keep track of squat position during rep
 TOP_SQUAT_FLAG = False
 MID_SQUAT_FLAG = False
@@ -68,7 +71,7 @@ reps = 1
 
 def main():
     global save_data_path
-    while True:
+    while run_video:
         try:
             #display = jetson.utils.videoOutput('display://0') # 'my_video.mp4' for file
             #display = jetson.utils.videoOutput('videos/IMG_2829_RESULTS.mp4') # 'my_video.mp4' for file

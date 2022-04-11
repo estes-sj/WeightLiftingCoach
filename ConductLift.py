@@ -12,8 +12,10 @@ def relative_to_assets(path: str) -> Path:
 
 def FinRes():
     window.destroy()
+    import demo
+    demo.run_video = False
     import FinalResultsPage
-    reload(FinalResultsPage)
+    #reload(FinalResultsPage)
 
 
 def PosSys():
