@@ -14,6 +14,8 @@ import angle_calculations
 import numpy as np
 import create_xml
 import atexit
+import subprocess
+
 
 sudoPassword = 'scalp431!'
 command = 'xrandr --output HDMI-0 --mode 1920x1080'
@@ -124,14 +126,32 @@ def main():
     except KeyboardInterrupt:
         pass
     #os.system('python3 FinalResultsPage.py')  
-    pid = os.getpid()
-    os.system('python3 FinalResultsPage.py;echo %s|sudo -S kill -9 %d' % (sudoPassword, pid))
+    #pid = os.getpid()
+    #os.system('python3 FinalResultsPage.py;echo %s|sudo -S kill -9 %d' % (sudoPassword, pid))
+
+    spawn_program_and_die(['python3', 'FinalResultsPage.py'])
+
 
     # Add try-catch if needed
 """     print("###############################")
     angle_calculations.squat_scoring(final_scores[1], final_scores[2])
     print("BEST REP SCORE = {:.3f}%".format(top_score))
     print("###############################")  """
+
+# Function to open the next window and kill the video stream
+def spawn_program_and_die(program, exit_code=0):
+    """
+    Start an external program and exit the script 
+    with the specified return code.
+
+    Takes the parameter program, which is a list 
+    that corresponds to the argv of your command.
+    """
+    # Start the external program
+    subprocess.Popen(program)
+    # We have started the program, and can suspend this interpreter
+    sys.exit(exit_code)
+
 # Calculate percent correctness for right-side-view of sqat
 def squat_right_score(pose):
     right_knee_angle = angle_calculations.squat_right_knee_angle(pose)
