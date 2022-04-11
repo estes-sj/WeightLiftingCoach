@@ -1,8 +1,6 @@
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
-from main import *
-import pose_capstone
-import demo
+from importlib import reload
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -11,6 +9,10 @@ ASSETS_PATH = OUTPUT_PATH / Path("./assets")
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
+def SelWkt():
+    window.destroy()
+    import SelectWorkout
+    reload(SelectWorkout)
 
 window = Tk()
 
@@ -53,7 +55,7 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: demo.main(),
+    command=lambda: SelWkt(),
     relief="flat"
 )
 button_1.place(

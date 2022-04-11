@@ -1,6 +1,7 @@
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from importlib import reload
+import demo
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -18,6 +19,7 @@ window.configure(bg="#FFFFFF")
 
 
 def Conductwkt():
+    demo.main()
     window.destroy()
     import ConductLift
     reload(ConductLift)
