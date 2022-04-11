@@ -149,47 +149,61 @@ def verify_squat(pose):
     global reps
     if TOP_SQUAT_FLAG == False:
         #if false, check angle against desired and set to true if close
-        angle = angle_calculations.squat_right_knee_angle(pose, top_knee_angle)
-        angle_difference = angle - top_knee_angle
-        # if within +- 5 degrees of desired angle, set to true
-        if (angle_difference < 5 and angle_difference > -5):
-            TOP_SQUAT_FLAG = True
-            # Print Top Squat angle to XML
-            create_xml.modify_value(save_data_path, "knee_angle_top", reps, angle)
+        try:
+            angle = angle_calculations.squat_right_knee_angle(pose, top_knee_angle)
+            angle_difference = angle - top_knee_angle
+            # if within +- 5 degrees of desired angle, set to true
+            if (angle_difference < 5 and angle_difference > -5):
+                TOP_SQUAT_FLAG = True
+                # Print Top Squat angle to XML
+                create_xml.modify_value(save_data_path, "knee_angle_top", reps, angle)
+        except:
+            print("Top Knee Angle not found")
     # Check for mid-point knee angle
     if (TOP_SQUAT_FLAG == True) and (MID_SQUAT_FLAG == False):
-        angle = angle_calculations.squat_right_knee_angle(pose, mid_knee_angle)
-        angle_difference = angle - mid_knee_angle
-        if (angle_difference < 5 and angle_difference > -5):
-            MID_SQUAT_FLAG = True
-            # Print Mid Squat angle to XML
-            create_xml.modify_value(save_data_path, "knee_angle_mid", reps, angle)
+        try:
+            angle = angle_calculations.squat_right_knee_angle(pose, mid_knee_angle)
+            angle_difference = angle - mid_knee_angle
+            if (angle_difference < 5 and angle_difference > -5):
+                MID_SQUAT_FLAG = True
+                # Print Mid Squat angle to XML
+                create_xml.modify_value(save_data_path, "knee_angle_mid", reps, angle)
+        except:
+            print("Mid Knee Angle not found")
     # Check for bottom point knee angle and score
     if (TOP_SQUAT_FLAG == True) and (MID_SQUAT_FLAG == True) and (BOT_SQUAT_FLAG == False):
+        try:
         # Knee
-        knee_angle = angle_calculations.squat_right_knee_angle(pose, bot_knee_angle)
-        angle_difference = knee_angle - bot_knee_angle
-        if (angle_difference < 5 and angle_difference > -5):
-            BOT_SQUAT_FLAG = True
-            # Score the bottom squat position
-            # final_scores = [final_score, knee_angle, back_angle, final_feedback]
-            final_feedback = squat_right_score(pose)
-            # Print Bot Squat angle and score
-            create_xml.modify_value(save_data_path, "knee_angle_bottom", reps, angle)
-            # Bottom Back angle print to xml 
-            create_xml.modify_value(save_data_path, "back_angle_bottom", reps, final_feedback[2])
-            create_xml.modify_value(save_data_path, "feedback", reps, final_feedback[4])
+            knee_angle = angle_calculations.squat_right_knee_angle(pose, bot_knee_angle)
+            angle_difference = knee_angle - bot_knee_angle
+            if (angle_difference < 5 and angle_difference > -5):
+                BOT_SQUAT_FLAG = True
+                # Score the bottom squat position
+                # final_scores = [final_score, knee_angle, back_angle, final_feedback]
+                final_feedback = squat_right_score(pose)
+                # Print Bot Squat angle and score
+                create_xml.modify_value(save_data_path, "knee_angle_bottom", reps, angle)
+                # Bottom Back angle print to xml 
+                create_xml.modify_value(save_data_path, "back_angle_bottom", reps, final_feedback[2])
+                create_xml.modify_value(save_data_path, "feedback", reps, final_feedback[4])
+                # Print final score to XML (co-pilot generated)
+                create_xml.modify_value(save_data_path, "score", reps, final_feedback[0])
+        except:
+            print("Bottom Knee Angle not found")
     # Check for return to top point, increment rep and continue
     if (TOP_SQUAT_FLAG == True) and (MID_SQUAT_FLAG == True) and (BOT_SQUAT_FLAG == True):
-        angle = angle_calculations.squat_right_knee_angle(pose, top_knee_angle)
-        angle_difference = angle - top_knee_angle
-        if (angle_difference < 5 and angle_difference > -5):
-            MID_SQUAT_FLAG = False
-            BOT_SQUAT_FLAG = False
-            reps += 1
-            # Create Next Rep Data on XML
-            create_xml.add_new_rep(reps)
-            # Print Top Squat angle to XML
+        try:
+            angle = angle_calculations.squat_right_knee_angle(pose, top_knee_angle)
+            angle_difference = angle - top_knee_angle
+            if (angle_difference < 5 and angle_difference > -5):
+                MID_SQUAT_FLAG = False
+                BOT_SQUAT_FLAG = False
+                reps += 1
+                # Create Next Rep Data on XML
+                create_xml.add_new_rep(reps)
+                # Print Top Squat angle to XML
+        except:
+            print("Top Knee Angle not found")
 
 def getTime():
 	# Get current date and time
