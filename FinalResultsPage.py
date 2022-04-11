@@ -13,7 +13,11 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 # Get final result information 0 = score, 1 = feedback
-final_results = create_xml.getFinalResults()
+try:
+    final_results = create_xml.getFinalResults()
+except:
+    final_results = ["0", ""]
+    print("No final results found")
 
 def goHome():
     window.destroy()

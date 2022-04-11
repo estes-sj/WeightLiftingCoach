@@ -24,10 +24,13 @@ def Conductwkt():
     window.destroy()
     import ConductLift
     #reload(ConductLift)
-    subprocess.Popen(['python3', 'ConductLift.py'])
-    subprocess.Popen(['python3', 'demo.py'])
-    sys.exit(exit_code=0)
-    # samProgram.main()
+    try:
+        subprocess.Popen(['python3', 'ConductLift.py'])
+        subprocess.Popen(['python3', 'demo.py'])
+        sys.exit(exit_code=0)
+        # samProgram.main()
+    except:
+        print("Error")
 
 
 def SelWkt():

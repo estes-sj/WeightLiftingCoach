@@ -131,8 +131,10 @@ def main():
     #os.system('python3 FinalResultsPage.py')  
     #pid = os.getpid()
     #os.system('python3 FinalResultsPage.py;echo %s|sudo -S kill -9 %d' % (sudoPassword, pid))
-
-    spawn_program_and_die(['python3', 'FinalResultsPage.py'])
+    try:
+        spawn_program_and_die(['python3', 'FinalResultsPage.py'])
+    except:
+        pass
 
 
     # Add try-catch if needed
