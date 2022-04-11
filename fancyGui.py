@@ -1,6 +1,12 @@
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from importlib import reload
+import os
+
+sudoPassword = 'scalp431!'
+command = 'xrandr --output HDMI-0 --mode 1920x1080'
+#command = 'xrandr --output HDMI-0 --mode 1280x720'
+p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
