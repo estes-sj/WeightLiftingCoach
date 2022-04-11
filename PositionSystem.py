@@ -2,6 +2,8 @@ from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from importlib import reload
 import demo
+import subprocess
+import sys
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -22,7 +24,9 @@ def Conductwkt():
     window.destroy()
     import ConductLift
     #reload(ConductLift)
-    demo.spawn_program_and_die(['python3', 'ConductLift.py'])
+    subprocess.Popen(['python3', 'ConductLift.py'])
+    subprocess.Popen(['python3', 'demo.py'])
+    sys.exit(exit_code=0)
     # samProgram.main()
 
 
