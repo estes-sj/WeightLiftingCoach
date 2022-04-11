@@ -123,9 +123,9 @@ def main():
                 break
     except KeyboardInterrupt:
         pass
-    os.system('python3 FinalResultsPage.py')  
+    #os.system('python3 FinalResultsPage.py')  
     pid = os.getpid()
-    os.system('echo %s|sudo -S kill -9 %d' % (sudoPassword, pid))
+    os.system('python3 FinalResultsPage.py;echo %s|sudo -S kill -9 %d' % (sudoPassword, pid))
 
     # Add try-catch if needed
 """     print("###############################")
