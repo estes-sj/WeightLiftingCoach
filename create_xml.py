@@ -178,8 +178,8 @@ def del_oldest_file():
 
 # New method to obtain final results as an array
 def getFinalResults():
-    #latest_file = newest_file()
-    latest_file = "data/squat_data_51.xml"
+    latest_file = newest_file()
+    #latest_file = "data/squat_data_51.xml"
     file = minidom.parse(latest_file)
     final_score = file.getElementsByTagName( "final_score" )[ 0 ].childNodes[ 0 ].nodeValue
     final_feedback = file.getElementsByTagName( "final_feedback" )[ 0 ].childNodes[ 0 ].nodeValue
