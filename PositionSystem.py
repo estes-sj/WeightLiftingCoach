@@ -1,7 +1,6 @@
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from importlib import reload
-import demo
 import subprocess
 import sys
 
@@ -25,8 +24,10 @@ def Conductwkt():
     import ConductLift
     #reload(ConductLift)
     try:
+        #import demo WARNING: import statements cause segments to load prematurely
         subprocess.Popen(['python3', 'ConductLift.py'])
         subprocess.Popen(['python3', 'demo.py'])
+        #subprocess.run("python3 ConductLift.py & python3 demo.py", shell=True)
         sys.exit(exit_code=0)
         # samProgram.main()
     except:

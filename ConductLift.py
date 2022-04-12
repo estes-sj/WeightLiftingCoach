@@ -1,6 +1,7 @@
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from importlib import reload
+import os
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -12,10 +13,12 @@ def relative_to_assets(path: str) -> Path:
 
 def FinRes():
     window.destroy()
-    import demo
-    demo.run_video = False
+    try: 
+        os.system("pkill -f demo.py")
+    except:
+        print("No process to kill")
     import FinalResultsPage
-    #reload(FinalResultsPage)
+    reload(FinalResultsPage)
 
 
 def PosSys():

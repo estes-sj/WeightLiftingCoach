@@ -128,13 +128,14 @@ def main():
                 break
     except KeyboardInterrupt:
         pass
+    #commands to run after completiing lift
     #os.system('python3 FinalResultsPage.py')  
     #pid = os.getpid()
     #os.system('python3 FinalResultsPage.py;echo %s|sudo -S kill -9 %d' % (sudoPassword, pid))
-    try:
+"""     try:
         spawn_program_and_die(['python3', 'FinalResultsPage.py'])
     except:
-        pass
+        pass """
 
 
     # Add try-catch if needed
