@@ -43,6 +43,15 @@ canvas = Canvas(
 )
 
 canvas.place(x=0, y=0)
+canvas.create_text(
+    305.0,
+    192.0,
+    anchor="nw",
+    text="Wait for the camera live video to load. \n"
+         "Click continue once you are done lifting.",
+    fill="#000000",
+    font=(fontStyle, 69 * -1)
+)
 
 button_image_1 = PhotoImage(
     file=relative_to_assets("Continue.png"))
