@@ -21,13 +21,13 @@ window.configure(bg="#FFFFFF")
 
 def Conductwkt():
     window.destroy()
-    import ConductLift
+    #import ConductLift
     #reload(ConductLift)
     try:
         #import demo WARNING: import statements cause segments to load prematurely
-        subprocess.Popen(['python3', 'ConductLift.py'])
-        subprocess.Popen(['python3', 'demo.py'])
-        #subprocess.run("python3 ConductLift.py & python3 demo.py", shell=True)
+        #subprocess.Popen(['python3', 'ConductLift.py'])
+        #subprocess.Popen(['python3', 'demo.py'])
+        subprocess.run("python3 ConductLift.py & python3 demo.py", shell=True)
         sys.exit(exit_code=0)
         # samProgram.main()
     except:
