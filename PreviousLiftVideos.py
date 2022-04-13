@@ -49,7 +49,7 @@ canvas.create_text(
     anchor="nw",
     text="Previous Workouts",
     fill="#000000",
-    font=(fontStyle, 144 * -1)
+    font=(fontStyle, 114 * -1)
 )
 
 button_image_1 = PhotoImage(
@@ -160,6 +160,19 @@ button_7 = Button(
 )
 button_7.place(
     x=41.0,
+    y=43.0,
+    width=214.0,
+    height=99.0
+)
+button_8 = Button(
+    image=button_image_7,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: SelWkt(),
+    relief="flat"
+)
+button_8.place(
+    x=1880.0,
     y=43.0,
     width=214.0,
     height=99.0
