@@ -71,6 +71,7 @@ reps = 1
 
 def main():
     global save_data_path
+    global bot_knee_angle
     while run_video:
         try:
             #display = jetson.utils.videoOutput('display://0') # 'my_video.mp4' for file
@@ -166,7 +167,7 @@ def spawn_program_and_die(program, exit_code=0):
 
 # Calculate percent correctness for right-side-view of sqat
 def squat_right_score(pose):
-    right_knee_angle = angle_calculations.squat_right_knee_angle(pose)
+    right_knee_angle = angle_calculations.squat_right_knee_angle(pose, bot_knee_angle)
     #post knee angle to xml
     back_angle = angle_calculations.squat_right_back_angle(pose)
     #post back angle to xml
