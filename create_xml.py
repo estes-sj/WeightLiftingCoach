@@ -61,7 +61,7 @@ def new_xml():
     with open(save_path_file, "w") as f:
         f.write(xml_str) 
 
-    print("Oldest File Removed: " + del_oldest_file())
+    print("Oldest File Removed: " + str(del_oldest_file()))
     #print(next_file())
 
     return save_path_file
