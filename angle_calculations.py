@@ -258,7 +258,10 @@ def squat_scoring(knee_angle, back_angle):
 
 # Calculates the slope of a line based on 2 points
 def calcSlope(point1, point2):  # point1 and point2 refers to 2 points in the resnet model                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-    return (point2.y-point1.y)/(point2.x-point1.x)
+    try:
+        return (point2.y-point1.y)/(point2.x-point1.x)
+    except ZeroDivisionError:
+        return 0
 
 # Calculate the distance of a line based on 2 points
 def calcDistance(point1, point2):
