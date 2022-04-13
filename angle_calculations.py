@@ -226,11 +226,11 @@ def squat_scoring(knee_angle, back_angle):
     # Uses +/- difference instead of +
     knee_angle_difference = perfect_knee_angle - knee_angle
     if knee_angle_difference < -1 * min_range:
-        message = "Lower hips to break parallel and have hip joint below the knee. \nOff by = " + knee_angle_difference + "\nScore = " + knee_score + "%\n"
+        message = "Lower hips to break parallel and have hip joint below the knee. \nOff by = " + str(knee_angle_difference) + "\nScore = " + str(knee_score) + "%\n"
         print(message)
         final_feedback += message
     elif knee_angle_difference > min_range:
-        message = "Squat is too deep. Raise hips to have the hip joint parallel to knee. Off by = " + knee_angle_difference + "\nScore = " + knee_score + "%\n"
+        message = "Squat is too deep. Raise hips to have the hip joint parallel to knee. Off by = " + str(knee_angle_difference) + "\nScore = " + str(knee_score) + "%\n"
         print(message)
         final_feedback += message
     else:
@@ -240,11 +240,11 @@ def squat_scoring(knee_angle, back_angle):
 
     back_angle_difference = perfect_back_angle - back_angle
     if back_angle_difference < -1 * min_range:
-        message = "Lean forward to prevent excessive stress on the lower back. Off by = " + back_angle_difference + "\nScore = " + back_score + "%\n"
+        message = "Lean forward to prevent excessive stress on the lower back. Off by = " + str(back_angle_difference) + "\nScore = " + str(back_score) + "%\n"
         print(message)
         final_feedback += message
     elif back_angle_difference > min_range:
-        message = "Keep chest upward and look straight ahead. Off by = " + back_angle_difference + "\nScore = " + back_score + "%\n"
+        message = "Keep chest upward and look straight ahead. Off by = " + str(back_angle_difference) + "\nScore = " + str(back_score) + "%\n"
         print(message)
         final_feedback += message
     else:
