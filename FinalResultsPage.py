@@ -98,7 +98,7 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    305.0,
+    295.0,
     0.0,
     anchor="nw",
     text="Barbell Back Squat",

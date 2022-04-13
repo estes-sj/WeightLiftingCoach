@@ -59,7 +59,7 @@ canvas.create_text(
          "Lifting system about\n"
          "six feet away with a\n"
          "clear view of your\n"
-         "side.",
+         "right side.",
     fill="#000000",
     font=(fontStyle, 69 * -1)
 )

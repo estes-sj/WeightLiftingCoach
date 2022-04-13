@@ -47,8 +47,9 @@ canvas.create_text(
     305.0,
     192.0,
     anchor="nw",
-    text="Wait for the camera live video to load. \n"
-         "Click continue once you are done lifting.",
+    text="Wait for the camera live video to \n"
+         "load. Click continue once you \n"
+         "are done lifting.",
     fill="#000000",
     font=(fontStyle, 69 * -1)
 )
