@@ -79,7 +79,7 @@ def main():
             # open streams for camera 0
             #camera = jetson.utils.videoSource('videos/IMG_2827.avi', argv=["--input-width=1792 --input-height=828"])      # '/dev/video0' for V4L2 
             #camera = jetson.utils.videoSource("csi://0", argv=["--input-flip=rotate-180"])      # '/dev/video0' for V4L2 
-            camera = jetson.utils.videoSource("/dev/video0")      # USB Camera 
+            camera = jetson.utils.videoSource("/dev/video0", argv=["--input-width=960 --input-height=554"])      # USB Camera 
             print(getTime() + "Camera 0 started...\n")
             break
         except:
