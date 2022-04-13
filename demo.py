@@ -78,8 +78,8 @@ def main():
             display = jetson.utils.videoOutput('videos/squat_video_' + str(create_xml.next_file_number()) + '.mp4') # 'my_video.mp4' for file
             # open streams for camera 0
             #camera = jetson.utils.videoSource('videos/IMG_2827.avi', argv=["--input-width=1792 --input-height=828"])      # '/dev/video0' for V4L2 
-            camera = jetson.utils.videoSource("csi://0", argv=["--input-flip=rotate-180"])      # '/dev/video0' for V4L2 
-            #camera = jetson.utils.videoSource("/dev/video1")      # USB Camera 
+            #camera = jetson.utils.videoSource("csi://0", argv=["--input-flip=rotate-180"])      # '/dev/video0' for V4L2 
+            camera = jetson.utils.videoSource("/dev/video0")      # USB Camera 
             print(getTime() + "Camera 0 started...\n")
             break
         except:
