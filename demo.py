@@ -106,13 +106,19 @@ def main():
     #           print(pose)
     #           print(pose.Keypoints)
     #           print('Links', pose.Links)
+               
+                # Squat state machine
                 verify_squat(pose)
-                """last_scores = squat_right_score(pose)
+
+                # Calculate best score acheived during squat (overall)
+                last_scores = squat_right_score(pose)
                 if last_scores != None:
                     if last_scores[0] > top_score:
                         top_score = last_scores[0]
                         final_scores = last_scores
-                        print("Current Score: {:.3f}%".format(top_score)) """
+                        top_feedback = last_scores[3]
+                        print("Current Score: {:.3f}%".format(top_score))
+                        create_xml.modify_score_and_feedback(save_data_path, "final_score", "final_feedback", top_score, top_feedback)
 
             # render the image
             display.Render(img)

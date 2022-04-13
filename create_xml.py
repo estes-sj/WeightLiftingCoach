@@ -115,6 +115,19 @@ def modify_value(save_data_path, element, rep, value):
         fs.close() 
     return
 
+# Modifies final score and feedback
+def modify_score_and_feedback(save_data_path, score_element, feedback_element, score_val, feedback_val):
+    file = minidom.parse(save_data_path)
+    # modifying the value of a tag(here "age")
+    file.getElementsByTagName( score_element )[ 0 ].childNodes[ 0 ].nodeValue = str(score_val)
+    file.getElementsByTagName( feedback_element )[ 0 ].childNodes[ 0 ].nodeValue = str(feedback_val)
+    # writing the changes in "file" object to 
+    # the save_data_path file
+    with open(save_data_path, "w" ) as fs: 
+        fs.write( file.toxml() )
+        fs.close() 
+    return
+
 # Returns the next file number in sequence w/o replacements
 def next_file_number():
     # Find newest file ID number
@@ -218,11 +231,12 @@ def next_path(path_pattern):
 if __name__ == '__main__':
     # Testing
     
-    new_xml()
-    add_new_rep(2)
-    add_new_rep(3)
-    add_new_rep(4)
-    add_new_rep(5)
-    modify_value(newest_file(), "knee_angle_top", 4, 9)
+    #new_xml()
+    modify_score_and_feedback(newest_file(), "final_score", "final_feedback", "10", "Hello World")
+    #add_new_rep(2)
+    #add_new_rep(3)
+    #add_new_rep(4)
+    #add_new_rep(5)
+    #modify_value(newest_file(), "knee_angle_top", 4, 9)
     #previous_lift_files()
     #getFinalResults()
