@@ -4,6 +4,7 @@ from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 import json
 from venv import create
 import create_xml
+import os
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -20,15 +21,27 @@ except:
     print("No final results found")
 
 def goHome():
+    cleanup()
     window.destroy()
     import StartPage
     reload(StartPage)
 
 
 def NextSet():
+    cleanup()
     window.destroy()
     import PositionSystem
     reload(PositionSystem)
+
+def cleanup():
+    try:
+        os.system("pkill -f demo.py")
+        os.system("pkill -f ConductLift.py")
+        os.system("pkill -f PositionSystem.py")
+        os.system("pkill -f SelectWorkout.py")
+        os.system("pkill -f StartPage.py")
+    except:
+        print("No process to kill")
 
 window = Tk()
 
