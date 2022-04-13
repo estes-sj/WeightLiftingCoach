@@ -20,12 +20,12 @@ def FinRes():
     import FinalResultsPage
     reload(FinalResultsPage)
 
-
-def PosSys():
+# Possible bugs?
+""" def PosSys():
     window.destroy()
     import PositionSystem
     reload(PositionSystem)
-
+ """
 
 window = Tk()
 
