@@ -44,10 +44,11 @@ canvas = Canvas(
 
 canvas.place(x=0, y=0)
 canvas.create_text(
-    305.0,
+    385.0,
     192.0,
     anchor="nw",
-    text="Wait for the camera live video to \n"
+    text="Wait approximately 10 seconds\n"
+         "for the camera live video to \n"
          "load. Click continue once you \n"
          "are done lifting.",
     fill="#000000",
