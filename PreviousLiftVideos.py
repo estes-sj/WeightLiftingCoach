@@ -44,8 +44,8 @@ canvas = Canvas(
 
 canvas.place(x=0, y=0)
 canvas.create_text(
-    311.0,
-    0.0,
+    430.0,
+    30.0,
     anchor="nw",
     text="Previous Workouts",
     fill="#000000",
@@ -164,15 +164,18 @@ button_7.place(
     width=214.0,
     height=99.0
 )
+
+button_image_8 = PhotoImage(
+    file=relative_to_assets("graph.png"))
 button_8 = Button(
-    image=button_image_7,
+    image=button_image_8,
     borderwidth=0,
     highlightthickness=0,
     command=lambda: SelWkt(),
     relief="flat"
 )
 button_8.place(
-    x=1880.0,
+    x=1650.0,
     y=43.0,
     width=214.0,
     height=99.0
