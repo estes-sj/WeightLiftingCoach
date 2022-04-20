@@ -16,6 +16,7 @@ def relative_to_assets(path: str) -> Path:
 
 window = Tk()
 
+window.attributes('-fullscreen', True)
 window.geometry("1920x1080")
 window.configure(bg="#FFFFFF")
 
