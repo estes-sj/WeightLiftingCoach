@@ -59,7 +59,7 @@ TOP_SQUAT_FLAG = False
 MID_SQUAT_FLAG = False
 BOT_SQUAT_FLAG = False
 top_knee_angle = 10
-mid_knee_angle = 30
+mid_knee_angle = 30 # consider not using this
 bot_knee_angle = 55
 # Store data path once created in main()
 global save_data_path
