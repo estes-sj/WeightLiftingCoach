@@ -71,6 +71,9 @@ def add_new_rep(rep_count):
     file_path = newest_file()
     file = minidom.parse(file_path)
     
+    # Update total rep count in xml
+    modify_score_and_feedback(file_path, "total_reps", rep_count)
+
     repChild = file.createElement('rep')
     repChild.setAttribute('number', str(rep_count))
     file.firstChild.appendChild(repChild)
