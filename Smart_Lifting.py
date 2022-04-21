@@ -22,6 +22,7 @@ def SelWkt():
 
 window = Tk()
 
+window.attributes('-fullscreen', True)
 window.geometry("1920x1080")
 window.configure(bg="#FFFFFF")
 
