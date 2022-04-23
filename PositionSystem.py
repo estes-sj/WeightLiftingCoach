@@ -37,7 +37,7 @@ def Conductwkt():
             subprocess.run("python3 ConductLift.py & python3 demo.py", shell=True)
         except:
             print("Error")
-    quit() 
+    #quit() 
 
 
 def SelWkt():
