@@ -18,20 +18,23 @@ def FinRes():
         os.system("pkill -f demo.py")
     except:
         bad_exit = False
+        print("No process to kill")
+    '''
     if bad_exit == False:
         try:
             os.system("pkill -f /home/samjet/WeightLiftingCoach/demo.py")
         except:
             print("Error")
+    '''
     import FinalResultsPage
     reload(FinalResultsPage)
 
 # Possible bugs?
-""" def PosSys():
+def PosSys():
     window.destroy()
     import PositionSystem
     reload(PositionSystem)
- """
+
 
 window = Tk()
 
