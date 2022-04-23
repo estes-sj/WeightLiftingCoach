@@ -18,11 +18,11 @@ import subprocess
 
 
 sudoPassword = 'scalp431!'
-command = 'xrandr --output HDMI-0 --mode 1920x1080'
+#command = 'xrandr --output HDMI-0 --mode 1920x1080'
 #command = 'xrandr --output HDMI-0 --mode 1280x720'
-p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
-command = 'sudo systemctl restart nvargus-daemon'
-p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
+#p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
+#command = 'sudo systemctl restart nvargus-daemon'
+#p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
 
 # python3 pose_image_calculation.py form_pictures/squat6.png form_pictures/squat6_results.png > logs/log_squat6.log
 # python3 fancyGui.py > logs/log_demo.log
