@@ -38,7 +38,7 @@ def Conductwkt():
             subprocess.run("python3 /home/samjet/WeightLiftingCoach/ConductLift.py & python3 /home/samjet/WeightLiftingCoach/demo.py", shell=True)
         except:
             print("Error")
-    sys.exit(exit_code=0)
+    quit() 
 
 
 def SelWkt():
