@@ -29,17 +29,15 @@ def Conductwkt():
         #subprocess.Popen(['python3', 'ConductLift.py'])
         #subprocess.Popen(['python3', 'demo.py'])
         subprocess.run("python3 ConductLift.py & python3 demo.py", shell=True)
-        sys.exit(exit_code=0)
         # samProgram.main()
     except:
         running = False
     if running == True:
         try:
             subprocess.run("python3 /home/samjet/WeightLiftingCoach/ConductLift.py & python3 /home/samjet/WeightLiftingCoach/demo.py", shell=True)
-            sys.exit(exit_code=0)
         except:
             print("Error")
-    
+    sys.exit(exit_code=0)
 
 
 def SelWkt():
