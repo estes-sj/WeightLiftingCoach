@@ -32,7 +32,14 @@ def Conductwkt():
         sys.exit(exit_code=0)
         # samProgram.main()
     except:
-        print("Error")
+        running = False
+    if running == True:
+        try:
+            subprocess.run("python3 /home/samjet/WeightLiftingCoach/ConductLift.py & python3 /home/samjet/WeightLiftingCoach/demo.py", shell=True)
+            sys.exit(exit_code=0)
+        except:
+            print("Error")
+    
 
 
 def SelWkt():

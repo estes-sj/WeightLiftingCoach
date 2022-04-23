@@ -40,6 +40,11 @@ def cleanup():
         os.system("pkill -f PositionSystem.py")
         os.system("pkill -f SelectWorkout.py")
         os.system("pkill -f StartPage.py")
+        os.system("pkill -f /home/samjet/WeightLiftingCoach/demo.py")
+        os.system("pkill -f /home/samjet/WeightLiftingCoach/ConductLift.py")
+        os.system("pkill -f /home/samjet/WeightLiftingCoach/PositionSystem.py")
+        os.system("pkill -f /home/samjet/WeightLiftingCoach/SelectWorkout.py")
+        os.system("pkill -f /home/samjet/WeightLiftingCoach/StartPage.py")
     except:
         print("No process to kill")
 

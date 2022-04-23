@@ -16,7 +16,11 @@ def FinRes():
     try: 
         os.system("pkill -f demo.py")
     except:
-        print("No process to kill")
+        bad_exit = False
+    try:
+        os.system("pkill -f /home/samjet/WeightLiftingCoach/demo.py")
+    except:
+        print("Error")
     import FinalResultsPage
     reload(FinalResultsPage)
 
