@@ -27,15 +27,14 @@ def Conductwkt():
     running = True
     try:
         #import demo WARNING: import statements cause segments to load prematurely
-        #subprocess.Popen(['python3', 'ConductLift.py'])
-        #subprocess.Popen(['python3', 'demo.py'])
-        subprocess.run("python3 ConductLift.py & python3 demo.py", shell=True)
+        subprocess.run("python3 /home/samjet/WeightLiftingCoach/ConductLift.py & python3 /home/samjet/WeightLiftingCoach/demo.py", shell=True)
+        #subprocess.run("python3 ConductLift.py & python3 demo.py", shell=True)
         # samProgram.main()
     except:
         running = False
     if running == False:
         try:
-            subprocess.run("python3 /home/samjet/WeightLiftingCoach/ConductLift.py & python3 /home/samjet/WeightLiftingCoach/demo.py", shell=True)
+            subprocess.run("python3 ConductLift.py & python3 demo.py", shell=True)
         except:
             print("Error")
     quit() 
