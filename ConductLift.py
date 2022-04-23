@@ -12,6 +12,7 @@ def relative_to_assets(path: str) -> Path:
 
 
 def FinRes():
+    bad_exit = True
     window.destroy()
     try: 
         os.system("pkill -f /home/samjet/WeightLiftingCoach/demo.py")
