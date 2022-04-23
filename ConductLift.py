@@ -12,12 +12,12 @@ def relative_to_assets(path: str) -> Path:
 
 
 def FinRes():
-    bad_exit = True
+    #bad_exit = True
     window.destroy()
     try: 
         os.system("pkill -f demo.py")
     except:
-        bad_exit = False
+        #bad_exit = False
         print("No process to kill")
     '''
     if bad_exit == False:
