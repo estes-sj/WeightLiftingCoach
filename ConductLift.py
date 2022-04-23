@@ -15,12 +15,12 @@ def FinRes():
     bad_exit = True
     window.destroy()
     try: 
-        os.system("pkill -f /home/samjet/WeightLiftingCoach/demo.py")
+        os.system("pkill -f demo.py")
     except:
         bad_exit = False
     if bad_exit == False:
         try:
-            os.system("pkill -f demo.py")
+            os.system("pkill -f /home/samjet/WeightLiftingCoach/demo.py")
         except:
             print("Error")
     import FinalResultsPage
