@@ -84,7 +84,7 @@ def main():
             print(getTime() + "Camera 0 started...\n")
             break
         except:
-            p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
+            #p = os.system('echo %s|sudo -S %s' % (sudoPassword, command))
             print(getTime() + "Camera 0 failed to start...restarting")
             time.sleep(3)
             print(getTime() + "Done!\n")
