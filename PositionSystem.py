@@ -32,7 +32,7 @@ def Conductwkt():
         sys.exit(exit_code=0)
         # samProgram.main()
     except:
-        print("Error")
+        print("Error, Cannot Run Conduct Lift and Demo") 
         #running = False
     '''
     if running == False:

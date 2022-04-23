@@ -18,7 +18,7 @@ def FinRes():
         os.system("pkill -f demo.py")
     except:
         #bad_exit = False
-        print("No process to kill")
+        print("No process demo to kill")
     '''
     if bad_exit == False:
         try:

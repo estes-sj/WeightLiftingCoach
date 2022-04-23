@@ -40,7 +40,7 @@ def cleanup(choice):
         os.system("pkill -f SelectWorkout.py")
         os.system("pkill -f StartPage.py")
     except:
-        print("No process to kill")
+        print("No process demo/conduct/pos/selwkt/stpg to kill")
 
 window = Tk()
 
