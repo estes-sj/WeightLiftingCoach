@@ -21,30 +21,24 @@ except:
     print("No final results found")
 
 def goHome():
-    cleanup()
+    cleanup(1)
     window.destroy()
     import StartPage
     reload(StartPage)
 
-
 def NextSet():
-    cleanup()
+    cleanup(2)
     window.destroy()
     import PositionSystem
     reload(PositionSystem)
 
-def cleanup():
+def cleanup(choice):
     try:
         os.system("pkill -f demo.py")
         os.system("pkill -f ConductLift.py")
         os.system("pkill -f PositionSystem.py")
         os.system("pkill -f SelectWorkout.py")
         os.system("pkill -f StartPage.py")
-        os.system("pkill -f /home/samjet/WeightLiftingCoach/demo.py")
-        os.system("pkill -f /home/samjet/WeightLiftingCoach/ConductLift.py")
-        os.system("pkill -f /home/samjet/WeightLiftingCoach/PositionSystem.py")
-        os.system("pkill -f /home/samjet/WeightLiftingCoach/SelectWorkout.py")
-        os.system("pkill -f /home/samjet/WeightLiftingCoach/StartPage.py")
     except:
         print("No process to kill")
 
