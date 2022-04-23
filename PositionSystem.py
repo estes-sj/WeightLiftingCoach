@@ -24,6 +24,7 @@ def Conductwkt():
     window.destroy()
     #import ConductLift
     #reload(ConductLift)
+    running = True
     try:
         #import demo WARNING: import statements cause segments to load prematurely
         #subprocess.Popen(['python3', 'ConductLift.py'])
@@ -32,7 +33,7 @@ def Conductwkt():
         # samProgram.main()
     except:
         running = False
-    if running == True:
+    if running == False:
         try:
             subprocess.run("python3 /home/samjet/WeightLiftingCoach/ConductLift.py & python3 /home/samjet/WeightLiftingCoach/demo.py", shell=True)
         except:
