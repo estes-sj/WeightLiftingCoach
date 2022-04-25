@@ -14,19 +14,19 @@ def relative_to_assets(path: str) -> Path:
 def PosSys():
     window.destroy()
     import PositionSystem
-    #reload(PositionSystem)
+    reload(PositionSystem)
 
 
 def StPg():
     window.destroy()
     import StartPage
-    #reload(StartPage)
+    reload(StartPage)
 
 
 def PrevWkts():
     window.destroy()
     import PreviousLiftVideos
-    #reload(PreviousLiftVideos)
+    reload(PreviousLiftVideos)
 
 window = Tk()
 

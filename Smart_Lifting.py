@@ -19,7 +19,7 @@ def relative_to_assets(path: str) -> Path:
 def SelWkt():
     window.destroy()
     import SelectWorkout
-    #reload(SelectWorkout)
+    reload(SelectWorkout)
     #window.TopLevel(SelectWorkout.window)
 
 window = Tk()

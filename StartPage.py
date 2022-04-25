@@ -21,7 +21,7 @@ window.configure(bg="#FFFFFF")
 def SelWkt():
     window.destroy()
     import SelectWorkout
-    #reload(SelectWorkout)
+    reload(SelectWorkout)
 
 
 canvas = Canvas(

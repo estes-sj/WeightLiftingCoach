@@ -27,13 +27,13 @@ def FinRes():
             print("Error")
     '''
     import FinalResultsPage
-    #reload(FinalResultsPage)
+    reload(FinalResultsPage)
 
 # Possible bugs?
 def PosSys():
     window.destroy()
     import PositionSystem
-    #reload(PositionSystem)
+    reload(PositionSystem)
 
 
 window = Tk()

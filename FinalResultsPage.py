@@ -24,13 +24,13 @@ def goHome():
     cleanup(1)
     window.destroy()
     import StartPage
-    #reload(StartPage)
+    reload(StartPage)
 
 def NextSet():
     cleanup(2)
     window.destroy()
     import PositionSystem
-    #reload(PositionSystem)
+    reload(PositionSystem)
 
 def cleanup(choice):
     try:
