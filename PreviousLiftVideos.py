@@ -11,6 +11,7 @@ OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
 fontStyle = "Consolas"
 
+
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
@@ -24,21 +25,25 @@ window.configure(bg="#FFFFFF")
 # Get list of most recent files where 0 = newest file
 latest_file_list = create_xml.previous_lift_files()
 
+
 # Send file information
 def find_previous_lift():
     return
 
+
 def SelWkt():
-    #subprocess.run("python3 SelectWorkout.py", shell=True)
+    # subprocess.run("python3 SelectWorkout.py", shell=True)
     window.destroy()
-    #quit()
+    # quit()
     import SelectWorkout
     reload(SelectWorkout)
+
 
 def InsGraph():
     window.destroy()
     import insights_graph
     reload(insights_graph)
+
 
 canvas = Canvas(
     window,
@@ -155,7 +160,6 @@ button_6.place(
     width=273.0,
     height=321.0
 )
-
 
 button_image_7 = PhotoImage(
     file=relative_to_assets("Back.png"))
