@@ -35,6 +35,10 @@ def SelWkt():
     import SelectWorkout
     reload(SelectWorkout)
 
+def InsGraph():
+    window.destroy()
+    import insights_graph
+    reload(insights_graph)
 
 canvas = Canvas(
     window,
@@ -175,7 +179,7 @@ button_8 = Button(
     image=button_image_8,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: SelWkt(),
+    command=lambda: InsGraph(),
     relief="flat"
 )
 button_8.place(

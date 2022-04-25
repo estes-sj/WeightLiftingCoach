@@ -61,6 +61,7 @@ fontStyle = "Consolas"
 
 
 class App(tk.Tk):
+    '''
     def relative_to_assets(path: str) -> Path:
         return ASSETS_PATH / Path(path)
 
@@ -68,7 +69,7 @@ class App(tk.Tk):
         App.destroy()
         import PreviousLiftVideos
         reload(PreviousLiftVideos)
-
+    '''
     def __init__(self):
         super().__init__()
         self.title('Fuck')
@@ -121,7 +122,7 @@ class App(tk.Tk):
         # plt.set_xlabel('Date and Time')
         # plt.set_ylabel('Score (%)')
 
-
+'''
         button_image_7 = PhotoImage(
             file=relative_to_assets("Back.png"))
         button_7 = Button(
@@ -137,7 +138,7 @@ class App(tk.Tk):
             width=214.3,
             height=99.3
         )
-
+'''
 if __name__ == '__main__':
     app = App()
     app.mainloop()

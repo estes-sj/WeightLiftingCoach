@@ -78,9 +78,11 @@ canvas.create_text(
     anchor="nw",
     text="Position the Smart \n"
          "Lifting system about\n"
-         "six feet away with a\n"
+         "twelve feet away with a\n"
          "clear view of your\n"
-         "right side.",
+         "right side.\n"
+         "Adjust the camera as\n"
+         "needed to be in frame.\n",
     fill="#000000",
     font=(fontStyle, 69 * -1)
 )
