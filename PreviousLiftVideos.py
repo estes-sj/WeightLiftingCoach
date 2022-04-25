@@ -5,6 +5,7 @@ import glob
 import os
 from venv import create
 import create_xml
+import subprocess
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -28,7 +29,9 @@ def find_previous_lift():
     return
 
 def SelWkt():
+    #subprocess.run("python3 SelectWorkout.py", shell=True)
     window.destroy()
+    #quit()
     import SelectWorkout
     reload(SelectWorkout)
 

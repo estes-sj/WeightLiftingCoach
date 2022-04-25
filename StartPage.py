@@ -1,6 +1,7 @@
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from importlib import reload
+import subprocess
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -20,8 +21,12 @@ window.configure(bg="#FFFFFF")
 
 def SelWkt():
     window.destroy()
+    #subprocess.run("python3 SelectWorkout.py", shell=True)
+    #window.destroy()
+    #quit()
     import SelectWorkout
     reload(SelectWorkout)
+
 
 
 canvas = Canvas(

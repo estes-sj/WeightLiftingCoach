@@ -2,6 +2,7 @@ from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from importlib import reload
 import os
+import subprocess
 
 sudoPassword = 'scalp431!'
 command = 'xrandr --output HDMI-0 --mode 1920x1080'
@@ -19,6 +20,10 @@ def SelWkt():
     window.destroy()
     import SelectWorkout
     reload(SelectWorkout)
+    #subprocess.run("python3 SelectWorkout.py", shell=True)
+    #window.destroy()
+    #quit()
+    #window.TopLevel(SelectWorkout.window)
 
 window = Tk()
 

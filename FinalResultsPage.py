@@ -5,6 +5,7 @@ import json
 from venv import create
 import create_xml
 import os
+import subprocess
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -21,19 +22,21 @@ except:
     print("No final results found")
 
 def goHome():
-    cleanup()
+    cleanup(1)
+    #subprocess.run("python3 StartPage.py", shell=True)
     window.destroy()
     import StartPage
     reload(StartPage)
 
-
 def NextSet():
-    cleanup()
+    cleanup(2)
+    #subprocess.run("python3 PositionSystem.py", shell=True)
     window.destroy()
+    #quit()
     import PositionSystem
     reload(PositionSystem)
 
-def cleanup():
+def cleanup(choice):
     try:
         os.system("pkill -f demo.py")
         os.system("pkill -f ConductLift.py")
@@ -41,7 +44,7 @@ def cleanup():
         os.system("pkill -f SelectWorkout.py")
         os.system("pkill -f StartPage.py")
     except:
-        print("No process to kill")
+        print("No process demo/conduct/pos/selwkt/stpg to kill")
 
 window = Tk()
 

@@ -1,6 +1,7 @@
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from importlib import reload
+import subprocess
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -15,16 +16,22 @@ def PosSys():
     window.destroy()
     import PositionSystem
     reload(PositionSystem)
+    #subprocess.run("python3 PositionSystem.py", shell=True)
+    #quit()
 
 
 def StPg():
+    #subprocess.run("python3 StartPage.py", shell=True)
     window.destroy()
+    #quit()
     import StartPage
     reload(StartPage)
 
 
 def PrevWkts():
+   # subprocess.run("python3 PreviousLiftVideos.py", shell=True)
     window.destroy()
+    #quit()
     import PreviousLiftVideos
     reload(PreviousLiftVideos)
 
