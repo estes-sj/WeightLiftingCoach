@@ -116,8 +116,9 @@ This project is built using the jetson-inference computer vision libary created 
 ## Usage
 
 Screenshots and stuff
-[![Start Screen](docs/StartScreen.png)]
-[![Position System](docs/PositionSystem.png)]
+![Start Screen](docs/StartScreen.png)
+![Position System](docs/PositionSystem.png)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -141,7 +142,7 @@ Screenshots and stuff
 <!-- CONTACT -->
 ## Team
 
-[![Samuel Estes](docs/1650595785138.jpg)](https://www.linkedin.com/in/samuel-estes-b5598122b/)  | [![Zach Farr](docs/1639155008086.jpg)](https://www.linkedin.com/in/zachary-farr-97bb68182/)  | [![Emily Hattman](docs/1610480133202.jpg)](https://www.quandl.com/)
+[![Samuel Estes](docs/1650595785138.jpg =200x200)](https://www.linkedin.com/in/samuel-estes-b5598122b/)  | [![Zach Farr](docs/1639155008086.jpg =200x200)](https://www.linkedin.com/in/zachary-farr-97bb68182/)  | [![Emily Hattman](docs/1610480133202.jpg =200x200)](https://www.quandl.com/)
 ---|---|---
 [Samuel Estes](https://github.com/primetime728) |[Zach Farr](https://www.linkedin.com/in/zachary-farr-97bb68182/) |[Emily Hattman](https://www.linkedin.com/in/emily-hattman-335050192/)
 
