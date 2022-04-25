@@ -5,7 +5,7 @@ import glob
 import os
 from venv import create
 import create_xml
-import subprocess
+#import subprocess
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")

@@ -2,7 +2,7 @@ from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from importlib import reload
 import os
-import subprocess
+#import subprocess
 
 sudoPassword = 'scalp431!'
 command = 'xrandr --output HDMI-0 --mode 1920x1080'
