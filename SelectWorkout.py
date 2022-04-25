@@ -13,22 +13,27 @@ def relative_to_assets(path: str) -> Path:
 
 
 def PosSys():
-    #import PositionSystem
-    #reload(PositionSystem)
-    subprocess.run("python3 PositionSystem.py", shell=True)
     window.destroy()
+    import PositionSystem
+    reload(PositionSystem)
+    #subprocess.run("python3 PositionSystem.py", shell=True)
+    #quit()
 
 
 def StPg():
+    #subprocess.run("python3 StartPage.py", shell=True)
     window.destroy()
-    #import StartPage
-    #reload(StartPage)
+    #quit()
+    import StartPage
+    reload(StartPage)
 
 
 def PrevWkts():
+   # subprocess.run("python3 PreviousLiftVideos.py", shell=True)
     window.destroy()
-   # import PreviousLiftVideos
-    #reload(PreviousLiftVideos)
+    #quit()
+    import PreviousLiftVideos
+    reload(PreviousLiftVideos)
 
 window = Tk()
 

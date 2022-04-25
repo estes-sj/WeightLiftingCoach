@@ -2,6 +2,7 @@ from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from importlib import reload
 import os
+import subprocess
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -13,7 +14,6 @@ def relative_to_assets(path: str) -> Path:
 
 def FinRes():
     #bad_exit = True
-    window.destroy()
     try: 
         os.system("pkill -f demo.py")
     except:
@@ -26,12 +26,17 @@ def FinRes():
         except:
             print("Error")
     '''
+    #subprocess.run("python3 FinalResultsPage.py", shell=True)
+    window.destroy()
+    #quit()
     import FinalResultsPage
     reload(FinalResultsPage)
 
 # Possible bugs?
 def PosSys():
+    #subprocess.run("python3 PositionSystem.py", shell=True)
     window.destroy()
+    #quit()
     import PositionSystem
     reload(PositionSystem)
 

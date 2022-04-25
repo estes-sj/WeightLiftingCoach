@@ -5,6 +5,7 @@ import json
 from venv import create
 import create_xml
 import os
+import subprocess
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -22,13 +23,16 @@ except:
 
 def goHome():
     cleanup(1)
+    #subprocess.run("python3 StartPage.py", shell=True)
     window.destroy()
     import StartPage
     reload(StartPage)
 
 def NextSet():
     cleanup(2)
+    #subprocess.run("python3 PositionSystem.py", shell=True)
     window.destroy()
+    #quit()
     import PositionSystem
     reload(PositionSystem)
 

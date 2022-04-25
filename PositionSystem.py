@@ -28,8 +28,11 @@ def Conductwkt():
     try:
         #import demo WARNING: import statements cause segments to load prematurely
         #subprocess.run("python3 /home/samjet/WeightLiftingCoach/ConductLift.py & python3 /home/samjet/WeightLiftingCoach/demo.py", shell=True)
-        subprocess.run("python3 ConductLift.py & python3 demo.py", shell=True)
-        sys.exit(exit_code=0)
+        import ConductLift
+        reload(ConductLift)
+        subprocess.run("python3 demo.py", shell=True)
+        #subprocess.run("python3 ConductLift.py & python3 demo.py", shell=True)
+        #sys.exit(exit_code=0)
         # samProgram.main()
     except:
         print("Error, Cannot Run Conduct Lift and Demo") 
@@ -51,7 +54,9 @@ def Conductwkt():
 
 
 def SelWkt():
+    #subprocess.run("python3 SelecktWorkout.py", shell=True)
     window.destroy()
+    #quit()
     import SelectWorkout
     reload(SelectWorkout)
 

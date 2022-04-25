@@ -17,10 +17,12 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 def SelWkt():
-    #import SelectWorkout
-    #reload(SelectWorkout)
-    subprocess.run("python3 SelectWorkout.py", shell=True)
     window.destroy()
+    import SelectWorkout
+    reload(SelectWorkout)
+    #subprocess.run("python3 SelectWorkout.py", shell=True)
+    #window.destroy()
+    #quit()
     #window.TopLevel(SelectWorkout.window)
 
 window = Tk()
