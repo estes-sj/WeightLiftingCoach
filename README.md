@@ -85,7 +85,7 @@ This project is built using the jetson-inference computer vision libary created 
 
 1. Nvidia Jetson Nano 2GB/4GB
 2. SD Card 8GB+
-3. MIPI CSI Camera
+3. USB Camera
 
 ### Installation
 
@@ -95,9 +95,17 @@ This project is built using the jetson-inference computer vision libary created 
    ```sh
    git clone https://github.com/primetime728/WeightLiftingCoach
    ```
-3. Run the program using
+3. Navigate to the folder
    ```
-   python3 fancyGUI.py
+   cd WeightLiftingCoach
+   ```
+4. Change the program to executable format
+   ```
+   chmod u+x capstone.command
+   ```   
+5. Run the program using
+   ```
+   ./capstone.command
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -108,6 +116,8 @@ This project is built using the jetson-inference computer vision libary created 
 ## Usage
 
 Screenshots and stuff
+[![Start Screen](docs/StartScreen.png)]
+[![Position System](docs/PositionSystem.png)]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -118,11 +128,12 @@ Screenshots and stuff
 
 - [x] Proof-of-concept
 - [x] Sprint 1 - Detect Right-side view of squat
-- [X] Sprint 2 - Simple GUI
-- [ ] Sprint 3 - TBD
-- [ ] Sprint 4 - TBD
-- [ ] Sprint 5 - TBD
-
+- [x] Sprint 2 - Simple GUI
+- [x] Sprint 3 - XML Data Management
+- [x] Sprint 4 - Rep Count and Squat State Machine
+- [x] Sprint 5 - Graph and GUI Deployment
+- [x] Sprint 6 - Bug Fixes and Physical Enclosure
+- [ ] Final Presentation - May 4, 2022
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -130,7 +141,7 @@ Screenshots and stuff
 <!-- CONTACT -->
 ## Team
 
-[![Samuel Estes](docs/1642564740099.jpg)](https://www.linkedin.com/in/samuel-estes-b5598122b/)  | [![Zach Farr](docs/1639155008086.jpg)](https://www.linkedin.com/in/zachary-farr-97bb68182/)  | [![Emily Hattman](docs/1610480133202.jpg)](https://www.quandl.com/)
+[![Samuel Estes](docs/1650595785138.jpg)](https://www.linkedin.com/in/samuel-estes-b5598122b/)  | [![Zach Farr](docs/1639155008086.jpg)](https://www.linkedin.com/in/zachary-farr-97bb68182/)  | [![Emily Hattman](docs/1610480133202.jpg)](https://www.quandl.com/)
 ---|---|---
 [Samuel Estes](https://github.com/primetime728) |[Zach Farr](https://www.linkedin.com/in/zachary-farr-97bb68182/) |[Emily Hattman](https://www.linkedin.com/in/emily-hattman-335050192/)
 
@@ -145,9 +156,9 @@ VMI (https://www.vmi.edu/)
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 Advisors:
-<p>Dr. Lasisi</p>
+<p>Dr. Ramoni Lasisi</p>
 <p>BG Smith (USA, Retired)</p>
-<p>Dr. Gracanin</p>
+<p>Dr. Dennis Gracanin</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
