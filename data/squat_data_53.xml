@@ -1,7 +1,7 @@
 <?xml version="1.0" ?><exercise type="squat">
 	<date>12/04/2022 22:15:41</date>
 	<total_reps>0</total_reps>
-	<final_score>10</final_score>
+	<final_score>70</final_score>
 	<final_feedback>Hello World</final_feedback>
 	<rep number="1">
 		<knee_angle_top>0</knee_angle_top>
