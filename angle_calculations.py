@@ -196,7 +196,7 @@ def squat_scoring(knee_angle, back_angle):
     print("####################")
 
     # Anything below the range is 100% and above the range is 0%
-    min_range = 5.0
+    min_range = 0.0 # 4/21/22 change from 5.0 -> 0.0
     max_range = 35.0
     range = min_range - max_range
 

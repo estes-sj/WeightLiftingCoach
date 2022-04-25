@@ -12,20 +12,29 @@ def relative_to_assets(path: str) -> Path:
 
 
 def FinRes():
+    #bad_exit = True
     window.destroy()
     try: 
         os.system("pkill -f demo.py")
     except:
-        print("No process to kill")
+        #bad_exit = False
+        print("No process demo to kill")
+    '''
+    if bad_exit == False:
+        try:
+            os.system("pkill -f /home/samjet/WeightLiftingCoach/demo.py")
+        except:
+            print("Error")
+    '''
     import FinalResultsPage
-    reload(FinalResultsPage)
+    #reload(FinalResultsPage)
 
 # Possible bugs?
-""" def PosSys():
+def PosSys():
     window.destroy()
     import PositionSystem
-    reload(PositionSystem)
- """
+    #reload(PositionSystem)
+
 
 window = Tk()
 

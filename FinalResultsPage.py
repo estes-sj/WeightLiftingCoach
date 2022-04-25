@@ -21,19 +21,18 @@ except:
     print("No final results found")
 
 def goHome():
-    cleanup()
+    cleanup(1)
     window.destroy()
     import StartPage
-    reload(StartPage)
-
+    #reload(StartPage)
 
 def NextSet():
-    cleanup()
+    cleanup(2)
     window.destroy()
     import PositionSystem
-    reload(PositionSystem)
+    #reload(PositionSystem)
 
-def cleanup():
+def cleanup(choice):
     try:
         os.system("pkill -f demo.py")
         os.system("pkill -f ConductLift.py")
@@ -41,7 +40,7 @@ def cleanup():
         os.system("pkill -f SelectWorkout.py")
         os.system("pkill -f StartPage.py")
     except:
-        print("No process to kill")
+        print("No process demo/conduct/pos/selwkt/stpg to kill")
 
 window = Tk()
 
