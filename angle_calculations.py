@@ -210,11 +210,13 @@ def squat_scoring(knee_angle, back_angle):
     # % = (value - min)/(max - min)
     if knee_angle_difference <= max_range and knee_angle_difference >= min_range:
         knee_score = abs(100*((knee_angle_difference - max_range) / range))
+        knee_score = float("{:.2f}".format(knee_score))
     else:
         knee_score = 0.0
 
     if back_angle_difference <= max_range and knee_angle_difference >= min_range:
         back_score = abs(100*((back_angle_difference - max_range) / range))
+        back_score = float("{:.2f}".format(back_score))
     else:
         back_score = 0.0
 
@@ -225,6 +227,7 @@ def squat_scoring(knee_angle, back_angle):
 
     # Uses +/- difference instead of +
     knee_angle_difference = perfect_knee_angle - knee_angle
+    knee_angle_difference = float("{:.2f}".format(knee_angle_difference))
     if knee_angle_difference < -1 * min_range:
         message = "Lower hips to break parallel and have hip joint below the knee. \nOff by = " + str(knee_angle_difference) + "\nScore = " + str(knee_score) + "%\n"
         print(message)
@@ -239,6 +242,7 @@ def squat_scoring(knee_angle, back_angle):
         final_feedback += message
 
     back_angle_difference = perfect_back_angle - back_angle
+    back_angle_difference = float("{:.2f}".format(back_angle_difference))
     if back_angle_difference < -1 * min_range:
         message = "Lean forward to prevent excessive stress on the lower back. Off by = " + str(back_angle_difference) + "\nScore = " + str(back_score) + "%\n"
         print(message)
