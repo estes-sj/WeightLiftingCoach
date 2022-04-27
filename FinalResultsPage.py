@@ -86,7 +86,7 @@ canvas.create_text(
     210.0,
     anchor="nw",
     # Final Score will go here
-    text="   " + float("{:.2f}".format(final_results[0])) + "%",
+    text="   " + float("{:.2f}".format(float(final_results[0]))) + "%",
     fill="#000000",
     font=(fontStyle, 69 * -1)
 )
