@@ -233,7 +233,7 @@ def squat_scoring(knee_angle, back_angle):
         print(message)
         final_feedback += message
     elif knee_angle_difference > min_range:
-        message = "Squat is too deep. Raise hips to have the hip joint parallel to knee. Off by = " + str(knee_angle_difference) + " degrees. \nScore = " + str(knee_score) + "%\n"
+        message = "Squat is too deep. Raise hips to have the hip joint parallel to knee. \nOff by = " + str(knee_angle_difference) + " degrees. \nScore = " + str(knee_score) + "%\n"
         print(message)
         final_feedback += message
     else:
