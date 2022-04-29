@@ -1,12 +1,17 @@
-<?xml version="1.0" ?>
-<exercise type="squat">
-	<date>12/04/2022 22:10:38</date>
+<?xml version="1.0" ?><exercise type="squat">
+	<date>29/04/2022 00:16:51</date>
 	<total_reps>0</total_reps>
-	<final_score>60</final_score>
-	<final_feedback>None</final_feedback>
+	<final_score>89.16499999999999</final_score>
+	<final_feedback>Lower hips to break parallel and have hip joint below the knee. 
+Off by = -1.23 degrees. 
+Score = 96.49%
+Keep chest upward and look straight ahead. 
+Off by = 6.36 degrees.
+Score = 81.84%
+</final_feedback>
 	<rep number="1">
-		<knee_angle_top>0</knee_angle_top>
-		<knee_angle_mid>0</knee_angle_mid>
+		<knee_angle_top>8.539407242723764</knee_angle_top>
+		<knee_angle_mid>32.604330938012126</knee_angle_mid>
 		<knee_angle_bottom>0</knee_angle_bottom>
 		<back_angle_bottom>0</back_angle_bottom>
 		<feedback>None</feedback>

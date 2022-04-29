@@ -1,11 +1,17 @@
 <?xml version="1.0" ?><exercise type="squat">
-	<date>12/04/2022 22:15:41</date>
+	<date>29/04/2022 00:22:13</date>
 	<total_reps>0</total_reps>
-	<final_score>70</final_score>
-	<final_feedback>Hello World</final_feedback>
+	<final_score>58.730000000000004</final_score>
+	<final_feedback>Squat is too deep. Raise hips to have the hip joint parallel to knee. 
+Off by = 8.0 degrees. 
+Score = 77.14%
+Keep chest upward and look straight ahead. 
+Off by = 20.89 degrees.
+Score = 40.32%
+</final_feedback>
 	<rep number="1">
-		<knee_angle_top>0</knee_angle_top>
-		<knee_angle_mid>0</knee_angle_mid>
+		<knee_angle_top>7.519235380799385</knee_angle_top>
+		<knee_angle_mid>29.24788687897717</knee_angle_mid>
 		<knee_angle_bottom>0</knee_angle_bottom>
 		<back_angle_bottom>0</back_angle_bottom>
 		<feedback>None</feedback>

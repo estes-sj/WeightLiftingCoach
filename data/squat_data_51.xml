@@ -1,14 +1,19 @@
 <?xml version="1.0" ?><exercise type="squat">
-	<date>07/03/2022 09:42:46</date>
-	<total_reps>3</total_reps>
-	<final_score>91.592</final_score>
+	<date>29/04/2022 00:21:18</date>
+	<total_reps>0</total_reps>
+	<final_score>82.37</final_score>
 	<final_feedback>Lower hips to break parallel and have hip joint below the knee. 
-	Lean forward to prevent excessive stress on the lower back. </final_feedback>
+Off by = -1.88 degrees. 
+Score = 94.62%
+Keep chest upward and look straight ahead. 
+Off by = 10.46 degrees.
+Score = 70.12%
+</final_feedback>
 	<rep number="1">
-		<knee_angle_top>14.681143654863801</knee_angle_top>
-		<knee_angle_mid>25.214129833572763</knee_angle_mid>
-		<knee_angle_bottom>55.1451523352532</knee_angle_bottom>
-		<back_angle_bottom>58.2546234616343</back_angle_bottom>
-		<feedback>Great hip angle! Great back angle!</feedback>
+		<knee_angle_top>5.6070251403350895</knee_angle_top>
+		<knee_angle_mid>30.272980253460904</knee_angle_mid>
+		<knee_angle_bottom>0</knee_angle_bottom>
+		<back_angle_bottom>0</back_angle_bottom>
+		<feedback>None</feedback>
 	</rep>
-<rep number="2"><knee_angle_top>11.51245123452</knee_angle_top><knee_angle_mid>23.2341234412</knee_angle_mid><knee_angle_bottom>65.512345124699109</knee_angle_bottom><back_angle_bottom>45.1235912959232</back_angle_bottom><feedback>Lean forward to prevent excessive stress on the lower back. Squat is too deep. Raise hips to have the hip joint parallel to knee.</feedback></rep><rep number="3"><knee_angle_top>5.12350501023234</knee_angle_top><knee_angle_mid>25.692349691961</knee_angle_mid><knee_angle_bottom>58.1239859019051</knee_angle_bottom><back_angle_bottom>51.191609246902453</back_angle_bottom><feedback>Lower hips to break parallel and have hip joint below the knee. Lean forward to prevent excessive stress on the lower back.</feedback></rep></exercise>
+</exercise>
