@@ -18,7 +18,7 @@ def relative_to_assets(path: str) -> Path:
 try:
     final_results = create_xml.getFinalResults()
 except:
-    final_results = ["0", ""]
+    final_results = ["0", "No Squat Detected. Please try again."]
     print("No final results found")
 
 def goHome():
