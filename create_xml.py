@@ -25,7 +25,7 @@ def new_xml():
 
     productChild = root.createElement('final_feedback')
     xml.appendChild(productChild)
-    productChild.appendChild(root.createTextNode("None"))
+    productChild.appendChild(root.createTextNode("No Squat Detected. Please try again."))
 
     repChild = root.createElement('rep')
     repChild.setAttribute('number', '1')
