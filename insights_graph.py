@@ -1,14 +1,19 @@
 from pathlib import Path
-import os
-import xml.dom.minidom as minidom
-from importlib import reload
+from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from mimetypes import init
+import tkinter as tk
+import matplotlib
 from pathlib import Path
-from tkinter import Tk, Canvas, Button, PhotoImage
+from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from importlib import reload
+import os
 
-import matplotlib.pyplot as plt
-from matplotlib.figure import Figure
-
+from numpy import size
 import create_xml
+import xml.dom.minidom as minidom
+import matplotlib.pyplot as plt
+
+from matplotlib.figure import Figure
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -107,26 +112,11 @@ button_1 = Button(
     command=lambda: goHome()
 )
 button_1.place(
-    x=270.0,
+    x=250.0,
     y=10.0,
     width=the_graph.width(),
     height=the_graph.height()
 )
 
-button_image_2 = PhotoImage(
-    file=relative_to_assets("Back.png"))
-button_2 = Button(
-    image=button_image_2,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("button_2 clicked"),
-    relief="flat"
-)
-button_2.place(
-    x=41.0,
-    y=43.0,
-    width=214.0,
-    height=99.0
-)
 window.resizable(False, False)
 window.mainloop()
