@@ -34,7 +34,7 @@ def cleanup(choice):
 
 
 window = Tk()
-#window.attributes('-fullscreen', True)
+window.attributes('-fullscreen', True)
 window.geometry("1920x1080")
 window.configure(bg="#FFFFFF")
 list_of_files = create_xml.previous_lift_files()
