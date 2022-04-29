@@ -25,7 +25,7 @@ def new_xml():
 
     productChild = root.createElement('final_feedback')
     xml.appendChild(productChild)
-    productChild.appendChild(root.createTextNode("No Squat Detected. Please try again.\nMake sure that you are positioned far enough away\nso that you are fully in frame of the camera.\nHowever, being too far away may impair results.\nThe camera is adjustable.\nHalf squats will result in a score of 0."))
+    productChild.appendChild(root.createTextNode("No Squat Detected. Please try again.\nMake sure that you are positioned far enough away\nso that you are fully in frame of the camera."))
 
     repChild = root.createElement('rep')
     repChild.setAttribute('number', '1')
