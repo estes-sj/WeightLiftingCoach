@@ -77,7 +77,7 @@ button_1.place(
     height=95.0
 )
 
-button_image_2 = PhotoImage(
+""" button_image_2 = PhotoImage(
     file=relative_to_assets("PrevWorkouts.png"))
 button_2 = Button(
     image=button_image_2,
@@ -92,7 +92,7 @@ button_2.place(
     width=1032.0,
     height=95.0
 )
-
+ """
 button_image_3 = PhotoImage(
     file=relative_to_assets("Back.png"))
 button_3 = Button(
