@@ -62,7 +62,7 @@ canvas.create_text(
 )
 
 button_image_1 = PhotoImage(
-    file=relative_to_assets("button_1.png"))
+    file=relative_to_assets("Begin.png"))
 button_1 = Button(
     image=button_image_1,
     borderwidth=0,
