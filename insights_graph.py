@@ -56,23 +56,23 @@ recent4 = minidom.parse(list_of_files[4])
 recent5 = minidom.parse(list_of_files[5])
 recent6 = minidom.parse(list_of_files[6])
 
-final_score0 = float(recent0.getElementsByTagName("final_score")[0].childNodes[0].nodeValue)
-final_score1 = float(recent1.getElementsByTagName("final_score")[0].childNodes[0].nodeValue)
-final_score2 = float(recent2.getElementsByTagName("final_score")[0].childNodes[0].nodeValue)
+final_score0 = float(recent6.getElementsByTagName("final_score")[0].childNodes[0].nodeValue)
+final_score1 = float(recent5.getElementsByTagName("final_score")[0].childNodes[0].nodeValue)
+final_score2 = float(recent4.getElementsByTagName("final_score")[0].childNodes[0].nodeValue)
 final_score3 = float(recent3.getElementsByTagName("final_score")[0].childNodes[0].nodeValue)
-final_score4 = float(recent4.getElementsByTagName("final_score")[0].childNodes[0].nodeValue)
-final_score5 = float(recent5.getElementsByTagName("final_score")[0].childNodes[0].nodeValue)
-final_score6 = float(recent6.getElementsByTagName("final_score")[0].childNodes[0].nodeValue)
+final_score4 = float(recent2.getElementsByTagName("final_score")[0].childNodes[0].nodeValue)
+final_score5 = float(recent1.getElementsByTagName("final_score")[0].childNodes[0].nodeValue)
+final_score6 = float(recent0.getElementsByTagName("final_score")[0].childNodes[0].nodeValue)
 
 # get date from data
 
-date0 = str(recent0.getElementsByTagName("date")[0].childNodes[0].nodeValue)
-date1 = str(recent1.getElementsByTagName("date")[0].childNodes[0].nodeValue)
-date2 = str(recent2.getElementsByTagName("date")[0].childNodes[0].nodeValue)
+date0 = str(recent6.getElementsByTagName("date")[0].childNodes[0].nodeValue)
+date1 = str(recent5.getElementsByTagName("date")[0].childNodes[0].nodeValue)
+date2 = str(recent4.getElementsByTagName("date")[0].childNodes[0].nodeValue)
 date3 = str(recent3.getElementsByTagName("date")[0].childNodes[0].nodeValue)
-date4 = str(recent4.getElementsByTagName("date")[0].childNodes[0].nodeValue)
-date5 = str(recent5.getElementsByTagName("date")[0].childNodes[0].nodeValue)
-date6 = str(recent6.getElementsByTagName("date")[0].childNodes[0].nodeValue)
+date4 = str(recent2.getElementsByTagName("date")[0].childNodes[0].nodeValue)
+date5 = str(recent1.getElementsByTagName("date")[0].childNodes[0].nodeValue)
+date6 = str(recent0.getElementsByTagName("date")[0].childNodes[0].nodeValue)
 
 xpoints = [date0, date1, date2, date3, date4, date5, date6]
 ypoints = [final_score0, final_score1, final_score2, final_score3, final_score4, final_score5, final_score6]
