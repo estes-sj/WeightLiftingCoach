@@ -64,7 +64,7 @@ canvas.create_text(
     anchor="nw",
     text="Wait approximately 15 seconds\n"
          "for the camera live video to \n"
-         "load.\n\n"
+         "load.\nThen perform 3 squats.\n"
          "Do not click the button until\n"
          "you are done lifting.",
     fill="#000000",
