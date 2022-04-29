@@ -18,7 +18,7 @@ def relative_to_assets(path: str) -> Path:
 try:
     final_results = create_xml.getFinalResults()
 except:
-    final_results = ["0", "No Squat Detected. Please try again.\nMake sure that you are positioned far enough away\nso that you are fully in frame of the camera.\nHowever, being too far away may impair results.\nThe camera is adjustable.\nHalf squats will result in a score of 0."]
+    final_results = ["0", "No Squat Detected. Please try again.\nMake sure that you are positioned far enough away\nso that you are fully in frame of the camera.\nHowever, being too far away may impair results.\nThe camera is adjustable.\nHalf squats will result in a score of 0.\nMake sure to let the live video load."]
     print("No final results found")
 
 def goHome():
