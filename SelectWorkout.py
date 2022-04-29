@@ -32,8 +32,8 @@ def PrevWkts():
    # subprocess.run("python3 PreviousLiftVideos.py", shell=True)
     window.destroy()
     #quit()
-    import PreviousLiftVideos
-    reload(PreviousLiftVideos)
+    import insights_graph
+    reload(insights_graph)
 
 window = Tk()
 
@@ -43,7 +43,7 @@ window.configure(bg="#FFFFFF")
 
 canvas = Canvas(
     window,
-    bg="#FFFFFF",
+    bg="#264653",
     height=1080,
     width=1920,
     bd=0,
@@ -57,7 +57,7 @@ canvas.create_text(
     0.0,
     anchor="nw",
     text="Select Workout",
-    fill="#000000",
+    fill="#FFFFFF",
     font=(fontStyle, 144 * -1)
 )
 
@@ -77,7 +77,7 @@ button_1.place(
     height=95.0
 )
 
-""" button_image_2 = PhotoImage(
+button_image_2 = PhotoImage(
     file=relative_to_assets("PrevWorkouts.png"))
 button_2 = Button(
     image=button_image_2,
@@ -92,7 +92,7 @@ button_2.place(
     width=1032.0,
     height=95.0
 )
- """
+
 button_image_3 = PhotoImage(
     file=relative_to_assets("Back.png"))
 button_3 = Button(

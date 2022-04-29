@@ -33,7 +33,7 @@ window.configure(bg="#FFFFFF")
 
 canvas = Canvas(
     window,
-    bg="#FFFFFF",
+    bg="#264653",
     height=1080,
     width=1920,
     bd=0,
@@ -48,7 +48,7 @@ canvas.create_text(
     anchor="center",
     justify="center",
     text="Enhance Your Lift",
-    fill="#000000",
+    fill="#FFFFFF",
     font=("Audiowide Regular", 48 * -1)
 )
 
@@ -57,7 +57,7 @@ canvas.create_text(
     100.0,
     anchor="center",
     text="Smart Lifting",
-    fill="#000000",
+    fill="#FFFFFF",
     font=("Space Grotesk", 144 * -1)
 )
 

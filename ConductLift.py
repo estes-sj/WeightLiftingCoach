@@ -49,7 +49,7 @@ window.configure(bg="#FFFFFF")
 
 canvas = Canvas(
     window,
-    bg="#FFFFFF",
+    bg="#264653",
     height=1080,
     width=1920,
     bd=0,
@@ -67,12 +67,12 @@ canvas.create_text(
          "load.\nThen perform 3 squats.\n"
          "Do not click the button until\n"
          "you are done lifting.",
-    fill="#000000",
+    fill="#FFFFFF",
     font=(fontStyle, 69 * -1)
 )
 
 button_image_1 = PhotoImage(
-    file=relative_to_assets("button_2.png"))
+    file=relative_to_assets("SetComplete.png"))
 button_1 = Button(
     image=button_image_1,
     borderwidth=0,

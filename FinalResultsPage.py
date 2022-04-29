@@ -54,7 +54,7 @@ window.configure(bg="#FFFFFF")
 
 canvas = Canvas(
     window,
-    bg="#FFFFFF",
+    bg="#264653",
     height=1080,
     width=1920,
     bd=0,
@@ -68,7 +68,7 @@ canvas.create_text(
     210.0,
     anchor="nw",
     text="Final Score: ",
-    fill="#000000",
+    fill="#FFFFFF",
     font=(fontStyle, 69 * -1)
 )
 
@@ -77,7 +77,7 @@ canvas.create_text(
     393.0,
     anchor="nw",
     text="Comments:",
-    fill="#000000",
+    fill="#FFFFFF",
     font=(fontStyle, 69 * -1)
 )
 
@@ -87,7 +87,7 @@ canvas.create_text(
     anchor="nw",
     # Final Score will go here
     text="   " + str("{:.2f}".format(float(final_results[0]))) + "%",
-    fill="#000000",
+    fill="#FFFFFF",
     font=(fontStyle, 69 * -1)
 )
 
@@ -97,7 +97,7 @@ canvas.create_text(
     anchor="nw",
     # Comments will go here!
     text=final_results[1],
-    fill="#000000",
+    fill="#FFFFFF",
     font=(fontStyle, 30 * -1)
 )
 
@@ -106,7 +106,7 @@ canvas.create_text(
     0.0,
     anchor="nw",
     text="Barbell Back Squat",
-    fill="#000000",
+    fill="#FFFFFF",
     font=(fontStyle, 144 * -1)
 )
 

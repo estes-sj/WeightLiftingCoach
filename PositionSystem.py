@@ -63,7 +63,7 @@ def SelWkt():
 
 canvas = Canvas(
     window,
-    bg="#FFFFFF",
+    bg="#264653",
     height=1080,
     width=1920,
     bd=0,
@@ -83,7 +83,7 @@ canvas.create_text(
          "right side.\n"
          "Adjust the camera as\n"
          "needed to be in frame.\n",
-    fill="#000000",
+    fill="#FFFFFF",
     font=(fontStyle, 69 * -1)
 )
 
@@ -92,7 +92,7 @@ canvas.create_text(
     0.0,
     anchor="nw",
     text="Barbell Back Squat",
-    fill="#000000",
+    fill="#FFFFFF",
     font=(fontStyle, 144 * -1)
 )
 
