@@ -13,15 +13,6 @@ import create_xml
 import xml.dom.minidom as minidom
 import matplotlib.pyplot as plt
 
-from matplotlib.figure import Figure
-
-OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path("./assets")
-
-
-def relative_to_assets(path: str) -> Path:
-    return ASSETS_PATH / Path(path)
-
 
 def goHome():
     cleanup(1)
@@ -77,9 +68,6 @@ date6 = str(recent0.getElementsByTagName("date")[0].childNodes[0].nodeValue)
 xpoints = [date0, date1, date2, date3, date4, date5, date6]
 ypoints = [final_score0, final_score1, final_score2, final_score3, final_score4, final_score5, final_score6]
 
-figure = Figure((6, 4), dpi=100)
-axes = figure.add_subplot()
-axes.plot(xpoints, ypoints)
 plt.figure(figsize=(14, 11))
 plt.plot(xpoints, ypoints)
 plt.savefig('graph.png')
@@ -108,7 +96,6 @@ canvas.create_text(
 
 button_1 = Button(
     image=the_graph,
-    relief="flat",
     command=lambda: goHome()
 )
 button_1.place(
