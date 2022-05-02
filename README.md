@@ -13,7 +13,9 @@
     <a href="https://github.com/primetime728/WeightLiftingCoach"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/primetime728/WeightLiftingCoach/blob/master/videos/test_video.mp4">View Demo</a>
+    <a href="https://youtu.be/5rRMvzmUAKk">View Demo</a>
+    ·
+    <a href="https://docs.google.com/presentation/d/1YPbgUcGvDK7KMFHtJbIi1gEWjD-amjaJwFG6H_fcRjM/edit?usp=sharing">Presentation Slides</a>
     ·
     <a href="https://github.com/primetime728/WeightLiftingCoach/issues">Report Bug</a>
     ·
@@ -53,6 +55,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+The Smart Lifting product will aid new and experienced weightlifters by providing insights on proper form and technique. Smart Lifting is an autonomous system that utilizes pose detection and computer vision to record a person in real-time and calculate angle measurements to analyze form. In comparison to other products, Smart Lifting is a compact product that is easily portable. 
 
 Currently uses angle found from joints of the right-side of the body.
 <br>
@@ -60,7 +63,10 @@ Currently uses angle found from joints of the right-side of the body.
 <img src="docs/angles_for_form_2.png" alt="Product Screen Shot">
 </a>
 <br>
+<br>
 Using pose detection and computer vision, this software offers real-time feedback on the performance of a user's squat form.
+<br>
+<br>
 <a href="s">
 <img src="docs/2(2).png" alt="Demo_Screen_Shot">
 </a>
@@ -86,6 +92,7 @@ This project is built using the jetson-inference computer vision libary created 
 1. Nvidia Jetson Nano 2GB/4GB
 2. SD Card 8GB+
 3. USB Camera
+4. HDMI Screen
 
 ### Installation
 
@@ -105,7 +112,7 @@ This project is built using the jetson-inference computer vision libary created 
    ```   
 5. Run the program using
    ```
-   ./capstone.command
+   ./capstone.command && python3 Smart_Lifting.py
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -115,9 +122,13 @@ This project is built using the jetson-inference computer vision libary created 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Screenshots and stuff
-![Start Screen](docs/StartScreen.png)
-![Position System](docs/PositionSystem.png)
+Screenshots of Application Usage
+![Start Screen](docs/img1.png)
+![Select Workout](docs/img2.png)
+![Position System](docs/img3.png)
+![Conduct Workout](docs/img4.png)
+![Final Results](docs/img5.png)
+
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -134,7 +145,7 @@ Screenshots and stuff
 - [x] Sprint 4 - Rep Count and Squat State Machine
 - [x] Sprint 5 - Graph and GUI Deployment
 - [x] Sprint 6 - Bug Fixes and Physical Enclosure
-- [ ] Final Presentation - May 4, 2022
+- [x] Final Presentation - May 4, 2022
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -142,7 +153,7 @@ Screenshots and stuff
 <!-- CONTACT -->
 ## Team
 
-[![Samuel Estes](docs/1650595785138.jpg =200x)](https://www.linkedin.com/in/samuel-estes-b5598122b/)  | [![Zach Farr](docs/1639155008086.jpg =200x)](https://www.linkedin.com/in/zachary-farr-97bb68182/)  | [![Emily Hattman](docs/1610480133202.jpg =200x)](https://www.quandl.com/)
+[![Samuel Estes](docs/1650595785138.jpg)](https://www.linkedin.com/in/samuel-estes-b5598122b/)  | [![Zach Farr](docs/1639155008086.jpg )](https://www.linkedin.com/in/zachary-farr-97bb68182/)  | [![Emily Hattman](docs/1610480133202.jpg)](https://www.quandl.com/)
 ---|---|---
 [Samuel Estes](https://github.com/primetime728) |[Zach Farr](https://www.linkedin.com/in/zachary-farr-97bb68182/) |[Emily Hattman](https://www.linkedin.com/in/emily-hattman-335050192/)
 
@@ -162,21 +173,3 @@ Advisors:
 <p>Dr. Dennis Gracanin</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
